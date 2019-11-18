@@ -17,3 +17,20 @@ exports.getIndexProducts = (req, res, next) => {
     })
 }
 
+exports.getLeftListProducts = (req, res, next) => {
+    Products.find()
+    .then(products => {
+        
+        console.log(products);
+        res.render("listing-left-column", {
+            title: "Danh sách sản phẩm",
+            allProducts: products
+        })
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+

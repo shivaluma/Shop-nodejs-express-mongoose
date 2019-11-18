@@ -1,13 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const mongoose = require("mongoose")
-
-var indexRouter = require('./routes/index');
-
-var app = express();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require("mongoose");
+const indexRouter = require('./routes/index');
+const leftListRouter = require('./routes/listing-left-column');
+const app = express();
 
 
 const Product = require("./models/product")
@@ -36,6 +35,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(leftListRouter);
+
 
 
 // catch 404 and forward to error handler
