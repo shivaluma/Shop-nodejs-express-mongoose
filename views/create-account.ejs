@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/loader %>
+    <header>
+      <% include partials/header %>
+    </header>
+    <div class="tt-breadcrumb">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li>Đăng ký taì khoản</li>
+        </ul>
+      </div>
+    </div>
+    <div id="tt-pageContent">
+      <div class="container-indent">
+        <div class="container">
+          <h1 class="tt-title-subpages noborder">ĐĂNG KÝ TAÌ KHOẢN</h1>
+          <div class="tt-login-form">
+            <div class="row justify-content-center">
+              <div class="col-md-8 col-lg-6">
+                <div class="tt-item">
+                  <h2 class="tt-title">THÔNG TIN CÁ NHÂN</h2>
+                  <div class="form-default">
+                    <form id="contactform" method="post" novalidate="novalidate">
+                      <div class="form-group">
+                        <label for="loginInputName">HỌ *</label>
+                        <div class="tt-required">* Trường bắt buộc</div>
+                        <input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter First Name" />
+                      </div>
+                      <div class="form-group">
+                        <label for="loginLastName">Tên *</label>
+                        <input type="text" name="lastName" class="form-control" id="loginLastName" placeholder="Enter Last Name" />
+                      </div>
+                      <div class="form-group">
+                        <label for="loginInputEmail">E-MAIL *</label>
+                        <input type="text" name="email" class="form-control" id="loginInputEmail" placeholder="Enter E-mail" />
+                      </div>
+                      <div class="form-group">
+                        <label for="loginInputPassword">Mật khâủ *</label>
+                        <input type="text" name="passowrd" class="form-control" id="loginInputPassword" placeholder="Enter Password" />
+                      </div>
+                      <div class="row">
+                        <div class="col-auto">
+                          <div class="form-group">
+                            <button class="btn btn-border" type="submit">Tạo</button>
+                          </div>
+                        </div>
+                        <div class="col-auto align-self-center">
+                          <div class="form-group">
+                            <ul class="additional-links">
+                              <li>or <a href="/">Quay về cửa hàng</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <% include partials/footer %>
+    </footer>
+    <a href="#" class="tt-back-to-top">BACK TO TOP</a>
+    <!-- Partials -->
+    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    partials/modal-newsletter %> <% include partials/script %>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body>
+    <% include partials/loader %>
+    <header>
+      <% include partials/header %>
+    </header>
+    <div class="tt-breadcrumb">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li>Đăng nhập</li>
+        </ul>
+      </div>
+    </div>
+    <div id="tt-pageContent">
+      <div class="container-indent">
+        <div class="container">
+          <h1 class="tt-title-subpages noborder">Đã đăng ký?</h1>
+          <div class="tt-login-form">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="tt-item">
+                  <h2 class="tt-title">KHÁCH HÀNG MƠÍ</h2>
+                  <p>
+                    Bằng cách tạo tài khoản với cửa hàng của chúng tôi, bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn, lưu trữ nhiều địa chỉ giao hàng, xem và theo dõi đơn hàng của bạn trong
+                    tài khoản của bạn và hơn thế nữa.
+                  </p>
+                  <div class="form-group">
+                    <a href="create-account.html" class="btn btn-top btn-border">TẠO TÀI KHOẢN</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="tt-item">
+                  <h2 class="tt-title">Đăng nhập</h2>
+                  Nêú bạn có taì khoản thì đăng nhập đi
+                  <div class="form-default form-top">
+                    <form id="customer_login" method="post" novalidate="novalidate">
+                      <div class="form-group">
+                        <label for="loginInputName">Tên đăng nhập hoặc email *</label>
+                        <div class="tt-required">* Bắt buộc</div>
+                        <input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter Username or E-mail" />
+                      </div>
+                      <div class="form-group">
+                        <label for="loginInputEmail">Mật khẩu *</label>
+                        <input type="text" name="passowrd" class="form-control" id="loginInputEmail" placeholder="Enter Password" />
+                      </div>
+                      <div class="row">
+                        <div class="col-auto mr-auto">
+                          <div class="form-group">
+                            <button class="btn btn-border" type="submit">Đăng nhập</button>
+                          </div>
+                        </div>
+                        <div class="col-auto align-self-end">
+                          <div class="form-group">
+                            <ul class="additional-links">
+                              <li><a href="forgot-password.html">Quên mật khẩu?</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <% include partials/footer %>
+    </footer>
+    <a href="#" class="tt-back-to-top">BACK TO TOP</a>
+    <!-- Partials -->
+    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    partials/modal-newsletter %> <% include partials/script %>
+  </body>
+</html>

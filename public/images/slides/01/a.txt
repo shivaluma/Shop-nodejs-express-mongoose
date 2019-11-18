@@ -1,0 +1,4 @@
+http://softali.net/victor/wookie/html/images/slides/01/./
+http://softali.net/victor/wookie/html/images/slides/01/slide-01.jpg
+http://softali.net/victor/wookie/html/images/slides/01/slide-02.jpg
+http://softali.net/victor/wookie/html/images/slides/01/a.txt
