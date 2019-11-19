@@ -893,7 +893,7 @@
 
             $this.on('click', 'li', function(e) {
                 var $this = $(this);
-                $this.toggleClass('active');
+                $this.addClass('active').siblings().removeClass('active');
                 if (jsChangeImg) {
                     addImg($this);
                 }
