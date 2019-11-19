@@ -36,7 +36,7 @@ exports.getProducts = (req, res, next) => {
     Products.find()
     .then(products => {
         console.log(products);
-        res.render("listing-left-column", {
+        res.render("products", {
             title: "Danh sách sản phẩm",
             allProducts: products
         })
