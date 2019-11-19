@@ -33,38 +33,39 @@
 							</div>
 						</div>
 					</div>
-					<div class="tt-collapse open ">
+					<!-- <div class="tt-collapse open ">
 						<h3 class="tt-collapse-title">Sắp xếp theo</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-filter-list" id="filter-list">
+								<li>
+									<a href="#">Shirts &amp; Tops</a>
+								</li>
+								<li>
+									<a href="#">XS</a>
+								</li>
+								<li>
+									<a href="#">White</a>
+								</li>
 							</ul>
 							<a href="#" class="btn-link-02" onclick="deleteAllFilter()">Xoá tất cả</a>
 						</div>
-					</div>
+					</div> -->
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">LOẠI SẢN PHẨM</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-list-row">
-								<li class="active"><a href="#">Váy</a></li>
-								<li><a href="#">Áo &amp; Tops</a></li>
-								<li><a href="#">Áo Polo</a></li>
-								<li><a href="#">Sweaters</a></li>
-								<li><a href="#">Blazers &amp; Vests</a></li>
-								<li><a href="#">Jackets &amp; Outerwear</a></li>
-								<li><a href="#">Activewear</a></li>
-								<li><a href="#">Pants</a></li>
-								<li><a href="#">Jumpsuits &amp; Shorts</a></li>
-								<li><a href="#">Jeans</a></li>
-								<li><a href="#">Skirts</a></li>
-								<li><a href="#">Swimwear</a></li>
+							<ul class="tt-list-row" id="product-type">
+								<li><a href="#">Áo</a></li>
+								<li><a href="#">Quần</a></li>
+								<li><a href="#">Túi xách</a></li>
+								<li><a href="#">Giày</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Lọc theo giá</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-list-row">
-								<li class="active"><a href="#">$0 — $50</a></li>
+							<ul class="tt-list-row" id="product-price">
+								<li><a href="#">$0 — $50</a></li>
 								<li><a href="#">$50 — $100</a></li>
 								<li><a href="#">$100 — $150</a></li>
 								<li><a href="#">$150 —  $200</a></li>
@@ -74,22 +75,20 @@
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Lọc theo kích thước</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-options-swatch options-middle">
-								<li><a href="#">4</a></li>
-								<li class="active"><a href="#">6</a></li>
-								<li><a href="#">8</a></li>
-								<li><a href="#">10</a></li>
-								<li><a href="#">12</a></li>
-								<li><a href="#">14</a></li>
-								<li><a href="#">16</a></li>
-								<li><a href="#">18</a></li>
-								<li><a href="#">20</a></li>
-								<li><a href="#">22</a></li>
-								<li><a href="#">24</a></li>
+							<ul class="tt-options-swatch options-middle" id="product-size">
+								<li><a href="#">S</a></li>
+								<li><a href="#">M</a></li>
+								<li><a href="#">L</a></li>
+								<li><a href="#">XL</a></li>
+								<li><a href="#">38</a></li>
+								<li><a href="#">39</a></li>
+								<li><a href="#">40</a></li>
+								<li><a href="#">41</a></li>
+								<li><a href="#">42</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="tt-collapse open">
+					<!-- <div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Lọc theo màu sắc</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-options-swatch options-middle">
@@ -112,18 +111,17 @@
 								</a></li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Thương hiệu</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-list-row">
-								<li><a href="#">Levi's</a></li>
-								<li><a href="#">Gap</a></li>
-								<li><a href="#">Polo</a></li>
+							<ul class="tt-list-row" id="product-label">
+								<li><a href="#">Shiro</a></li>
+								<li><a href="#">Crepp</a></li>
+								<li><a href="#">Mob</a></li>
 								<li><a href="#">Lacoste</a></li>
 								<li><a href="#">Guess</a></li>
 							</ul>
-							<a href="#" class="btn-link-02">+ xem thêm</a>
 						</div>
 					</div>
 					<div class="tt-collapse open">
@@ -172,7 +170,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="tt-collapse open">
+					<!-- <div class="tt-collapse open">
 						<h3 class="tt-collapse-title">TAGS</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-inline">
@@ -193,7 +191,7 @@
 								<li><a href="#">Swimwear</a></li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					<div class="tt-content-aside">
 						<a href="/products" class="tt-promo-03">
 							<img src="/images/custom/listing_promo_img_07.jpg" alt="">
@@ -211,9 +209,8 @@
 							</div>
 							<div class="tt-sort">
 								<select>
-									<option value="Default Sorting">Default Sorting</option>
-									<option value="Default Sorting">Default Sorting 02</option>
-									<option value="Default Sorting">Default Sorting 03</option>
+									<option value="Default Sorting">Tăng</option>
+									<option value="Default Sorting">Giảm</option>
 								</select>
 								<select>
 									<option value="Show">Xem</option>
