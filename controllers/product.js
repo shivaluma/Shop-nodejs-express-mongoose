@@ -1,7 +1,5 @@
 const Products = require('../models/product');
 
-import { getState } from '../public/javascripts/filter-prod';
-
 // demo chu chua xu ly
 exports.getIndexProducts = (req, res, next) => {
     Products.find()

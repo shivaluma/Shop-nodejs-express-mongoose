@@ -50,20 +50,3 @@ for (var i = 0; i < price.length; i++) {
         this.classList.add('active');
     };
 }
-
-var state = {
-    type: '',
-    size: '',
-    price: '',
-    label: ''
-};
-
-function getState() {
-    state.type = document.querySelector('#product-type .active');
-    state.size = document.querySelector('#product-size .active');
-    state.price = document.querySelector('#product-price .active');
-    state.label = document.querySelector('#product-label .active');
-    return state;
-}
-
-export { getState };
