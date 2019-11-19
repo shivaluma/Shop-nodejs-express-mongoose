@@ -9,4 +9,6 @@ router.get('/', productController.getIndexProducts)
 
 router.get('/product/:productId', productController.getProduct)
 
+router.get('/products', productController.getProducts);
+
 module.exports = router;
