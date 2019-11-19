@@ -18,7 +18,6 @@ exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
     Products.find({ _id: `${prodId}` })
         .then(product => {
-            console.log(product);
             res.render('product', {
                 title: `${product[0].name}`,
                 prod: product[0]
@@ -30,9 +29,17 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    Products.find()
+    const ptype = req.query.type !== undefined ? req.query.type : '';
+    const pprice = req.query.price !== undefined ? req.query.price : '';
+    const psize = req.query.size !== undefined ? req.query.size : '';
+    const plabel = req.query.label !== undefined ? req.query.label : '';
+    const plowerprice = pprice !== 999 ? pprice - 50 : 0;
+    Products.find({
+        type: new RegExp(ptype, 'i'),
+        size: new RegExp(psize, 'i'),
+        labels: new RegExp(plabel, 'i')
+    })
         .then(products => {
-            console.log(products);
             res.render('products', {
                 title: 'Danh sách sản phẩm',
                 allProducts: products
