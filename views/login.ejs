@@ -26,11 +26,15 @@
                 <div class="tt-item">
                   <h2 class="tt-title">KHÁCH HÀNG MƠÍ</h2>
                   <p>
-                    Bằng cách tạo tài khoản với cửa hàng của chúng tôi, bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn, lưu trữ nhiều địa chỉ giao hàng, xem và theo dõi đơn hàng của bạn trong
-                    tài khoản của bạn và hơn thế nữa.
+                    Bằng cách tạo tài khoản với cửa hàng của chúng tôi, bạn sẽ
+                    có thể chuyển qua quy trình thanh toán nhanh hơn, lưu trữ
+                    nhiều địa chỉ giao hàng, xem và theo dõi đơn hàng của bạn
+                    trong tài khoản của bạn và hơn thế nữa.
                   </p>
                   <div class="form-group">
-                    <a href="create-account.html" class="btn btn-top btn-border">TẠO TÀI KHOẢN</a>
+                    <a href="create-account.html" class="btn btn-top btn-border"
+                      >TẠO TÀI KHOẢN</a
+                    >
                   </div>
                 </div>
               </div>
@@ -39,26 +43,49 @@
                   <h2 class="tt-title">Đăng nhập</h2>
                   Nêú bạn có taì khoản thì đăng nhập đi
                   <div class="form-default form-top">
-                    <form id="customer_login" method="POST" novalidate="novalidate">
+                    <form
+                      id="customer_login"
+                      method="POST"
+                      novalidate="novalidate"
+                      action="/login"
+                    >
                       <div class="form-group">
-                        <label for="loginInputName">Tên đăng nhập hoặc email *</label>
+                        <label for="username">Tên đăng nhập *</label>
                         <div class="tt-required">* Bắt buộc</div>
-                        <input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter Username or E-mail" />
+                        <input
+                          type="text"
+                          name="username"
+                          class="form-control"
+                          id="username"
+                          placeholder="Điền tên đăng nhập"
+                        />
                       </div>
                       <div class="form-group">
-                        <label for="loginInputEmail">Mật khẩu *</label>
-                        <input type="text" name="passowrd" class="form-control" id="loginInputEmail" placeholder="Enter Password" />
+                        <label for="password">Mật khẩu *</label>
+                        <input
+                          type="text"
+                          name="password"
+                          class="form-control"
+                          id="password"
+                          placeholder="Điền mật khẩu"
+                        />
                       </div>
                       <div class="row">
                         <div class="col-auto mr-auto">
                           <div class="form-group">
-                            <button class="btn btn-border" type="submit">Đăng nhập</button>
+                            <button class="btn btn-border" type="submit">
+                              Đăng nhập
+                            </button>
                           </div>
                         </div>
                         <div class="col-auto align-self-end">
                           <div class="form-group">
                             <ul class="additional-links">
-                              <li><a href="forgot-password.html">Quên mật khẩu?</a></li>
+                              <li>
+                                <a href="forgot-password.html"
+                                  >Quên mật khẩu?</a
+                                >
+                              </li>
                             </ul>
                           </div>
                         </div>
@@ -77,7 +104,9 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    <% include partials/modal-addtocartproduct %> <% include
+    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
+    <% include partials/modal-subscribegood %> <% include
     partials/modal-newsletter %> <% include partials/script %>
   </body>
 </html>
