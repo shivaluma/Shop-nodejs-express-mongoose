@@ -355,13 +355,25 @@
 								</div>
 								<div class="tt-dropdown-inner">
 									<ul>
+											<%if (typeof(user) !== 'undefined') { %>
+												<li>Xin chào, <%= user.username %></a></li>
+												<% } %>
+										
 									    <li><a href="/account.html"><i class="icon-f-94"></i>Tài khoản</a></li>
 									    <li><a href="/wishlist.html"><i class="icon-n-072"></i>Yêu thích</a></li>
 									    
-									    <li><a href="/add-address.html"><i class="icon-f-68"></i>Thanh toán</a></li>
-									    <li><a href="/login"><i class="icon-f-76"></i>Đăng nhập</a></li>
-									    <li><a href="/page404.html"><i class="icon-f-77"></i>Đăng xuất</a></li>
-									    <li><a href="/create-account.html"><i class="icon-f-94"></i>Đăng ký</a></li>
+										<li><a href="/add-address.html"><i class="icon-f-68"></i>Thanh toán</a></li>
+										
+										<%if (typeof(user) !== 'undefined') { %>
+											<li><a href="/page404.html"><i class="icon-f-77"></i>Đăng xuất</a></li>
+											<% } %>
+
+											<%if (typeof(user) === 'undefined') { %>
+												<li><a href="/login"><i class="icon-f-76"></i>Đăng nhập</a></li>
+									    
+									    <li><a href="/create-account"><i class="icon-f-94"></i>Đăng ký</a></li>
+												<% } %>
+									    
 									</ul>
 								</div>
 							</div>

@@ -41,7 +41,7 @@
               <div class="col-xs-12 col-md-6">
                 <div class="tt-item">
                   <h2 class="tt-title">Đăng nhập</h2>
-                  Nêú bạn có taì khoản thì đăng nhập đi
+
                   <div class="form-default form-top">
                     <form
                       id="customer_login"
@@ -49,6 +49,15 @@
                       novalidate="novalidate"
                       action="/login"
                     >
+                      <%if (message != "undefined") { %>
+                      <div
+                        class="form-group form-control error"
+                        style="background-color: #FFCCCC; font-weight: bold; color : rgb(210, 29, 29)"
+                      >
+                        <%= message %>
+                      </div>
+                      <% } %>
+
                       <div class="form-group">
                         <label for="username">Tên đăng nhập *</label>
                         <div class="tt-required">* Bắt buộc</div>

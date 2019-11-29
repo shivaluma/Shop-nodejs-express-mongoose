@@ -2,10 +2,12 @@ const Products = require("../models/product");
 
 // demo chu chua xu ly
 exports.getIndexProducts = (req, res, next) => {
+  console.log(req.user);
   Products.find()
     .then(products => {
       res.render("index", {
         title: "Trang chủ",
+        user: req.user,
         trendings: products
       });
     })
