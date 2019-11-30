@@ -90,7 +90,8 @@ module.exports = function(passport) {
         bcrypt.hash(password, 12).then(hashPassword => {
           const newUser = new User({
             username: username,
-            password: hashPassword
+            password: hashPassword,
+            email: req.body.email
           });
           // save the user
           newUser.save(function(err) {
