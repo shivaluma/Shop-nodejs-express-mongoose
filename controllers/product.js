@@ -6,6 +6,7 @@ exports.getIndexProducts = (req, res, next) => {
     .then(products => {
       res.render("index", {
         title: "Trang chủ",
+        user: req.user,
         trendings: products
       });
     })

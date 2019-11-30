@@ -19,35 +19,74 @@
     <div id="tt-pageContent">
       <div class="container-indent">
         <div class="container">
-          <h1 class="tt-title-subpages noborder">ĐĂNG KÝ TAÌ KHOẢN</h1>
+          <h1 class="tt-title-subpages noborder">ĐĂNG KÝ TÀI KHOẢN</h1>
           <div class="tt-login-form">
             <div class="row justify-content-center">
               <div class="col-md-8 col-lg-6">
                 <div class="tt-item">
                   <h2 class="tt-title">THÔNG TIN CÁ NHÂN</h2>
+                  <%if (message != "undefined") { %>
+                  <div
+                    class="form-group form-control error"
+                    style="background-color: #FFCCCC; font-weight: bold; color : rgb(210, 29, 29)"
+                  >
+                    <%= message %>
+                  </div>
+                  <% } %>
                   <div class="form-default">
-                    <form id="contactform" method="post" novalidate="novalidate">
+                    <form
+                      id="createaccount"
+                      method="post"
+                      novalidate="novalidate"
+                      action="/create-account"
+                    >
                       <div class="form-group">
-                        <label for="loginInputName">HỌ *</label>
-                        <div class="tt-required">* Trường bắt buộc</div>
-                        <input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter First Name" />
+                        <label for="loginInputEmail">Tên đăng nhập *</label>
+                        <input
+                          type="text"
+                          name="username"
+                          class="form-control"
+                          id="username"
+                          placeholder="Nhập username"
+                        />
                       </div>
                       <div class="form-group">
-                        <label for="loginLastName">Tên *</label>
-                        <input type="text" name="lastName" class="form-control" id="loginLastName" placeholder="Enter Last Name" />
+                        <label for="loginInputPassword">Mật khẩu *</label>
+                        <input
+                          type="text"
+                          name="password"
+                          class="form-control"
+                          id="password"
+                          placeholder="Nhập mật khẩu"
+                        />
                       </div>
                       <div class="form-group">
-                        <label for="loginInputEmail">E-MAIL *</label>
-                        <input type="text" name="email" class="form-control" id="loginInputEmail" placeholder="Enter E-mail" />
+                        <label for="loginInputPassword2">Mật khẩu *</label>
+                        <input
+                          type="text"
+                          name="password2"
+                          class="form-control"
+                          id="password2"
+                          placeholder="Nhập lại mật khẩu"
+                        />
                       </div>
+
                       <div class="form-group">
-                        <label for="loginInputPassword">Mật khâủ *</label>
-                        <input type="text" name="passowrd" class="form-control" id="loginInputPassword" placeholder="Enter Password" />
+                        <label for="email">Nhập địa chỉ email *</label>
+                        <input
+                          type="text"
+                          name="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="bros@gmail.com"
+                        />
                       </div>
                       <div class="row">
                         <div class="col-auto">
                           <div class="form-group">
-                            <button class="btn btn-border" type="submit">Tạo</button>
+                            <button class="btn btn-border" type="submit">
+                              Đăng ký
+                            </button>
                           </div>
                         </div>
                         <div class="col-auto align-self-center">
@@ -72,7 +111,9 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    <% include partials/modal-addtocartproduct %> <% include
+    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
+    <% include partials/modal-subscribegood %> <% include
     partials/modal-newsletter %> <% include partials/script %>
   </body>
 </html>

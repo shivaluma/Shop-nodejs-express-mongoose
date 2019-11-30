@@ -10,8 +10,4 @@ router.get("/product/:productId", productController.getProduct);
 
 router.get("/products", productController.getProducts);
 
-router.get("/login", userController.getUsers);
-
-router.post("/login", userController.postLogin);
-
 module.exports = router;
