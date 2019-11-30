@@ -34,6 +34,11 @@ const userSchema = new Schema({
     type: Boolean,
     required: false,
     default: false
+  },
+  isAuthenticated: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 });
 

@@ -53,7 +53,12 @@ module.exports = function(passport) {
 
   passport.use(
     "local-signup",
-    new LocalStrategy(function(username, password, done) {
+    new LocalStrategy({ passReqToCallback: true }, function(
+      req,
+      username,
+      password,
+      done
+    ) {
       User.findOne({ username: username }, function(err, user) {
         if (err) {
           return done(err);
@@ -67,6 +72,18 @@ module.exports = function(passport) {
         if (password.length <= 6) {
           return done(null, false, {
             message: "Mật khẩu phải trên 6 ký tự!"
+          });
+        }
+
+        if (password !== req.body.password2) {
+          return done(null, false, {
+            message: "Hai mật khẩu không khớp!"
+          });
+        }
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(String(req.body.email).toLowerCase())) {
+          return done(null, false, {
+            message: "Địa chỉ email không hợp lệ!"
           });
         }
 
