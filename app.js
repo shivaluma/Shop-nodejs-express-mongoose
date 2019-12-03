@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -11,9 +13,7 @@ const authRouter = require("./routes/auth");
 const flash = require("connect-flash");
 const app = express();
 
-const Product = require("./models/product");
-const urlConnect = `mongodb+srv://brogrammers2527:brogrammers2527@cluster0-mwti3.mongodb.net/test?retryWrites=true&w=majority
-`;
+const urlConnect = process.env.DB;
 
 // Connect to database
 mongoose.connect(
