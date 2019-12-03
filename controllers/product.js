@@ -21,6 +21,7 @@ exports.getProduct = (req, res, next) => {
     .then(product => {
       res.render("product", {
         title: `${product[0].name}`,
+        user: req.user,
         prod: product[0]
       });
     })
@@ -44,6 +45,7 @@ exports.getProducts = (req, res, next) => {
     .then(products => {
       res.render("products", {
         title: "Danh sách sản phẩm",
+        user: req.user,
         allProducts: products
       });
     })
