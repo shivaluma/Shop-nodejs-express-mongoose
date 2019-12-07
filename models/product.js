@@ -2,17 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-  sku: {
-    type: String,
-    required: true
-  },
   name: {
     type: String,
     required: true
   },
   description: {
     type: String,
-    required: true
+    required: false,
+    default: "Một sản phẩm từ Bros"
   },
   stock: {
     type: Number,
@@ -22,32 +19,70 @@ const productSchema = new Schema({
     type: Number,
     required: true
   },
-  size: [String],
-  type: {
-    type: String,
+  size: {
+    type: [String],
     required: true
   },
-  color: [String],
-  pattern: [String],
-  tags: [String],
-  images: [String],
-  dateAdded: String,
-  status: {
-    sale: {
-      isSale: Boolean,
-      salePercent: Number
-    },
-    isTrending: Boolean
+  productType: {
+    mainTypeCode: String,
+    subTypeCode: String
+  },
+  color: {
+    type: [String],
+    required: true
+  },
+  pattern: {
+    type: [String],
+    required: false
+  },
+  tags: {
+    type: [String],
+    required: false
+  },
+  images: {
+    type: [String],
+    required: true
+  },
+  dateAdded: {
+    type: Date,
+    required: false,
+    default: Date.now
+  },
+  isSale: {
+    type: Boolean,
+    required: false,
+    default: false
   },
   ofSellers: {
     type: String,
-    required: false
+    required: false,
+    default: "Shiro"
   },
   labels: {
     type: String,
+    required: false,
+    default: "Shiro"
+  },
+  materials: {
+    type: [String],
     required: true
   },
-  materials: [String]
+  buyCounts: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  viewCounts: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  rating: {
+    byUser: String,
+    content: String,
+    star: Number
+  }
 });
+
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;

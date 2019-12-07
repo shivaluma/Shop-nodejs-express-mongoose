@@ -15,6 +15,8 @@ const app = express();
 
 const urlConnect = process.env.DB;
 
+//require("./util/productCreate");
+
 // Connect to database
 mongoose.connect(
   urlConnect,
