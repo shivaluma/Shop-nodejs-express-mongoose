@@ -9,10 +9,8 @@ mongoose.connect(urlConnect, { useNewUrlParser: true }, err => {
   console.log("Connect successfully!!");
 
   var abc = new ProductCategory({
-    code: "phukien",
-    name: "Phụ Kiện",
-    childTypeCode: ["mu", "tuixach", "balo", "thatlung", "giay"],
-    childTypeName: ["Mũ", "Túi Xách", "Balo", "Thắt lưng", "Giày"]
+    name: "Quần",
+    childName: ["Quần Dài", "Quần Ngắn", "Quần Thể Thao", "Quần Xì"]
   });
 
   abc.save(function(err) {

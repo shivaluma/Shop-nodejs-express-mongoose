@@ -15,7 +15,7 @@ mongoose.connect(urlConnect, { useNewUrlParser: true }, err => {
     stock: 32,
     price: 20,
     size: ["S", "M", "L", "XL"],
-    productType: { mainTypeCode: "ao", subTypeCode: "aohoodie" },
+    productType: { main: "Áo", sub: "Áo Hoodie" },
     color: "xanh",
     pattern: "Trơn",
     images: [

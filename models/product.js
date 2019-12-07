@@ -24,8 +24,8 @@ const productSchema = new Schema({
     required: true
   },
   productType: {
-    mainTypeCode: String,
-    subTypeCode: String
+    main: String,
+    sub: String
   },
   color: {
     type: [String],
