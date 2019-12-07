@@ -14,7 +14,7 @@ mongoose.connect(urlConnect, { useNewUrlParser: true }, err => {
       "Áo hoodle len lông cừu East Hamston được chế tác từ lông cừu mang cảm giác ấm cúng khi mặc",
     stock: 32,
     price: 20,
-    size: ["38", "39", "40", "41"],
+    size: ["S", "M", "L", "XL"],
     productType: { mainTypeCode: "ao", subTypeCode: "aohoodie" },
     color: "xanh",
     pattern: "Trơn",
