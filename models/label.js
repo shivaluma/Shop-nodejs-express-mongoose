@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const labelSchema = new Schema({
-  name: {
-    type: String,
+  list: {
+    type: [String],
     required: true
   }
 });

@@ -9,22 +9,22 @@ mongoose.connect(urlConnect, { useNewUrlParser: true }, err => {
   console.log("Connect successfully!!");
 
   var product = new Product({
-    name: "Áo hoodie len lông cừu East Hamston",
-    description:
-      "Áo hoodle len lông cừu East Hamston được chế tác từ lông cừu mang cảm giác ấm cúng khi mặc",
-    stock: 32,
-    price: 20,
+    name: "Áo Sơ Mi 7 Màu",
+    description: "Nhìn là đẹp r mua đi",
+    stock: 124,
+    price: 1123,
     size: ["S", "M", "L", "XL"],
-    productType: { main: "Áo", sub: "Áo Hoodie" },
-    color: "xanh",
+    productType: { main: "Áo", sub: "Áo Sơ Mi" },
+    color: ["Nhiều Màu"],
     pattern: "Trơn",
     images: [
-      "product-01-01.jpg",
-      "product-01-02.jpg",
-      "product-01-03.jpg",
-      "product-01-04.jpg"
+      "product-16.jpg",
+      "product-16-01.jpg",
+      "product-16-02.jpg",
+      "product-16-03.jpg"
     ],
-    materials: ["40% Cotton", "60% Lông cừu"]
+    label: "Others",
+    materials: ["100% Vải"]
   });
 
   product.save(function(err) {

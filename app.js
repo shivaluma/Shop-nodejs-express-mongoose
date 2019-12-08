@@ -17,7 +17,8 @@ const urlConnect = process.env.DB;
 
 //require("./util/productCreate");
 
-require("./util/productCategoryCreate");
+//require("./util/productCategoryCreate");
+//require("./util/labelCreate");
 
 // Connect to database
 mongoose.connect(
