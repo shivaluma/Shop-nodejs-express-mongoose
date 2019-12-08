@@ -15,7 +15,7 @@ const app = express();
 
 const urlConnect = process.env.DB;
 
-//require("./util/productCreate");
+require("./util/productCreate");
 
 //require("./util/productCategoryCreate");
 //require("./util/labelCreate");
