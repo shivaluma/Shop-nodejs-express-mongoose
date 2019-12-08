@@ -7,24 +7,24 @@ const urlConnect = `mongodb+srv://brogrammers2527:brogrammers2527@cluster0-mwti3
 mongoose.connect(urlConnect, { useNewUrlParser: true }, err => {
   if (err) throw err;
   console.log("Connect successfully!!");
-
+  
   var product = new Product({
-    name: "Áo Sơ Mi 7 Màu",
-    description: "Nhìn là đẹp r mua đi",
-    stock: 124,
-    price: 1123,
-    size: ["S", "M", "L", "XL"],
-    productType: { main: "Áo", sub: "Áo Sơ Mi" },
-    color: ["Nhiều Màu"],
+    name: "Trang trí nữ bằng da",
+    description: "Đôi khi có những thứ không ai biết nó là gì luôn",
+    stock: 123,
+    price: 444,
+    tags:["#vip","#pro","#cute"],
+    size: ["S","M"],
+    productType: { main: "Phụ Kiện", sub: "Trang Trí"},
+    color: ["Nâu"],
     pattern: "Trơn",
     images: [
-      "product-16.jpg",
-      "product-16-01.jpg",
-      "product-16-02.jpg",
-      "product-16-03.jpg"
+      "product-39.jpg",
+      "product-39-01.jpg",
+      "product-39-02.jpg"
     ],
-    label: "Others",
-    materials: ["100% Vải"]
+    label: "Mob",
+    materials: ["100% Da"]
   });
 
   product.save(function(err) {
