@@ -119,7 +119,7 @@
 							</ul>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-border mx-auto mb-5">LỌC</button>
+					<button type="submit" class="btn btn-border mx-auto mb-5">Lọc</button>
 					</form>
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Sản phẩm giảm giá</h3>
@@ -204,25 +204,48 @@
 							<div class="tt-btn-toggle">
 								<a href="#">Lọc</a>
 							</div>
-							<div class="tt-sort">
-								<select>
-									<option value="Default Sorting">Tăng</option>
-									<option value="Default Sorting">Giảm</option>
-								</select>
-								<select>
-									<option value="Show">Xem</option>
-									<option value="9">9</option>
-									<option value="16">16</option>
-									<option value="32">32</option>
-								</select>
+							<div class="tt-sort tt-sort-1">
+								<form class="woocommerce-ordering" method="get">
+									<select name="orderby" class="orderby" aria-label="Shop order">
+														<option value="menu_order"  selected='selected'>Default</option>
+														<option value="popularity" >Best Selling</option>
+														<option value="rating" >Rating (Highest)</option>
+														<option value="price" >Price, Low To High</option>
+														<option value="price-desc" >Price, High To Low</option>
+														<option value="rating-desc" >Rating (Lowest)</option>
+												</select>
+									<input type="hidden" name="paged" value="1"/>
+								</form>
 							</div>
-							<div class="tt-quantity">
-								<a href="#" class="tt-col-one" data-value="tt-col-one"></a>
-								<a href="#" class="tt-col-two" data-value="tt-col-two"></a>
-								<a href="#" class="tt-col-three" data-value="tt-col-three"></a>
-								<a href="#" class="tt-col-four" data-value="tt-col-four"></a>
-								<a href="#" class="tt-col-six" data-value="tt-col-six"></a>
+							<div class="tt-sort tt-sort-2">
+							
+								<form method="POST">
+								
+									<select name="numItems" onchange="this.form.submit()" class="form-control">
+								
+												
+											<option value="8" >8</option>
+								
+												
+											<option value="12"  selected='selected'>12</option>
+								
+												
+											<option value="16" >16</option>
+								
+												
+											<option value="32" >32</option>
+								
+												
+											<option value="1000" >All</option>
+								
+												
+									</select>
+								
+								</form>  
+								
 							</div>
+								
+							
 						</div>
 						<div class="tt-product-listing row">
 							<% allProducts.forEach(function(prod) { %>
@@ -262,12 +285,26 @@
 								</div>
 								<% }); %>
 						</div>
-						<div class="text-center tt_product_showmore">
-							<a href="#" class="btn btn-border">XEM THÊM</a>
-							<div class="tt_item_all_js">
-								<a href="#" class="btn btn-border01">KHÔNG CÒN GÌ ĐỂ HIỂN THỊ</a>
-							</div>
-						</div>
+						<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-center">
+								  <% if (currentPage !== 1 && previousPage !== 1){%><li class="page-item"><a class="page-link" href="/products/?page=1">1</a></li><% } %>
+
+								  <% if(hasPreviousPage ){  %>
+									<li class="page-item"><a class="page-link" href="/products/?page=<%= previousPage %>"><%= previousPage %></a></li>
+								  <% } %>
+
+								  <li class="page-item disabled" ><a class="page-link" href="/products/?page=<%= currentPage %>" tabindex="-1"><%= currentPage %></a></li>
+
+								  <% if(hasNextPage){  %>
+									  <li class="page-item"><a class="page-link" href="/products/?page=<%= nextPage %>"><%= nextPage %></a></li>
+								  <% } %>
+
+								  <% if(lastPage !== currentPage && lastPage !== nextPage){ %>
+								  	<li class="page-item"><a class="page-link" href="/products/?page=<%= lastPage %>"><%= lastPage %></a></li>
+								  <% } %>
+
+								</ul>
+						</nav>
 					</div>
 				</div>
 			</div>

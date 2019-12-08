@@ -1,6 +1,7 @@
 const Products = require("../models/product");
 
-// demo chu chua xu ly
+var ITEM_PER_PAGE = 12;
+
 exports.getIndexProducts = (req, res, next) => {
   Products.find()
     .then(products => {
@@ -36,20 +37,50 @@ exports.getProducts = (req, res, next) => {
   const psize = req.query.size !== undefined ? req.query.size : "";
   const plabel = req.query.label !== undefined ? req.query.label : "";
   const plowerprice = pprice !== 999999 ? pprice - 50 : 0;
-  Products.find({
-    type: new RegExp(ptype, "i"),
-    size: new RegExp(psize, "i"),
-    labels: new RegExp(plabel, "i"),
-    price: { $gt: plowerprice, $lt: pprice }
-  })
+
+  var page = +req.query.page || 1;
+  let totalItems;
+  console.log(ITEM_PER_PAGE);
+
+  Products.find()
+    .countDocuments()
+    .then(numProduct => {
+      totalItems = numProduct;
+      return Products.find()
+        .skip((page - 1) * ITEM_PER_PAGE)
+        .limit(ITEM_PER_PAGE);
+    })
+
+    // Products
+    //   .find
+    //   //  {
+    //   //   type: new RegExp(ptype, "i"),
+    //   //   size: new RegExp(psize, "i"),
+    //   //   labels: new RegExp(plabel, "i"),
+    //   //   price: { $gt: plowerprice, $lt: pprice }
+    //   // }
+    //   ()
+
     .then(products => {
       res.render("products", {
         title: "Danh sách sản phẩm",
         user: req.user,
-        allProducts: products
+        allProducts: products,
+        currentPage: page,
+        hasNextPage: ITEM_PER_PAGE * page < totalItems,
+        hasPreviousPage: page > 1,
+        nextPage: page + 1,
+        previousPage: page - 1,
+        lastPage: Math.ceil(totalItems / ITEM_PER_PAGE),
+        ITEM_PER_PAGE: ITEM_PER_PAGE
       });
     })
     .catch(err => {
       console.log(err);
     });
+};
+
+exports.postNumItems = (req, res, next) => {
+  ITEM_PER_PAGE = parseInt(req.body.numItems);
+  res.redirect("/products");
 };
