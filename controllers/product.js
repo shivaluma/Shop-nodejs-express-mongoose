@@ -1,9 +1,11 @@
 const Products = require("../models/product");
 
 var ITEM_PER_PAGE = 12;
+var SORT_ITEM = 0;
 
 exports.getIndexProducts = (req, res, next) => {
   Products.find()
+    .limit(8)
     .then(products => {
       res.render("index", {
         title: "Trang chủ",
@@ -40,15 +42,18 @@ exports.getProducts = (req, res, next) => {
 
   var page = +req.query.page || 1;
   let totalItems;
-  console.log(ITEM_PER_PAGE);
 
   Products.find()
+
     .countDocuments()
     .then(numProduct => {
       totalItems = numProduct;
       return Products.find()
         .skip((page - 1) * ITEM_PER_PAGE)
-        .limit(ITEM_PER_PAGE);
+        .limit(ITEM_PER_PAGE)
+        .sort({
+          price: SORT_ITEM
+        });
     })
 
     // Products
@@ -82,5 +87,10 @@ exports.getProducts = (req, res, next) => {
 
 exports.postNumItems = (req, res, next) => {
   ITEM_PER_PAGE = parseInt(req.body.numItems);
+  res.redirect("/products");
+};
+
+exports.postSortItem = (req, res, next) => {
+  SORT_ITEM = parseInt(req.body.sortItems);
   res.redirect("/products");
 };

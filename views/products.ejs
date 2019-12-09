@@ -50,7 +50,7 @@
 							<a href="#" class="btn-link-02" onclick="deleteAllFilter()">Xoá tất cả</a>
 						</div>
 					</div> -->
-					<form action="/products" method="GET">
+					<!-- <form action="/products" method="GET">
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">LOẠI SẢN PHẨM</h3>
 						<div class="tt-collapse-content">
@@ -83,7 +83,7 @@
 								<li><input type="radio" name="size" value="XL"> XL</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					<!-- <div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Lọc theo màu sắc</h3>
 						<div class="tt-collapse-content">
@@ -108,7 +108,7 @@
 							</ul>
 						</div>
 					</div> -->
-					<div class="tt-collapse open">
+					<!-- <div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Thương hiệu</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row" id="product-label">
@@ -120,7 +120,7 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-border mx-auto mb-5">Lọc</button>
-					</form>
+					</form> -->
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Sản phẩm giảm giá</h3>
 						<div class="tt-collapse-content">
@@ -205,7 +205,7 @@
 								<a href="#">Lọc</a>
 							</div>
 							<div class="tt-sort tt-sort-1">
-								<form class="woocommerce-ordering" method="get">
+								<form class="woocommerce-ordering" method="GET">
 									<select name="orderby" class="orderby" aria-label="Shop order">
 														<option value="menu_order"  selected='selected'>Default</option>
 														<option value="popularity" >Best Selling</option>
@@ -256,7 +256,7 @@
 											<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
 											<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 											<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
-											<a href="product/<%= prod._id %>">
+											<a href="/product/<%= prod._id %>">
 												<span class="tt-img"><img src="/images/loader.svg" data-src="/images/product/<%= prod.images[0] %>" alt=""></span>
 												<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="/images/product/<%= prod.images[1] %>" alt=""></span>
 											</a>
@@ -287,9 +287,19 @@
 								<% }); %>
 						</div>
 						<nav aria-label="Page navigation example">
+								
 								<ul class="pagination justify-content-center">
-								  <% if (currentPage !== 1 && previousPage !== 1){%><li class="page-item"><a class="page-link" href="/products/?page=1">1</a></li><% } %>
+										<% if (currentPage !== 1){ %>
+										<li class="page-item">
+												<a class="page-link" href="/products/?page=<%= previousPage %>" aria-label="Previous">
+												  <span aria-hidden="true">&laquo;</span>
+												  <span class="sr-only">Previous</span>
+												</a>
+										</li>
+										<% } %>
+				
 
+								  
 								  <% if(hasPreviousPage ){  %>
 									<li class="page-item"><a class="page-link" href="/products/?page=<%= previousPage %>"><%= previousPage %></a></li>
 								  <% } %>
@@ -299,10 +309,15 @@
 								  <% if(hasNextPage){  %>
 									  <li class="page-item"><a class="page-link" href="/products/?page=<%= nextPage %>"><%= nextPage %></a></li>
 								  <% } %>
-
-								  <% if(lastPage !== currentPage && lastPage !== nextPage){ %>
-								  	<li class="page-item"><a class="page-link" href="/products/?page=<%= lastPage %>"><%= lastPage %></a></li>
-								  <% } %>
+								  
+								  <% if(currentPage < lastPage){ %>
+								  <li class="page-item">
+										<a class="page-link" href="/products/?page=<%= nextPage %>" aria-label="Next">
+										  <span aria-hidden="true">&raquo;</span>
+										  <span class="sr-only">Next</span>
+										</a>
+									</li>
+									<% } %>
 
 								</ul>
 						</nav>
