@@ -55,6 +55,10 @@ exports.getProducts = (req, res, next) => {
     sort_value = "Giá cao tới thấp";
     price = "-1";
   }
+  if (SORT_ITEM == 1) {
+    sort_value = "Giá thấp tới cao";
+    price = "1";
+  }
 
   if (Object.entries(req.query).length == 0) {
     ptype = "";
