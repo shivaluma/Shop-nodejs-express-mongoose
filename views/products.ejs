@@ -50,7 +50,7 @@
 							<a href="#" class="btn-link-02" onclick="deleteAllFilter()">Xoá tất cả</a>
 						</div>
 					</div> -->
-					<!-- <form action="/products" method="GET">
+					<form action="/products" method="GET">
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">LOẠI SẢN PHẨM</h3>
 						<div class="tt-collapse-content">
@@ -70,6 +70,7 @@
 								<li><input type="radio" name="price" value="100">$50 — $100</li>
 								<li><input type="radio" name="price" value="150">$100 — $150</li>
 								<li><input type="radio" name="price" value="200">$150 —  $200</li>
+								<li><input type="radio" name="price" value="1000000">>$200</li>
 							</ul>
 						</div>
 					</div>
@@ -83,7 +84,7 @@
 								<li><input type="radio" name="size" value="XL"> XL</li>
 							</ul>
 						</div>
-					</div> -->
+					</div>
 					<!-- <div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Lọc theo màu sắc</h3>
 						<div class="tt-collapse-content">
@@ -108,7 +109,7 @@
 							</ul>
 						</div>
 					</div> -->
-					<!-- <div class="tt-collapse open">
+					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Thương hiệu</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row" id="product-label">
@@ -120,7 +121,7 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-border mx-auto mb-5">Lọc</button>
-					</form> -->
+					</form>
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">Sản phẩm giảm giá</h3>
 						<div class="tt-collapse-content">
@@ -205,25 +206,28 @@
 								<a href="#">Lọc</a>
 							</div>
 							<div class="tt-sort tt-sort-1">
-								<form class="woocommerce-ordering" method="GET">
-									<select name="orderby" class="orderby" aria-label="Shop order">
-														<option value="menu_order"  selected='selected'>Default</option>
-														<option value="popularity" >Best Selling</option>
-														<option value="rating" >Rating (Highest)</option>
-														<option value="price" >Price, Low To High</option>
-														<option value="price-desc" >Price, High To Low</option>
-														<option value="rating-desc" >Rating (Lowest)</option>
-												</select>
-									<input type="hidden" name="paged" value="1"/>
+								<form class="woocommerce-ordering" method="GET" >
+									<select name="orderby" class="orderby" aria-label="Shop order" onchange="this.form.submit()">
+										<option value="" selected disabled hidden><%= sort_value %></option>
+										
+										<option value="1" >Giá thấp tới cao</option>
+										<option value="-1" >Giá cao tới thấp</option>
+									</select>
+									<!-- <input type="hidden" name="paged" value="1"/> -->
 								</form>
 							</div>
 							<div class="tt-sort tt-sort-2">
 							
 								<form method="POST">
+									
 								
 									<select name="numItems" onchange="this.form.submit()" class="form-control">
+										<% if(ITEM_PER_PAGE != 1000){%>
 								
 										<option value="" selected disabled hidden><%= ITEM_PER_PAGE%></option>
+										<% }else{%>
+											<option value="" selected disabled hidden>Tất cả</option>
+										<% } %>
 
 										<option value="8" >8</option>
 								
@@ -237,7 +241,7 @@
 										<option value="32" >32</option>
 								
 												
-										<option value="1000" >All</option>
+										<option value="1000" >Tất cả</option>
 								
 												
 									</select>
