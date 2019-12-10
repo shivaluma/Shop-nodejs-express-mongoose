@@ -4,6 +4,7 @@ var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
 var sort_value = "Giá thấp tới cao";
 var ptype;
+var ptypesub;
 var pprice = 999999;
 var psize;
 var plabel;
@@ -42,6 +43,7 @@ exports.getProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   ptype = req.query.type !== undefined ? req.query.type : ptype;
+  ptypesub = req.query.type !== undefined ? req.query.type : ptypesub;
   pprice = req.query.price !== undefined ? req.query.price : 999999;
   psize = req.query.size !== undefined ? req.query.size : psize;
   plabel = req.query.label !== undefined ? req.query.label : plabel;
@@ -58,13 +60,14 @@ exports.getProducts = (req, res, next) => {
     ptype = "";
     psize = "";
     plabel = "";
+    ptypesub = "";
   }
 
   var page = +req.query.page || 1;
   let totalItems;
 
   Products.find({
-    "productType.main": new RegExp(ptype, "i"),
+    "productType.sub": new RegExp(ptype, "i"),
     size: new RegExp(psize, "i"),
     price: { $gt: plowerprice, $lt: pprice },
     labels: new RegExp(plabel, "i")
@@ -73,7 +76,7 @@ exports.getProducts = (req, res, next) => {
     .then(numProduct => {
       totalItems = numProduct;
       return Products.find({
-        "productType.main": new RegExp(ptype, "i"),
+        "productType.sub": new RegExp(ptype, "i"),
         size: new RegExp(psize, "i"),
         price: { $gt: plowerprice, $lt: pprice },
         labels: new RegExp(plabel, "i")
