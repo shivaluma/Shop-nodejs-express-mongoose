@@ -4,7 +4,7 @@ var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
 var sort_value = "Giá thấp tới cao";
 var ptype;
-var pprice;
+var pprice = 999999;
 var psize;
 var plabel;
 var plowerprice;
@@ -53,22 +53,27 @@ exports.getProducts = (req, res, next) => {
     sort_value = "Giá cao tới thấp";
     price = "-1";
   }
-  console.log(pprice);
-  console.log(plowerprice);
+
+  if (Object.entries(req.query).length == 0) {
+    ptype = "";
+    psize = "";
+    plabel = "";
+  }
 
   var page = +req.query.page || 1;
   let totalItems;
 
   Products.find({
+    "productType.main": new RegExp(ptype, "i"),
     size: new RegExp(psize, "i"),
     price: { $gt: plowerprice, $lt: pprice },
     labels: new RegExp(plabel, "i")
   })
-
     .countDocuments()
     .then(numProduct => {
       totalItems = numProduct;
       return Products.find({
+        "productType.main": new RegExp(ptype, "i"),
         size: new RegExp(psize, "i"),
         price: { $gt: plowerprice, $lt: pprice },
         labels: new RegExp(plabel, "i")
@@ -79,17 +84,6 @@ exports.getProducts = (req, res, next) => {
           price
         });
     })
-
-    // Products
-    //   .find
-    //   //  {
-    //   //productType: [new RegExp(ptype, "i")],
-    //   //   size: new RegExp(psize, "i"),
-    //   //   labels: new RegExp(plabel, "i"),
-    //   //   price: { $gt: plowerprice, $lt: pprice }
-    //   // }
-    //   ()
-
     .then(products => {
       res.render("products", {
         title: "Danh sách sản phẩm",
