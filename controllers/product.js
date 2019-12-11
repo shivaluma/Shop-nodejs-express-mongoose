@@ -1,6 +1,6 @@
 const Products = require("../models/product");
-const Categories = require("../models/productCategory")
-const removeAccent = require("../util/removeAccent")
+const Categories = require("../models/productCategory");
+const removeAccent = require("../util/removeAccent");
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -37,6 +37,7 @@ exports.getProduct = (req, res, next) => {
         user: req.user,
         prod: product[0]
       });
+      product[0].save();
     })
     .catch(err => {
       console.log(err);
@@ -44,9 +45,8 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-
-  let productType = req.params.productType
-  let productChild = req.params.productChild
+  let productType = req.params.productType;
+  let productChild = req.params.productChild;
 
   console.log("TYPE + CHILD " + productType + productChild);
 
@@ -78,30 +78,24 @@ exports.getProducts = (req, res, next) => {
   var page = +req.query.page || 1;
   let totalItems;
   let catName = [];
-  Categories.find({}, (err,cats) => {
-      cats.forEach((cat) => {
-        catName.push(cat.name)
-      })
-  })
-
-  
-  
+  Categories.find({}, (err, cats) => {
+    cats.forEach(cat => {
+      catName.push(cat.name);
+    });
+  });
 
   let childType;
   if (productType == undefined) {
-    productType = ""
-  }
-  else {
-    Categories.find({name : `${productType}`}, (err,data) => {
-      childType = data[0].childName
+    productType = "";
+  } else {
+    Categories.find({ name: `${productType}` }, (err, data) => {
+      childType = data[0].childName;
     });
   }
 
   if (productChild == undefined) {
     productChild = "";
   }
-
-
 
   console.log("type : ", productType);
   Products.find({
@@ -134,8 +128,8 @@ exports.getProducts = (req, res, next) => {
         allProducts: products,
         currentPage: page,
         categories: catName,
-        currentCat : productType,
-        currentChild : productChild,
+        currentCat: productType,
+        currentChild: productChild,
         categoriesChild: childType,
         hasNextPage: ITEM_PER_PAGE * page < totalItems,
         hasPreviousPage: page > 1,
