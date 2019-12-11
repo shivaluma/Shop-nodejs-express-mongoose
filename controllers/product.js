@@ -45,7 +45,10 @@ exports.getProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
 
+  let productType = req.params.productType
+  let productChild = req.params.productChild
 
+  console.log("TYPE + CHILD " + productType + productChild);
 
   ptype = req.query.type !== undefined ? req.query.type : ptype;
   ptypesub = req.query.type !== undefined ? req.query.type : ptypesub;
@@ -81,18 +84,17 @@ exports.getProducts = (req, res, next) => {
       })
   })
 
-  let productType = req.params.productType
-  let productChild = req.params.productChild
   
-  let childType = undefined
+  
+
+  let childType;
   if (productType == undefined) {
     productType = ""
   }
   else {
     Categories.find({name : `${productType}`}, (err,data) => {
       childType = data[0].childName
-      console.log(childType);
-    })
+    });
   }
 
   if (productChild == undefined) {
