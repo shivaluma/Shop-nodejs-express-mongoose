@@ -1,4 +1,6 @@
 const Products = require("../models/product");
+const Categories = require("../models/productCategory")
+const removeAccent = require("../util/removeAccent")
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -42,6 +44,9 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
+
+
+
   ptype = req.query.type !== undefined ? req.query.type : ptype;
   ptypesub = req.query.type !== undefined ? req.query.type : ptypesub;
   pprice = req.query.price !== undefined ? req.query.price : 999999;
@@ -69,9 +74,37 @@ exports.getProducts = (req, res, next) => {
 
   var page = +req.query.page || 1;
   let totalItems;
+  let catName = [];
+  Categories.find({}, (err,cats) => {
+      cats.forEach((cat) => {
+        catName.push(cat.name)
+      })
+  })
 
+  let productType = req.params.productType
+  let productChild = req.params.productChild
+  
+  let childType = undefined
+  if (productType == undefined) {
+    productType = ""
+  }
+  else {
+    Categories.find({name : `${productType}`}, (err,data) => {
+      childType = data[0].childName
+      console.log(childType);
+    })
+  }
+
+  if (productChild == undefined) {
+    productChild = "";
+  }
+
+
+
+  console.log("type : ", productType);
   Products.find({
-    "productType.sub": new RegExp(ptype, "i"),
+    "productType.main": new RegExp(productType, "i"),
+    "productType.sub": new RegExp(productChild, "i"),
     size: new RegExp(psize, "i"),
     price: { $gt: plowerprice, $lt: pprice },
     labels: new RegExp(plabel, "i")
@@ -80,7 +113,8 @@ exports.getProducts = (req, res, next) => {
     .then(numProduct => {
       totalItems = numProduct;
       return Products.find({
-        "productType.sub": new RegExp(ptype, "i"),
+        "productType.main": new RegExp(productType, "i"),
+        "productType.sub": new RegExp(productChild, "i"),
         size: new RegExp(psize, "i"),
         price: { $gt: plowerprice, $lt: pprice },
         labels: new RegExp(plabel, "i")
@@ -97,6 +131,10 @@ exports.getProducts = (req, res, next) => {
         user: req.user,
         allProducts: products,
         currentPage: page,
+        categories: catName,
+        currentCat : productType,
+        currentChild : productChild,
+        categoriesChild: childType,
         hasNextPage: ITEM_PER_PAGE * page < totalItems,
         hasPreviousPage: page > 1,
         nextPage: page + 1,

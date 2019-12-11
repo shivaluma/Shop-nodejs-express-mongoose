@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const removeAccent = require("../util/removeAccent")
 
 const productSchema = new Schema({
   name: {
@@ -83,6 +84,10 @@ const productSchema = new Schema({
     star: Number
   }
 });
+
+productSchema.methods.getNonAccentType = function() {
+  return removeAccent(this.productType.main);
+};
 
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;

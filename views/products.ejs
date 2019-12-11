@@ -54,8 +54,39 @@
 					<div class="tt-collapse open">
 						<h3 class="tt-collapse-title">LOẠI SẢN PHẨM</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-list-row" id="product-type">
-								<li><input type="radio" name="type" value="Áo"> Áo</li>
+							
+	
+									<ul class="tt-list-row">
+											<% categories.forEach(function(cat) { %>
+
+												<%if (cat == currentCat) { %>
+													<li class ="active">
+															<a href="/products/<%= cat %>"><%= cat %></a></li>
+													</li>
+														<% categoriesChild.forEach(function(child) { %>
+															<%if (child == currentChild) { %>
+															<li class="active" style="margin-left: 10px;">
+																	<a href="/products/<%= cat %>/<%= child %>"><%= child %></a></li>
+															</li>
+															<% }; %>
+
+															<%if (child != currentChild) { %>
+																<li style="margin-left: 10px;">
+																		<a href="/products/<%= cat %>/<%= child %>"><%= child %></a></li>
+																</li>
+																<% }; %>
+															<% }); %>
+													<% }; %>
+
+													<%if (cat != currentCat) { %>
+														<li>
+																<a href="/products/<%= cat %>"><%= cat %></a></li>
+													</li>
+														<% }; %>
+										
+											<% }); %>
+										</ul>
+								<!-- <li><input type="radio" name="type" value="Áo"> Áo</li>
 								<li><input type="radio" name="type" value="Quần"> Quần</li>
 								<li><input type="radio" name="type" value="Phụ Kiện"> Phụ Kiện</li>
 								<li><input type="radio" name="type" value="Túi xách"> Túi xách</li>
@@ -64,8 +95,8 @@
 								<li><input type="radio" name="type" value="Thắt Lưng"> Thắt Lưng</li>
 								<li><input type="radio" name="type" value="Cà Vạt"> Cà Vạt</li>
 								<li><input type="radio" name="type" value="Khăn Choàng"> Khăn Choàng</li>
-								<li><input type="radio" name="type" value="Trang Trí"> Trang Trí</li>
-							</ul>
+								<li><input type="radio" name="type" value="Trang Trí"> Trang Trí</li> -->
+							
 						</div>
 					</div>
 					<div class="tt-collapse open">
