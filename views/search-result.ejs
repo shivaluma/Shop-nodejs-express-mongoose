@@ -11,18 +11,99 @@
     <div class="tt-breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li>Không có kết quả</li>
+          <li><a href="/">Home</a></li>
+          <li>Kết quả tìm kiếm</li>
         </ul>
       </div>
     </div>
     <div id="tt-pageContent">
-      <div class="container-indent nomargin">
+      <!-- <div class="container-indent nomargin">
         <div class="tt-empty-search">
           <span class="tt-icon icon-f-85"></span>
           <h1 class="tt-title">Tìm kiếm của bạn không trả về kết quả nào.</h1>
-          <p>Kết quả tìm kiếm cho <span class="tt-base-dark-color">'aó siêu to khổng lồ'</span></p>
+          <p>
+            Kết quả tìm kiếm cho
+            <span class="tt-base-dark-color"><%= searchT%></span>
+          </p>
         </div>
+      </div> -->
+      <div class="tt-product-listing row">
+        <% searchProducts.forEach(function(prod) { %>
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+          <div class="tt-product thumbprod-center">
+            <div class="tt-image-box">
+              <a
+                href="#"
+                class="tt-btn-quickview"
+                data-toggle="modal"
+                data-target="#ModalquickView"
+                data-tooltip="Quick View"
+                data-tposition="left"
+              ></a>
+              <a
+                href="#"
+                class="tt-btn-wishlist"
+                data-tooltip="Add to Wishlist"
+                data-tposition="left"
+              ></a>
+              <a
+                href="#"
+                class="tt-btn-compare"
+                data-tooltip="Add to Compare"
+                data-tposition="left"
+              ></a>
+              <a href="/product/<%= prod._id %>">
+                <span class="tt-img"
+                  ><img
+                    src="/images/loader.svg"
+                    data-src="/images/product/<%= prod.images[0] %>"
+                    alt=""
+                /></span>
+                <span class="tt-img-roll-over"
+                  ><img
+                    src="/images/loader.svg"
+                    data-src="/images/product/<%= prod.images[1] %>"
+                    alt=""
+                /></span>
+              </a>
+            </div>
+            <div class="tt-description">
+              <div class="tt-row">
+                <ul class="tt-add-info">
+                  <li><a href="#"><%= prod.type %></a></li>
+                </ul>
+              </div>
+              <h2 class="tt-title">
+                <a href="product/<%= prod._id %>"><%= prod.name %></a>
+              </h2>
+              <div class="tt-price">
+                $<%= prod.price %>
+              </div>
+              <div class="tt-product-inside-hover">
+                <div class="tt-row-btn">
+                  <a
+                    href="#"
+                    class="tt-btn-addtocart thumbprod-button-bg"
+                    data-toggle="modal"
+                    data-target="#modalAddToCartProduct"
+                    >THÊM VÀO GIỎ HÀNG</a
+                  >
+                </div>
+                <div class="tt-row-btn">
+                  <a
+                    href="#"
+                    class="tt-btn-quickview"
+                    data-toggle="modal"
+                    data-target="#ModalquickView"
+                  ></a>
+                  <a href="#" class="tt-btn-wishlist"></a>
+                  <a href="#" class="tt-btn-compare"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
       </div>
     </div>
     <footer>
@@ -30,7 +111,9 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    <% include partials/modal-addtocartproduct %> <% include
+    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
+    <% include partials/modal-subscribegood %> <% include
     partials/modal-newsletter %> <% include partials/script %>
   </body>
 </html>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const removeAccent = require("../util/removeAccent")
+const removeAccent = require("../util/removeAccent");
 
 const productSchema = new Schema({
   name: {
@@ -84,6 +84,16 @@ const productSchema = new Schema({
     star: Number
   }
 });
+
+const index = {
+  name: "text",
+  description: "text",
+  labels: "text",
+  "productType.main": "text",
+  tags: "text",
+  ofSellers: "text"
+};
+productSchema.index(index);
 
 productSchema.methods.getNonAccentType = function() {
   return removeAccent(this.productType.main);

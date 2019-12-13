@@ -149,3 +149,25 @@ exports.postNumItems = (req, res, next) => {
   ITEM_PER_PAGE = parseInt(req.body.numItems);
   res.redirect("back");
 };
+
+exports.getSearch = (req, res, next) => {
+  var searchText = req.query.searchText;
+  console.log(searchText);
+  Products.createIndexes({}).catch(err => {
+    console.log(err);
+  });
+  Products.find({
+    $text: { $search: searchText }
+  })
+    .then(products => {
+      res.render("search-result", {
+        title: "Kết quả tìm kiếm cho " + searchText,
+        user: req.user,
+        searchProducts: products,
+        searchT: searchText
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
