@@ -12,6 +12,7 @@ var psize;
 var plabel;
 var plowerprice;
 var price;
+var searchText;
 
 exports.getIndexProducts = (req, res, next) => {
   Products.find()
@@ -151,7 +152,9 @@ exports.postNumItems = (req, res, next) => {
 };
 
 exports.getSearch = (req, res, next) => {
-  var searchText = req.query.searchText;
+  searchText =
+    req.query.searchText !== undefined ? req.query.searchText : searchText;
+  const page = +req.query.page || 1;
   console.log(searchText);
   Products.createIndexes({}).catch(err => {
     console.log(err);
@@ -159,12 +162,27 @@ exports.getSearch = (req, res, next) => {
   Products.find({
     $text: { $search: searchText }
   })
+    .countDocuments()
+    .then(numProduct => {
+      totalItems = numProduct;
+      return Products.find({
+        $text: { $search: searchText }
+      })
+        .skip((page - 1) * 12)
+        .limit(12);
+    })
     .then(products => {
       res.render("search-result", {
         title: "Kết quả tìm kiếm cho " + searchText,
         user: req.user,
         searchProducts: products,
-        searchT: searchText
+        searchT: searchText,
+        currentPage: page,
+        hasNextPage: 12 * page < totalItems,
+        hasPreviousPage: page > 1,
+        nextPage: page + 1,
+        previousPage: page - 1,
+        lastPage: Math.ceil(totalItems / 12)
       });
     })
     .catch(err => {
