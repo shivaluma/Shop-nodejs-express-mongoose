@@ -1,6 +1,7 @@
 const Products = require("../models/product");
 const Categories = require("../models/productCategory");
 const removeAccent = require("../util/removeAccent");
+const Comment = require("../models/comment");
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -12,6 +13,7 @@ var psize;
 var plabel;
 var plowerprice;
 var price;
+var searchText;
 
 exports.getIndexProducts = (req, res, next) => {
   Products.find()
@@ -30,18 +32,27 @@ exports.getIndexProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Products.find({ _id: `${prodId}` })
-    .then(product => {
-      res.render("product", {
-        title: `${product[0].name}`,
-        user: req.user,
-        prod: product[0]
+  let totalComment;
+  Products.find({ _id: `${prodId}` }, (err, foundProd) => {
+    Comment.find({ productID: `${prodId}` })
+      .countDocuments()
+      .then(numComment => {
+        totalComment = numComment;
+        return Comment.find({ productID: `${prodId}` });
+      })
+      .then(comment => {
+        res.render("product", {
+          title: `${foundProd[0].name}`,
+          user: req.user,
+          prod: foundProd[0],
+          comments: comment,
+          allComment: totalComment
+        });
+        foundProd[0].save();
       });
-      product[0].save();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  }).catch(err => {
+    console.log(err);
+  });
 };
 
 exports.getProducts = (req, res, next) => {
@@ -97,7 +108,6 @@ exports.getProducts = (req, res, next) => {
     productChild = "";
   }
 
-  console.log("type : ", productType);
   Products.find({
     "productType.main": new RegExp(productType, "i"),
     "productType.sub": new RegExp(productChild, "i"),
@@ -147,5 +157,67 @@ exports.getProducts = (req, res, next) => {
 
 exports.postNumItems = (req, res, next) => {
   ITEM_PER_PAGE = parseInt(req.body.numItems);
+  res.redirect("back");
+};
+
+exports.getSearch = (req, res, next) => {
+  searchText =
+    req.query.searchText !== undefined ? req.query.searchText : searchText;
+  const page = +req.query.page || 1;
+  console.log(searchText);
+  Products.createIndexes({}).catch(err => {
+    console.log(err);
+  });
+  Products.find({
+    $text: { $search: searchText }
+  })
+    .countDocuments()
+    .then(numProduct => {
+      totalItems = numProduct;
+      return Products.find({
+        $text: { $search: searchText }
+      })
+        .skip((page - 1) * 12)
+        .limit(12);
+    })
+    .then(products => {
+      res.render("search-result", {
+        title: "Kết quả tìm kiếm cho " + searchText,
+        user: req.user,
+        searchProducts: products,
+        searchT: searchText,
+        currentPage: page,
+        hasNextPage: 12 * page < totalItems,
+        hasPreviousPage: page > 1,
+        nextPage: page + 1,
+        previousPage: page - 1,
+        lastPage: Math.ceil(totalItems / 12)
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+exports.postComment = (req, res, next) => {
+  const prodId = req.params.productId;
+  console.log(prodId);
+  var tname;
+  if (typeof req.user === "undefined") {
+    tname = req.body.inputName;
+  } else {
+    tname = req.user.firstName + " " + req.user.lastName;
+  }
+  var newComment = new Comment({
+    title: req.body.inputTitle,
+    name: tname,
+    content: req.body.inputContent,
+    star: req.body.rating,
+    productID: `${prodId}`
+  });
+  newComment.save(function(err) {
+    if (err) throw err;
+    console.log("Comment successfully saved.");
+  });
   res.redirect("back");
 };

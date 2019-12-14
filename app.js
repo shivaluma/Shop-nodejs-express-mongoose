@@ -12,6 +12,7 @@ const shopRouter = require("./routes/shop");
 const authRouter = require("./routes/auth");
 const flash = require("connect-flash");
 const app = express();
+mongoose.set("useCreateIndex", true);
 
 const urlConnect = process.env.DB;
 
@@ -19,6 +20,7 @@ const urlConnect = process.env.DB;
 
 //require("./util/productCategoryCreate")     ;
 //require("./util/labelCreate");
+//require("./util/commentCreate");
 
 // Connect to database
 mongoose.connect(
