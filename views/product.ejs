@@ -214,12 +214,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="tt-wrapper">
-							<ul class="tt-list-btn">
-								<li><a class="btn-link" href="/#"><i class="icon-n-072"></i>Yêu thích</a></li>
-								
-							</ul>
-						</div>
+						
 						<div class="tt-wrapper">
 							<div class="tt-promo-brand">
 								<img src="/images/custom/tt-promo-brand-desctop.png" class="visible-lg visible-md visible-sm visible-xl" alt="">
@@ -230,10 +225,10 @@
 							<div class="tt-add-info">
 								<ul>
 									<li><span>Kiểu :</span> Polo</li>
-									<li><span>Loại sản phẩm :</span> <%= prod.type %></li>
+									<li><span>Loại sản phẩm :</span> <%= prod.productType.main %></li>
 									<li><span>Tag:</span>
 										<% prod.tags.forEach(function(tag) { %>
-											<a href="/#"><%= tag %></a>
+											<a href="/search?searchText=<%= tag %>"><%= tag %></a>
 											<% }); %> 
 									</li>
 								</ul>
@@ -243,7 +238,7 @@
 							<div class="tt-item">
 								<div class="tt-collapse-title">Chi tiết</div>
 								<div class="tt-collapse-content">
-									Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+									<%= prod.description %>
 								</div>
 							</div>
 							<div class="tt-item">
@@ -269,119 +264,67 @@
 								</div>
 							</div>
 							<div class="tt-item">
-								<div class="tt-collapse-title">Đánh giá (3)</div>
+								<div class="tt-collapse-title">Đánh giá (<%= allComment%>)</div>
 								<div class="tt-collapse-content">
 									<div class="tt-review-block">
 										<div class="tt-row-custom-02">
 											<div class="col-item">
 												<h2 class="tt-title">
-													3 đánh giá cho sản phẩm này
+													<%= allComment%> đánh giá cho sản phẩm này
 												</h2>
 											</div>
 											<div class="col-item">
-												<a href="/#">Viết một đánh giá</a>
+												<a href="#rv">Viết một đánh giá</a>
 											</div>
 										</div>
 										<div class="tt-review-comments">
+											<% comments.forEach(function(cmt){ %>
 											<div class="tt-item">
 												<div class="tt-avatar">
-													<a href="/#"><img src="/images/product/single/review-comments-img-01.jpg" alt=""></a>
+													<a href="/#"><img src="/images/product/single/userAvt.png" alt=""></a>
 												</div>
 												<div class="tt-content">
 													<div class="tt-rating">
+														<% var i = 0;for(i; i < cmt.star; i++) {%>
 														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-half"></i>
+														<% } %>
+														<% i = 5 - i; while(i--){%>
+													
 														<i class="icon-star-empty"></i>
+														<% } %>
 													</div>
 													<div class="tt-comments-info">
-														<span class="username">bởi <span>ADRIAN</span></span>
-														<span class="time">on January 14, 2017</span>
+														<span class="username">bởi <span><%= cmt.name %></span></span>
+														<span class="time">on <%= cmt.date %></span>
 													</div>
-													<div class="tt-comments-title">Very Good!</div>
-													<p>
-														Ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
-													</p>
+													<div class="tt-comments-title"><%= cmt.title %></div>
+													<p><%= cmt.content %>													</p>
 												</div>
 											</div>
-											<div class="tt-item">
-												<div class="tt-avatar">
-													<a href="/#"><img src="/images/product/single/review-comments-img-02.jpg" alt=""></a>
-												</div>
-												<div class="tt-content">
-													<div class="tt-rating">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-half"></i>
-														<i class="icon-star-empty"></i>
-													</div>
-													<div class="tt-comments-info">
-														<span class="username">bởi <span>JESICA</span></span>
-														<span class="time">on January 14, 2017</span>
-													</div>
-													<div class="tt-comments-title">Bad!</div>
-													<p>
-														Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-													</p>
-												</div>
-											</div>
-											<div class="tt-item">
-												<div class="tt-avatar">
-													<a href="/#"></a>
-												</div>
-												<div class="tt-content">
-													<div class="tt-rating">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-half"></i>
-														<i class="icon-star-empty"></i>
-													</div>
-													<div class="tt-comments-info">
-														<span class="username">bởi <span>ADAM</span></span>
-														<span class="time">on January 14, 2017</span>
-													</div>
-													<div class="tt-comments-title">Very Good!</div>
-													<p>
-														Diusmod tempor incididunt ut labore et dolore magna aliqua.
-													</p>
-												</div>
-											</div>
+											<%})%>
+											
 										</div>
 										<div class="tt-review-form">
-											<div class="tt-message-info">
-												BE THE FIRST TO REVIEW <span>“BLOUSE WITH SHEER &AMP; SOLID PANELS”</span>
+											<div class="tt-message-info" id="rv" >
+												Đánh giá
 											</div>
-											<p>Your email address will not be published. Required fields are marked *</p>
-											<div class="tt-rating-indicator">
-												<div class="tt-title">
-													YOUR RATING *
-												</div>
-												<div class="tt-rating">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-half"></i>
-													<i class="icon-star-empty"></i>
-												</div>
-											</div>
-											<form class="form-default">
+											<form class="form-default" method="POST">
+												<%if (typeof(user) === 'undefined') { %>
 												<div class="form-group">
 													<label for="inputName" class="control-label">YOUR NAME *</label>
-													<input type="email" class="form-control" id="inputName" placeholder="Enter your name">
+													<input type="text" class="form-control" id="inputName" name="inputName" placeholder="Enter your name">
+												</div>
+												<% } %>
+												<div class="form-group">
+													<label for="inputTitle" class="control-label">Tiêu đề *</label>
+													<input type="text" class="form-control" id="inputEmail" name="inputTitle" placeholder="Enter title">
 												</div>
 												<div class="form-group">
-													<label for="inputEmail" class="control-label">COUPONE E-MAIL *</label>
-													<input type="password" class="form-control" id="inputEmail" placeholder="Enter your e-mail">
+													<label for="inputContent" class="control-label">Nội dung *</label>
+													<input class="form-control"  id="textarea" placeholder="Enter your review" rows="8" name="inputContent">
 												</div>
 												<div class="form-group">
-													<label for="textarea" class="control-label">YOUR REVIEW *</label>
-													<textarea class="form-control"  id="textarea" placeholder="Enter your review" rows="8"></textarea>
-												</div>
-												<div class="form-group">
-													<button type="submit" class="btn">SUBMIT</button>
+													<button type="submit" class="btn">Đánh giá</button>
 												</div>
 											</form>
 										</div>

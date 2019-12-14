@@ -15,6 +15,8 @@ router.get(
 
 router.post("/products", productController.postNumItems);
 
+router.post("/product/:productId", productController.postComment);
+
 router.get("/search", productController.getSearch);
 
 module.exports = router;

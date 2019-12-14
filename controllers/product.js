@@ -1,6 +1,7 @@
 const Products = require("../models/product");
 const Categories = require("../models/productCategory");
 const removeAccent = require("../util/removeAccent");
+const Comment = require("../models/comment");
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -31,18 +32,27 @@ exports.getIndexProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Products.find({ _id: `${prodId}` })
-    .then(product => {
-      res.render("product", {
-        title: `${product[0].name}`,
-        user: req.user,
-        prod: product[0]
+  let totalComment;
+  Products.find({ _id: `${prodId}` }, (err, foundProd) => {
+    Comment.find({ productID: `${prodId}` })
+      .countDocuments()
+      .then(numComment => {
+        totalComment = numComment;
+        return Comment.find({ productID: `${prodId}` });
+      })
+      .then(comment => {
+        res.render("product", {
+          title: `${foundProd[0].name}`,
+          user: req.user,
+          prod: foundProd[0],
+          comments: comment,
+          allComment: totalComment
+        });
+        foundProd[0].save();
       });
-      product[0].save();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  }).catch(err => {
+    console.log(err);
+  });
 };
 
 exports.getProducts = (req, res, next) => {
@@ -98,7 +108,6 @@ exports.getProducts = (req, res, next) => {
     productChild = "";
   }
 
-  console.log("type : ", productType);
   Products.find({
     "productType.main": new RegExp(productType, "i"),
     "productType.sub": new RegExp(productChild, "i"),
@@ -188,4 +197,28 @@ exports.getSearch = (req, res, next) => {
     .catch(err => {
       console.log(err);
     });
+};
+
+exports.postComment = (req, res, next) => {
+  const prodId = req.params.productId;
+  console.log(prodId);
+  var tname;
+  if (typeof req.user === "undefined") {
+    tname = req.body.inputName;
+  } else {
+    tname = req.user.firstName + " " + req.user.lastName;
+  }
+  console.log(tname);
+  var newComment = new Comment({
+    title: req.body.inputTitle,
+    name: tname,
+    content: req.body.inputContent,
+    star: 5,
+    productID: `${prodId}`
+  });
+  newComment.save(function(err) {
+    if (err) throw err;
+    console.log("Comment successfully saved.");
+  });
+  res.redirect("back");
 };
