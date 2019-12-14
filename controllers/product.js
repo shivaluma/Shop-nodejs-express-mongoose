@@ -208,12 +208,11 @@ exports.postComment = (req, res, next) => {
   } else {
     tname = req.user.firstName + " " + req.user.lastName;
   }
-  console.log(tname);
   var newComment = new Comment({
     title: req.body.inputTitle,
     name: tname,
     content: req.body.inputContent,
-    star: 5,
+    star: req.body.rating,
     productID: `${prodId}`
   });
   newComment.save(function(err) {
