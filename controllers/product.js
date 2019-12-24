@@ -1,7 +1,5 @@
 const Products = require("../models/product");
 const Categories = require("../models/productCategory");
-const removeAccent = require("../util/removeAccent");
-const Comment = require("../models/comment");
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -32,26 +30,14 @@ exports.getIndexProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  let totalComment;
-  Products.find({ _id: `${prodId}` }, (err, foundProd) => {
-    Comment.find({ productID: `${prodId}` })
-      .countDocuments()
-      .then(numComment => {
-        totalComment = numComment;
-        return Comment.find({ productID: `${prodId}` });
-      })
-      .then(comment => {
-        res.render("product", {
-          title: `${foundProd[0].name}`,
-          user: req.user,
-          prod: foundProd[0],
-          comments: comment,
-          allComment: totalComment
-        });
-        foundProd[0].save();
-      });
-  }).catch(err => {
-    console.log(err);
+  Products.findOne({ _id: `${prodId}` }, (err, foundProd) => {
+    res.render("product", {
+      title: `${foundProd.name}`,
+      user: req.user,
+      prod: foundProd,
+      comments: foundProd.comment,
+      allComment: foundProd.comment.size
+    });
   });
 };
 

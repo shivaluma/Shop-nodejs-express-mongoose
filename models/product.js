@@ -82,6 +82,33 @@ const productSchema = new Schema({
     byUser: String,
     content: String,
     star: Number
+  },
+  comment: {
+    total: {
+      type: Number,
+      require: false,
+      default: 0
+    },
+    items: [
+      {
+        title: {
+          type: String
+        },
+        content: {
+          type: String
+        },
+        name: {
+          type: String
+        },
+        date: {
+          type: Date,
+          default: Date.now
+        },
+        star: {
+          type: Number
+        }
+      }
+    ]
   }
 });
 

@@ -16,19 +16,13 @@ mongoose.set("useCreateIndex", true);
 
 const urlConnect = process.env.DB;
 
-//require("./util/productCreate");
-
-//require("./util/productCategoryCreate")     ;
-//require("./util/labelCreate");
-//require("./util/commentCreate");
-
 // Connect to database
 mongoose.connect(
   urlConnect,
   { useNewUrlParser: true, useUnifiedTopology: true },
   err => {
     if (err) throw err;
-    console.log("Connect successfully!!");
+    console.log("Connect successfullyy!!");
   }
 );
 
