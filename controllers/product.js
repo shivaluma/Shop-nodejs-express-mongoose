@@ -30,13 +30,13 @@ exports.getIndexProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Products.findOne({ _id: `${prodId}` }, (err, foundProd) => {
+  Products.findOne({ _id: `${prodId}` }).then(product => {
     res.render("product", {
-      title: `${foundProd.name}`,
+      title: `${product.name}`,
       user: req.user,
-      prod: foundProd,
-      comments: foundProd.comment,
-      allComment: foundProd.comment.size
+      prod: product,
+      comments: product.comment.items,
+      allComment: product.comment.total
     });
   });
 };
@@ -187,23 +187,25 @@ exports.getSearch = (req, res, next) => {
 
 exports.postComment = (req, res, next) => {
   const prodId = req.params.productId;
-  console.log(prodId);
   var tname;
   if (typeof req.user === "undefined") {
     tname = req.body.inputName;
   } else {
     tname = req.user.username;
   }
-  var newComment = new Comment({
-    title: req.body.inputTitle,
-    name: tname,
-    content: req.body.inputContent,
-    star: req.body.rating,
-    productID: `${prodId}`
-  });
-  newComment.save(function(err) {
-    if (err) throw err;
-    console.log("Comment successfully saved.");
+  Products.findOne({
+    _id: prodId
+  }).then(product => {
+    var today = new Date();
+    product.comment.items.push({
+      title: req.body.inputTitle,
+      content: req.body.inputContent,
+      name: tname,
+      date: today,
+      star: req.body.rating
+    });
+    product.comment.total++;
+    product.save();
   });
   res.redirect("back");
 };
