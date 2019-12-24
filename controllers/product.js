@@ -206,7 +206,7 @@ exports.postComment = (req, res, next) => {
   if (typeof req.user === "undefined") {
     tname = req.body.inputName;
   } else {
-    tname = req.user.firstName + " " + req.user.lastName;
+    tname = req.user.username;
   }
   var newComment = new Comment({
     title: req.body.inputTitle,

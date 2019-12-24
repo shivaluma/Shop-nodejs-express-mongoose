@@ -11,7 +11,7 @@
     <div class="tt-breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="/">Trang chủ</a></li>
           <li>Tài khoản</li>
         </ul>
       </div>
@@ -75,38 +75,29 @@
                   <tbody>
                     <tr>
                       <td>Tên:</td>
-                      <td>Lorem ipsum dolor sit AMET conse ctetur</td>
+                      <td><%= user.firstName %> <%= user.lastName %></td>
                     </tr>
                     <tr>
                       <td>E-MAIL:</td>
-                      <td>Ut enim ad minim veniam, quis nostrud</td>
+                      <td><%= user.email %></td>
                     </tr>
                     <tr>
                       <td>Địa chỉ:</td>
                       <td>
-                        Eexercitation ullamco laboris nisi ut aliquip ex ea
+                        <%= user.address %>
                       </td>
                     </tr>
-                    <tr>
-                      <td>Địa chỉ 2:</td>
-                      <td>Commodo consequat. Duis aute irure dol</td>
-                    </tr>
-                    <tr>
-                      <td>Quốc gia:</td>
-                      <td>Lorem ipsum dolor sit amet conse ctetur</td>
-                    </tr>
-                    <tr>
-                      <td>ZIP:</td>
-                      <td>555</td>
-                    </tr>
+
                     <tr>
                       <td>Số điện thoại:</td>
-                      <td>888888888</td>
+                      <td><%= user.phoneNumber %></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <a href="/account-change-info.html" class="btn btn-border">Thay đổi thông tin</a>
+              <a href="/account-change-info" class="btn btn-border"
+                >Thay đổi thông tin</a
+              >
             </div>
           </div>
         </div>
@@ -117,7 +108,9 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    <% include partials/modal-addtocartproduct %> <% include
+    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
+    <% include partials/modal-subscribegood %> <% include
     partials/modal-newsletter %> <% include partials/script %>
   </body>
 </html>

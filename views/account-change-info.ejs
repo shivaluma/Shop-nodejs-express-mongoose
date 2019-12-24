@@ -11,7 +11,7 @@
     <div class="tt-breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="/">Trang chủ</a></li>
           <li>Tài khoản</li>
         </ul>
       </div>
@@ -21,66 +21,69 @@
         <div class="container container-fluid-custom-mobile-padding">
           <h1 class="tt-title-subpages noborder">TÀI KHOẢN</h1>
           <div class="tt-shopping-layout">
-            <h2 class="tt-title">ĐỊA CHỈ HIỆN TẠI</h2>
-            <div class="tt-wrapper">
-              <a href="#" class="btn">THÊM ĐỊA CHỈ MƠÍ</a><br />
-              <a href="account.html" class="tt-link-back"> <i class="icon-h-46"></i> Quay về trang thông tin cá nhân </a>
-            </div>
             <div class="tt-wrapper">
               <h6 class="tt-title">Chỉnh sửa thông tin các nhân</h6>
               <div class="form-default">
-                <form>
+                <form method="POST">
                   <div class="form-group">
-                    <label for="shopInputFirstName" class="control-label">Họ *</label>
-                    <input type="text" class="form-control" id="shopInputFirstName" />
+                    <label for="shopInputFirstName" class="control-label"
+                      >Họ *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shopInputFirstName"
+                      name="firstName"
+                      value="<%= user.firstName %>"
+                    />
                   </div>
                   <div class="form-group">
-                    <label for="shopInputLastName" class="control-label">Tên *</label>
-                    <input type="text" class="form-control" id="shopInputLastName" />
+                    <label for="shopInputLastName" class="control-label"
+                      >Tên *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shopInputLastName"
+                      name="lastName"
+                      value="<%= user.lastName %>"
+                    />
                   </div>
                   <div class="form-group">
-                    <label for="shopCompanyName" class="control-label">Tên công ty</label>
-                    <input type="text" class="form-control" id="shopCompanyName" />
+                    <label for="shopAddress" class="control-label"
+                      >Địa chỉ *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shopAddress"
+                      name="address"
+                      value="<%= user.address %>"
+                    />
                   </div>
                   <div class="form-group">
-                    <label for="shopCompanyName" class="control-label">Quốc gia *</label>
-                    <select class="form-control">
-                      <option>Việt Nam</option>
-                      <option>Đông Lào</option>
-                      <option>Country 03</option>
-                      <option>Country 04</option>
-                      <option>Country 05</option>
-                      <option>Country 06</option>
-                      <option>Country 07</option>
-                      <option>Country 08</option>
-                      <option>Country 09</option>
-                      <option>Country 10</option>
-                      <option>Country 11</option>
-                    </select>
+                    <label for="shopPhone" class="control-label"
+                      >Số Điện Thoại*</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shopPhone"
+                      name="phoneNumber"
+                      value="<%= user.phoneNumber %>"
+                    />
                   </div>
                   <div class="form-group">
-                    <label for="shopAddress" class="control-label">Địa chỉ *</label>
-                    <input type="text" class="form-control" id="shopAddress" />
-                  </div>
-                  <div class="form-group">
-                    <label for="shopTown" class="control-label">Tỉnh / Thành Phố *</label>
-                    <input type="text" class="form-control" id="shopTown" />
-                  </div>
-                  <div class="form-group">
-                    <label for="shopState" class="control-label">Quốc gia*</label>
-                    <input type="text" class="form-control" id="shopState" />
-                  </div>
-                  <div class="form-group">
-                    <label for="shopPostCode" class="control-label">Mã bưu diện / ZIP *</label>
-                    <input type="text" class="form-control" id="shopPostCode" />
-                  </div>
-                  <div class="form-group">
-                    <label for="shopPhone" class="control-label">Số Điện Thoại*</label>
-                    <input type="text" class="form-control" id="shopPhone" />
-                  </div>
-                  <div class="form-group">
-                    <label for="shopEmail" class="control-label">Địa chỉ email *</label>
-                    <input type="text" class="form-control" id="shopEmail" />
+                    <label for="shopEmail" class="control-label"
+                      >Địa chỉ email *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shopEmail"
+                      name="email"
+                      value="<%= user.email %>"
+                    />
                   </div>
                   <!-- <div class="checkbox-group">
                     <input type="checkbox" id="checkBox11" name="checkbox" />
@@ -94,7 +97,9 @@
                     <div class="col-auto">
                       <button type="submit" class="btn">Lưu</button>
                     </div>
-                    <div class="col-auto align-self-center">or <a href="#" class="tt-link">Huỷ</a></div>
+                    <div class="col-auto align-self-center">
+                      or <a href="/account" class="tt-link">Huỷ</a>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -108,7 +113,9 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include partials/modal-subscribegood %> <% include
+    <% include partials/modal-addtocartproduct %> <% include
+    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
+    <% include partials/modal-subscribegood %> <% include
     partials/modal-newsletter %> <% include partials/script %>
   </body>
 </html>
