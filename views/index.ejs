@@ -217,7 +217,7 @@
 								</div>
 								<div class="tt-product-inside-hover">
 									<div class="tt-row-btn">
-										<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
+										<button class="tt-btn-addtocart thumbprod-button-bg add-cart" data-id="<%= prod._id %>" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</button>
 									</div>
 									<div class="tt-row-btn">
 										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
@@ -760,7 +760,7 @@
 							<i class="icon-e-09"></i>
 						</div>
 						<div class="tt-col-description">
-							<h4 class="tt-title">Có thể hoàn trả trong vòng 30 ngaỳ</h4>
+							<h4 class="tt-title">Có thể hoàn trả trong vòng 30 ngày</h4>
 							<p>Hoàn trả đơn giản, dễ dàng.</p>
 						</div>
 					</a>
@@ -779,5 +779,8 @@
 <% include partials/modal-subscribegood %>
 
 <% include partials/script %>
+
+
+
 </body>
 </html>

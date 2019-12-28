@@ -1,5 +1,6 @@
 const Products = require("../models/product");
 const Categories = require("../models/productCategory");
+const Cart = require("../models/cart");
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -14,13 +15,21 @@ var price;
 var searchText;
 
 exports.getIndexProducts = (req, res, next) => {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
   Products.find()
     .limit(8)
     .then(products => {
       res.render("index", {
         title: "Trang chủ",
         user: req.user,
-        trendings: products
+        trendings: products,
+        cartProduct: cartProduct
       });
     })
     .catch(err => {
@@ -29,6 +38,13 @@ exports.getIndexProducts = (req, res, next) => {
 };
 
 exports.getProduct = (req, res, next) => {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
   const prodId = req.params.productId;
   Products.findOne({ _id: `${prodId}` }).then(product => {
     res.render("product", {
@@ -36,12 +52,20 @@ exports.getProduct = (req, res, next) => {
       user: req.user,
       prod: product,
       comments: product.comment.items,
-      allComment: product.comment.total
+      allComment: product.comment.total,
+      cartProduct: cartProduct
     });
   });
 };
 
 exports.getProducts = (req, res, next) => {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
   let productType = req.params.productType;
   let productChild = req.params.productChild;
 
@@ -133,7 +157,8 @@ exports.getProducts = (req, res, next) => {
         previousPage: page - 1,
         lastPage: Math.ceil(totalItems / ITEM_PER_PAGE),
         ITEM_PER_PAGE: ITEM_PER_PAGE,
-        sort_value: sort_value
+        sort_value: sort_value,
+        cartProduct: cartProduct
       });
     })
     .catch(err => {
@@ -147,10 +172,17 @@ exports.postNumItems = (req, res, next) => {
 };
 
 exports.getSearch = (req, res, next) => {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
   searchText =
     req.query.searchText !== undefined ? req.query.searchText : searchText;
   const page = +req.query.page || 1;
-  console.log(searchText);
+
   Products.createIndexes({}).catch(err => {
     console.log(err);
   });
@@ -177,7 +209,8 @@ exports.getSearch = (req, res, next) => {
         hasPreviousPage: page > 1,
         nextPage: page + 1,
         previousPage: page - 1,
-        lastPage: Math.ceil(totalItems / 12)
+        lastPage: Math.ceil(totalItems / 12),
+        cartProduct: cartProduct
       });
     })
     .catch(err => {
@@ -208,4 +241,32 @@ exports.postComment = (req, res, next) => {
     product.save();
   });
   res.redirect("back");
+};
+
+exports.getCart = (req, res, next) => {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
+  res.render("shopping-cart", {
+    title: "Giỏ hàng",
+    user: req.user,
+    cartProduct: cartProduct
+  });
+};
+
+exports.addToCart = (req, res, next) => {
+  var prodId = req.params.productId;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  Products.findById(prodId, (err, product) => {
+    if (err) {
+      return res.redirect("back");
+    }
+    cart.add(product, product._id);
+    req.session.cart = cart;
+    res.redirect("back");
+  });
 };

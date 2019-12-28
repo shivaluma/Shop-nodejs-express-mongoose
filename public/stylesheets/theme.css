@@ -9974,7 +9974,7 @@ header {
     header .tt-cart .tt-dropdown-menu {
       width: 320px; }
       header .tt-cart .tt-dropdown-menu .tt-cart-layout .tt-cart-content {
-        padding: 26px 30px 23px; }
+        padding: 30px 30px 30px; }
         header .tt-cart .tt-dropdown-menu .tt-cart-layout .tt-cart-content .tt-cart-total-row {
           margin-top: 30px;
           padding-top: 24px; }
@@ -29527,4 +29527,5 @@ html:not(.mac):not(.touch-device) .tt-carousel-brands .slick-track {
   align-items: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
+
 

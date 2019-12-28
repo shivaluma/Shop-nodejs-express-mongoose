@@ -121,10 +121,10 @@
 					<!-- /tt-search -->
 					<!-- tt-cart -->
 					<div class="tt-desctop-parent-cart tt-parent-box">
-						<div class="tt-cart tt-dropdown-obj" data-tooltip="Cart" data-tposition="bottom">
+						<div class="tt-cart tt-dropdown-obj box-cart" data-tooltip="Cart" data-tposition="bottom" >
 							<button class="tt-dropdown-toggle">
 								<i class="icon-f-39"></i>
-								<span class="tt-badge-cart">2</span>
+								<span class="tt-badge-cart" ><%= session.cart.totalQty %></span>
 							</button>
 							<div class="tt-dropdown-menu">
 								<div class="tt-mobile-add">
@@ -138,56 +138,55 @@
 											<i class="icon-f-39"></i>
 											<p>No Products in the Cart</p>
 										</a> -->
-										<div class="tt-cart-content">
+										<div class="tt-cart-content" >
+											
 											<div class="tt-cart-list">
+												<% if(session.cart.totalQty == 0){ %>
+													<div class="tt-item">Không có sản phẩm trong giỏ</div>
+													<% } %>
+												<% if(cartProduct != null){
+													var i = 0;
+													cartProduct.forEach(function(item){
+													if(i == 3){
+														return;
+													}
+													%>
 												<div class="tt-item">
-													<a href="/product.html">
+													
+													
+													<a href="/product/<%= item.item._id %>">
 														<div class="tt-item-img">
-															<img src="/images/loader.svg" data-src="/images/product/product-01.jpg" alt="">
+															<img src="/images/product/<%= item.images %>" data-src="/images/product/<%= item.images %>" alt="">
 														</div>
 														<div class="tt-item-descriptions">
-															<h2 class="tt-title">Flared Shift Dress</h2>
-															<ul class="tt-add-info">
-																<li>Yellow, Material 2, Size 58,</li>
-																<li>Vendor: Addidas</li>
-															</ul>
-															<div class="tt-quantity">1 X</div> <div class="tt-price">$12</div>
+															<h2 class="tt-title"><%= item.item.name %></h2>
+															
+															<div class="tt-quantity"><%= item.qty %> X</div> <div class="tt-price">$<%= item.item.price %></div>
 														</div>
 													</a>
 													<div class="tt-item-close">
 														<a href="/#" class="tt-btn-close"></a>
 													</div>
+													
 												</div>
-												<div class="tt-item">
-													<a href="/product.html">
-														<div class="tt-item-img">
-															<img src="/images/loader.svg" data-src="/images/product/product-02.jpg" alt="">
-														</div>
-														<div class="tt-item-descriptions">
-															<h2 class="tt-title">Flared Shift Dress</h2>
-															<ul class="tt-add-info">
-																<li>Yellow, Material 2, Size 58,</li>
-																<li>Vendor: Addidas</li>
-															</ul>
-															<div class="tt-quantity">1 X</div> <div class="tt-price">$18</div>
-														</div>
-													</a>
-													<div class="tt-item-close">
-														<a href="/#" class="tt-btn-close"></a>
-													</div>
-												</div>
+												<% i++;})
+												if(session.cart.numItems > 3){
+												%>
+												<h6><center>...</center></h6>
+												<% }} %>
+												
 											</div>
 											<div class="tt-cart-total-row">
 												<div class="tt-cart-total-title">Tổng tiền:</div>
-												<div class="tt-cart-total-price">$30</div>
+												<div class="tt-cart-total-price">$<%= session.cart.totalPrice %></div>
 											</div>
 											<div class="tt-cart-btn">
 												<div class="tt-item">
 													<a href="/add-address.html" class="btn">Chuyển đến thanh toán</a>
 												</div>
 												<div class="tt-item">
-													<a href="/shopping_cart_02.html" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>
-													<a href="/shopping_cart_02.html" class="btn btn-border tt-hidden-desctope">Xem giỏ hàng</a>
+													<a href="/shopping_cart" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>
+													<a href="/shopping_cart" class="btn btn-border tt-hidden-desctope">Xem giỏ hàng</a>
 												</div>
 											</div>
 										</div>

@@ -19,4 +19,8 @@ router.post("/product/:productId", productController.postComment);
 
 router.get("/search", productController.getSearch);
 
+router.get("/shopping_cart", productController.getCart);
+
+router.get("/add-to-cart/:productId", productController.addToCart);
+
 module.exports = router;

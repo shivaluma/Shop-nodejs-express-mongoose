@@ -12,6 +12,8 @@ const shopRouter = require("./routes/shop");
 const authRouter = require("./routes/auth");
 const flash = require("connect-flash");
 const app = express();
+const MongoStore = require("connect-mongo")(session);
+const Cart = require("./models/cart");
 mongoose.set("useCreateIndex", true);
 
 const urlConnect = process.env.DB;
@@ -39,9 +41,18 @@ app.use(
   session({
     secret: "notsecret",
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 180 * 60 * 1000 }
   })
 );
+
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  req.session.cart = cart;
+  next();
+});
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,13 +69,20 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render("error", { cartProduct: cartProduct });
 });
 
 module.exports = app;

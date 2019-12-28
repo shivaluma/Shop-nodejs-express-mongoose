@@ -11,8 +11,22 @@
 <script src="/external/lazyLoad/lazyload.min.js"></script>
 <script src="/javascripts/main.js"></script>
 <script src="/javascripts/filter-prod.js"></script>
+<script>
+  $(".add-cart").click(function(e) {
+    const id = $(this).attr("data-id");
+    $.ajax({
+      url: "/add-to-cart/" + id,
+      method: "GET",
+      data: { id: id },
+      success: data => {
+        $(".box-cart").load(" .box-cart > *");
+      }
+    });
+  });
+</script>
 
 <!-- form validation and sending to mail -->
 <script src="/external/form/jquery.form.js"></script>
 <script src="/external/form/jquery.validate.min.js"></script>
 <script src="/external/form/jquery.form-init.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
