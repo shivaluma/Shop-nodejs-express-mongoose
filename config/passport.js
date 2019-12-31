@@ -2,6 +2,7 @@
 var User = require("../models/user");
 var LocalStrategy = require("passport-local").Strategy;
 var bcrypt = require("bcryptjs");
+var nodemailer = require("nodemailer");
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
     done(null, user._id);
@@ -86,6 +87,15 @@ module.exports = function(passport) {
             message: "Địa chỉ email không hợp lệ!"
           });
         }
+        User.findOne({ email: req.body.email }, (err, user) => {
+          if (err) {
+            return done(err);
+          } else if (user) {
+            return done(null, false, {
+              message: "Địa chỉ email đã tồn tại!"
+            });
+          }
+        });
 
         bcrypt.hash(password, 12).then(hashPassword => {
           const newUser = new User({

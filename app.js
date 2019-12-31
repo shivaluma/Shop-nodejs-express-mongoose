@@ -14,6 +14,7 @@ const flash = require("connect-flash");
 const app = express();
 const MongoStore = require("connect-mongo")(session);
 const Cart = require("./models/cart");
+const Product = require("./models/product");
 mongoose.set("useCreateIndex", true);
 
 const urlConnect = process.env.DB;

@@ -19,28 +19,37 @@
     <div id="tt-pageContent">
       <div class="container-indent">
         <div class="container">
-          <h1 class="tt-title-subpages noborder">Quên Mật Khẩu ?</h1>
+          <h1 class="tt-title-subpages noborder">XÁC THỰC EMAIL</h1>
           <div class="tt-login-form">
             <div class="row justify-content-center">
               <div class="col-md-8 col-lg-6">
                 <div class="tt-item">
-                  <h2 class="tt-title">Nhập thông tin</h2>
+                  <h2 class="tt-title">
+                    Nhập mã xác thực đã gửi ở <%= user.email %>
+                  </h2>
+                  <%if (message != "undefined") { %>
+                  <div
+                    class="form-group form-control error"
+                    style="background-color: #FFCCCC; font-weight: bold; color : rgb(210, 29, 29)"
+                  >
+                    <%= message %>
+                  </div>
+                  <% } %>
                   <div class="form-default">
                     <form
-                      id="contactform"
+                      id="createaccount"
                       method="post"
                       novalidate="novalidate"
-                      action="/forgot-password"
+                      action="/verify-email"
                     >
                       <div class="form-group">
-                        <label for="loginInputName">Email *</label>
-                        <div class="tt-required">* Trường bắt buộc</div>
+                        <label for="loginInputEmail">Nhập mã xác thực *</label>
                         <input
                           type="text"
-                          name="email"
+                          name="token"
                           class="form-control"
-                          id="loginInputName"
-                          placeholder="Nhập email"
+                          id="confirm"
+                          placeholder="Mã xác thực"
                         />
                       </div>
 
@@ -48,15 +57,8 @@
                         <div class="col-auto">
                           <div class="form-group">
                             <button class="btn btn-border" type="submit">
-                              XÁC NHẬN
+                              Xác thực
                             </button>
-                          </div>
-                        </div>
-                        <div class="col-auto align-self-center">
-                          <div class="form-group">
-                            <ul class="additional-links">
-                              <li>or <a href="/">Quay về cửa hàng</a></li>
-                            </ul>
                           </div>
                         </div>
                       </div>

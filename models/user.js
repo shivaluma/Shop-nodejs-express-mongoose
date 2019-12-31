@@ -50,6 +50,10 @@ const userSchema = new Schema({
         quantity: { type: Number, required: true }
       }
     ]
+  },
+  verify_token: {
+    type: String,
+    required: false
   }
 });
 

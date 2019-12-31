@@ -1,6 +1,7 @@
 const Products = require("../models/product");
 const Categories = require("../models/productCategory");
 const Cart = require("../models/cart");
+var Users = require("../models/user");
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;

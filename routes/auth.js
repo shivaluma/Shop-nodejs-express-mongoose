@@ -20,4 +20,12 @@ router.get("/account-change-info", userController.getAccountChange);
 
 router.post("/account-change-info", userController.postAccountChange);
 
+router.get("/verify-email", authController.getVerifyEmail);
+
+router.post("/verify-email", authController.postVerifyEmail);
+
+router.get("/forgot-password", authController.getForgotPass);
+
+router.post("/forgot-password", authController.postForgotPass);
+
 module.exports = router;
