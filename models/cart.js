@@ -19,17 +19,18 @@ module.exports = function Cart(oldCart) {
   };
 
   this.changeQty = (item, id, qty) => {
+    const itemQty = qty ? qty : 1;
     var storeItem = this.items[id];
     if (!storeItem) {
       storeItem = this.items[id] = { item: item, qty: 0, price: 0, images: '' };
       this.numItems++;
     }
-
-    this.totalQty += qty - storeItem.qty;
-    storeItem.qty = qty;
+    let oldQty = storeItem.qty;
+    storeItem.qty = itemQty;
     storeItem.price = storeItem.item.price * storeItem.qty;
     storeItem.images = storeItem.item.images[0];
-    this.totalPrice += storeItem.item.price;
+    this.totalQty += itemQty - oldQty;
+    this.totalPrice += storeItem.price - storeItem.item.price * oldQty;
   };
 
   this.clear = () => {

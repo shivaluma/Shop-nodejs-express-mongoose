@@ -141,7 +141,7 @@
 										<div class="tt-cart-content" >
 											
 											<div class="tt-cart-list">
-												<% if(session.cart.totalQty == 0){ %>
+												<% if(session.cart.numItems == 0){ %>
 													<div class="tt-item">Không có sản phẩm trong giỏ</div>
 													<% } %>
 												<% if(cartProduct != null){
