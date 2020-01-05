@@ -39,18 +39,6 @@ const userSchema = new Schema({
     required: false,
     default: false
   },
-  cart: {
-    items: [
-      {
-        productId: {
-          type: Schema.Types.ObjectId,
-          ref: "Product",
-          required: true
-        },
-        quantity: { type: Number, required: true }
-      }
-    ]
-  },
   verify_token: {
     type: String,
     required: false

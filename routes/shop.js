@@ -22,4 +22,6 @@ router.get('/add-to-cart/:productId', productController.addToCart);
 
 router.get('/modify-cart', productController.modifyCart);
 
+router.get("/check-out", productController.getCheckOut);
+
 module.exports = router;

@@ -2,6 +2,7 @@ const Products = require('../models/product');
 const Categories = require('../models/productCategory');
 const Cart = require('../models/cart');
 var Users = require('../models/user');
+const Order = require('../models/order');
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
@@ -70,8 +71,6 @@ exports.getProducts = (req, res, next) => {
   }
   let productType = req.params.productType;
   let productChild = req.params.productChild;
-
-  console.log('TYPE + CHILD ' + productType + productChild);
 
   ptype = req.query.type !== undefined ? req.query.type : ptype;
   ptypesub = req.query.type !== undefined ? req.query.type : ptypesub;
@@ -267,7 +266,7 @@ exports.addToCart = (req, res, next) => {
     if (err) {
       return res.redirect('back');
     }
-    cart.add(product, product._id);
+    cart.add(product, product.index);
     req.session.cart = cart;
     res.redirect('back');
   });
@@ -285,4 +284,20 @@ exports.modifyCart = (req, res, next) => {
     req.session.cart = cart;
     res.redirect('back');
   });
+};
+
+exports.getCheckOut = (req, res, next) => {
+  if (req.session.cart != null && req.session.cart != {}) {
+    var order = new Order({
+      user: req.user,
+      cart: req.session.cart,
+      address: 'fdsfdsafdsfdas'
+    });
+    console.log(order);
+    order.save((err, result) => {
+      req.flash('success', 'Thanh toán thành công!');
+      req.session.cart = null;
+      res.redirect('/');
+    });
+  }
 };

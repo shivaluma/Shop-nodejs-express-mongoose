@@ -1,5 +1,6 @@
 const Users = require("../models/user");
 const Cart = require("../models/cart");
+const Order = require("../models/order");
 
 exports.getAccount = (req, res, next) => {
   var cartProduct;
@@ -9,10 +10,13 @@ exports.getAccount = (req, res, next) => {
     var cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
-  res.render("account", {
-    title: "Thông tin tài khoản",
-    user: req.user,
-    cartProduct: cartProduct
+  Order.find({ user: req.user }).then(order => {
+    res.render("account", {
+      title: "Thông tin tài khoản",
+      user: req.user,
+      cartProduct: cartProduct,
+      order: order
+    });
   });
 };
 

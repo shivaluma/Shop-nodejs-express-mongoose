@@ -15,9 +15,14 @@
   $('.add-cart').click(function(e) {
     const id = $(this).attr('data-id');
     $.ajax({
+<<<<<<< HEAD
       url: '/add-to-cart/' + id,
       method: 'GET',
       data: { id: id },
+=======
+      url: "/add-to-cart/" + id,
+      method: "GET",
+>>>>>>> 05e7da065049f608fb62ec0f1f4c5c7b92062411
       success: data => {
         $('.box-cart').load(' .box-cart > *');
       }

@@ -172,7 +172,7 @@
 												<% i++;})
 												if(session.cart.numItems > 3){
 												%>
-												<h6><center>...</center></h6>
+												<h6><center><a href="/shopping_cart">...</a></center></h6>
 												<% }} %>
 												
 											</div>
@@ -182,7 +182,7 @@
 											</div>
 											<div class="tt-cart-btn">
 												<div class="tt-item">
-													<a href="/add-address.html" class="btn">Chuyển đến thanh toán</a>
+													<a href="/check-out" class="btn">Chuyển đến thanh toán</a>
 												</div>
 												<div class="tt-item">
 													<a href="/shopping_cart" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>
@@ -210,7 +210,7 @@
 												<li>Xin chào, <%= user.username %></a></li>
 												<li><a href="/account"><i class="icon-f-94"></i>Tài khoản</a></li>
 												<% if(user.isAuthenticated) {%>
-												<li><a href="/add-address.html"><i class="icon-f-68"></i>Thanh toán</a></li>
+												<li><a href="/check-out"><i class="icon-f-68"></i>Thanh toán</a></li>
 												<% } %>
 												<% if(!user.isAuthenticated) {%>
 													<li><a href="/verify-email"><i class="icon-f-68"></i>Xác thực email</a></li>

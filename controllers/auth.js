@@ -2,6 +2,7 @@ const passport = require("passport");
 const Cart = require("../models/cart");
 const nodemailer = require("nodemailer");
 const Users = require("../models/user");
+var bcrypt = require("bcryptjs");
 var randomstring = require("randomstring");
 
 exports.getLogin = (req, res, next) => {
@@ -120,13 +121,17 @@ exports.postVerifyEmail = (req, res, next) => {
   Users.findOne({ username: req.user.username }, (err, user) => {
     if (token == user.verify_token) {
       user.isAuthenticated = true;
+      user.save();
+      return res.redirect("/login");
+    } else if (token != user.verify_token) {
+      req.flash("error", "Mã xác thực không hợp lệ");
+      return res.redirect("/verify-email");
     }
-    user.save();
   });
-  res.redirect("/login");
 };
 
 exports.getForgotPass = (req, res, next) => {
+  const message = req.flash("error")[0];
   var cartProduct;
   if (!req.session.cart) {
     cartProduct = null;
@@ -136,6 +141,7 @@ exports.getForgotPass = (req, res, next) => {
   }
   res.render("forgot-password", {
     title: "Quên mật khẩu",
+    message: `${message}`,
     user: req.user,
     cartProduct: cartProduct
   });
@@ -144,8 +150,40 @@ exports.getForgotPass = (req, res, next) => {
 exports.postForgotPass = (req, res, next) => {
   const email = req.body.email;
   Users.findOne({ email: email }, (err, user) => {
-    if (user) {
-      res.redirect("/f-change-password");
+    if (!user) {
+      req.flash("error", "Email không hợp lệ");
+      return res.redirect("/forgot-password");
+    } else {
+      var transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "nocodenolife2527@gmail.com",
+          pass: "password2527@"
+        }
+      });
+      var tpass = randomstring.generate({
+        length: 6
+      });
+      var mainOptions = {
+        from: "Crepp so gud",
+        to: email,
+        subject: "Test",
+        text: "text ne",
+        html: "<p>Mật khẩu mới của bạn là:</p>" + tpass
+      };
+      transporter.sendMail(mainOptions, (err, info) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Sent:" + info.response);
+        }
+      });
+      bcrypt.hash(tpass, 12).then(hashPassword => {
+        user.password = hashPassword;
+        user.save();
+      });
+
+      res.redirect("/login");
     }
   });
 };
