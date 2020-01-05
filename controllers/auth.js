@@ -35,6 +35,9 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.getLogout = (req, res, next) => {
+  if (req.session.cart) {
+    req.session.cart = null;
+  }
   req.logout();
   res.redirect("/");
 };

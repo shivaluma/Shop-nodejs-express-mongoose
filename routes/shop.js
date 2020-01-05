@@ -29,4 +29,6 @@ router.get("/check-out", productController.getCheckOut);
 
 router.get("/delete-cart", productController.getDeleteCart);
 
+router.get("/delete-item/:productId", productController.getDeleteItem);
+
 module.exports = router;

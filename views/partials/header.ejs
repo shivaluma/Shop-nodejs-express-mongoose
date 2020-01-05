@@ -165,7 +165,7 @@
 														</div>
 													</a>
 													<div class="tt-item-close">
-														<a href="/#" class="tt-btn-close"></a>
+														<a href="/delete-item/<%= item.item._id %>" class="tt-btn-close"></a>
 													</div>
 													
 												</div>
@@ -182,7 +182,14 @@
 											</div>
 											<div class="tt-cart-btn">
 												<div class="tt-item">
+													<%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
 													<a href="/check-out" class="btn">Chuyển đến thanh toán</a>
+													<% }else if(typeof(user) == 'undefined'){ %>
+														<a href="/login" class="btn">Đăng nhập để thanh toán</a>
+														
+														<% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
+															<a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+															<% } %>
 												</div>
 												<div class="tt-item">
 													<a href="/shopping_cart" class="btn-link-02 tt-hidden-mobile">Xem giỏ hàng</a>

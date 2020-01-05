@@ -34,7 +34,34 @@ module.exports = function Cart(oldCart) {
   };
 
   this.deleteItem = id => {
+    var storeItem = this.items[id];
+    this.totalQty -= storeItem.qty;
+    this.totalPrice -= storeItem.price;
+    this.numItems--;
     delete this.items[id];
+  };
+
+  this.addCart = cart => {
+    for (var id in cart.items) {
+      var storeItem = this.items[id];
+
+      if (!storeItem) {
+        storeItem = this.items[id] = {
+          item: cart.items[id].item,
+          qty: cart.items[id].qty,
+          price: cart.items[id].price,
+          images: cart.items[id].images
+        };
+
+        this.numItems++;
+      } else {
+        storeItem.qty += cart.items[id].qty;
+        storeItem.price += cart.items[id].price;
+      }
+      this.totalQty += cart.items[id].qty;
+      this.totalPrice += cart.items[id].price;
+    }
+    return this;
   };
 
   this.generateArray = () => {

@@ -42,6 +42,10 @@ const userSchema = new Schema({
   verify_token: {
     type: String,
     required: false
+  },
+  cart: {
+    type: Object,
+    required: false
   }
 });
 

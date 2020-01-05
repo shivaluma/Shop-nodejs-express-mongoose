@@ -18,12 +18,29 @@ var searchText;
 
 exports.getIndexProducts = (req, res, next) => {
   var cartProduct;
+
+  var cart;
+  if (req.user) {
+    if (req.user.cart) {
+      if (
+        JSON.stringify(req.session.cart.items) !==
+        JSON.stringify(req.user.cart.items)
+      ) {
+        cart = new Cart(req.session.cart ? req.session.cart : {});
+        cart = cart.addCart(req.user.cart);
+        req.session.cart = cart;
+        req.user.cart = cart;
+        req.user.save();
+      }
+    }
+  }
   if (!req.session.cart) {
     cartProduct = null;
   } else {
-    var cart = new Cart(req.session.cart);
+    cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
+
   Products.find()
     .limit(8)
     .then(products => {
@@ -267,6 +284,10 @@ exports.addToCart = (req, res, next) => {
     }
     cart.add(product, product.index);
     req.session.cart = cart;
+    if (req.user) {
+      req.user.cart = cart;
+      req.user.save();
+    }
     res.redirect("back");
   });
 };
@@ -284,6 +305,10 @@ exports.modifyCart = (req, res, next) => {
     }
     cart.changeQty(product, product.index, qty);
     req.session.cart = cart;
+    if (req.user) {
+      req.user.cart = cart;
+      req.user.save();
+    }
     res.redirect("back");
   });
 };
@@ -306,4 +331,18 @@ exports.getCheckOut = (req, res, next) => {
 exports.getDeleteCart = (req, res, next) => {
   req.session.cart = null;
   res.redirect("back");
+};
+
+exports.getDeleteItem = (req, res, next) => {
+  var prodId = req.params.productId;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  Products.findById(prodId, (err, product) => {
+    if (err) {
+      return res.redirect("back");
+    }
+    cart.deleteItem(product.index);
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    res.redirect("back");
+  });
 };
