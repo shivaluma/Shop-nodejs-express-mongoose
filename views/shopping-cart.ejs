@@ -23,23 +23,16 @@
           <div class="tt-shopcart-table-02">
             <table>
               <tbody>
-                <% if(cartProduct != null){ cartProduct.forEach(function(item){
-                %>
+                <% if(cartProduct != null){ cartProduct.forEach(function(item){ %>
                 <tr>
                   <td>
                     <div class="tt-product-img">
-                      <img
-                        src="/images/<%= item.images %>"
-                        data-src="images/product/<%= item.images %>"
-                        alt=""
-                      />
+                      <img src="/images/<%= item.images %>" data-src="images/product/<%= item.images %>" alt="" />
                     </div>
                   </td>
                   <td>
                     <h2 class="tt-title">
-                      <a href="/product/<%= item.item._id %>"
-                        ><%= item.item.name %></a
-                      >
+                      <a href="/product/<%= item.item._id %>"><%= item.item.name %></a>
                     </h2>
                     <ul class="tt-list-description">
                       <li>Cỡ: 22</li>
@@ -68,9 +61,9 @@
                   </td>
                   <td>
                     <div class="detach-quantity-desctope">
-                      <div class="tt-input-counter style-01">
+                      <div class="tt-input-counter style-01" data-id="<%= item.item._id %>">
                         <span class="minus-btn"></span>
-                        <input type="text" value="<%= item.qty %>" Cỡ="5" />
+                        <input type="text" value="<%= item.qty %>" size="20" />
                         <span class="plus-btn"></span>
                       </div>
                     </div>
@@ -89,17 +82,11 @@
             </table>
             <div class="tt-shopcart-btn">
               <div class="col-left">
-                <a class="btn-link" href="#"
-                  ><i class="icon-e-19"></i>Tiếp tục mua sắm</a
-                >
+                <a class="btn-link" href="#"><i class="icon-e-19"></i>Tiếp tục mua sắm</a>
               </div>
               <div class="col-right">
-                <a class="btn-link" href="#"
-                  ><i class="icon-h-02"></i>Xoá giỏ hàng</a
-                >
-                <a class="btn-link" href="#"
-                  ><i class="icon-h-48"></i>Cập nhật giỏ hàng</a
-                >
+                <a class="btn-link" href="#"><i class="icon-h-02"></i>Xoá giỏ hàng</a>
+                <a class="btn-link" href="#"><i class="icon-h-48"></i>Cập nhật giỏ hàng</a>
               </div>
             </div>
           </div>
@@ -133,10 +120,7 @@
                       </tr>
                     </tfoot>
                   </table>
-                  <a href="#" class="btn btn-lg"
-                    ><span class="icon icon-check_circle"></span>Chấp nhận thanh
-                    toán</a
-                  >
+                  <a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>Chấp nhận thanh toán</a>
                 </div>
               </div>
             </div>
@@ -149,8 +133,7 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include
-    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
-    <% include partials/modal-subscribegood %> <% include partials/script %>
+    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include
+    partials/modal-subscribegood %> <% include partials/script %>
   </body>
 </html>

@@ -12,14 +12,14 @@
 <script src="/javascripts/main.js"></script>
 <script src="/javascripts/filter-prod.js"></script>
 <script>
-  $(".add-cart").click(function(e) {
-    const id = $(this).attr("data-id");
+  $('.add-cart').click(function(e) {
+    const id = $(this).attr('data-id');
     $.ajax({
-      url: "/add-to-cart/" + id,
-      method: "GET",
+      url: '/add-to-cart/' + id,
+      method: 'GET',
       data: { id: id },
       success: data => {
-        $(".box-cart").load(" .box-cart > *");
+        $('.box-cart').load(' .box-cart > *');
       }
     });
   });
