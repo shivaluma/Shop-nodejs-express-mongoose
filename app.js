@@ -39,11 +39,7 @@ app.use(
     secret: 'notsecret',
     saveUninitialized: true,
     resave: false,
-<<<<<<< HEAD
     store: new MongoDBStore({ uri: process.env.DB, collection: 'sessions' }),
-=======
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
->>>>>>> 05e7da065049f608fb62ec0f1f4c5c7b92062411
     cookie: { maxAge: 180 * 60 * 1000 }
   })
 );
