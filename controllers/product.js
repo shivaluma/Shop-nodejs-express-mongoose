@@ -280,7 +280,7 @@ exports.modifyCart = (req, res, next) => {
     if (err) {
       return res.redirect('back');
     }
-    cart.changeQty(product, product._id, qty);
+    cart.changeQty(product, product.index, qty);
     req.session.cart = cart;
     res.redirect('back');
   });
