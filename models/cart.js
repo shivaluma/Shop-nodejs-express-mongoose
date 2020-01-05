@@ -8,7 +8,7 @@ module.exports = function Cart(oldCart) {
     const itemQty = qty ? qty : 1;
     var storeItem = this.items[id];
     if (!storeItem) {
-      storeItem = this.items[id] = { item: item, qty: 0, price: 0, images: '' };
+      storeItem = this.items[id] = { item: item, qty: 0, price: 0, images: "" };
       this.numItems++;
     }
     storeItem.qty += itemQty;
@@ -22,7 +22,7 @@ module.exports = function Cart(oldCart) {
     const itemQty = qty ? qty : 1;
     var storeItem = this.items[id];
     if (!storeItem) {
-      storeItem = this.items[id] = { item: item, qty: 0, price: 0, images: '' };
+      storeItem = this.items[id] = { item: item, qty: 0, price: 0, images: "" };
       this.numItems++;
     }
     let oldQty = storeItem.qty;
@@ -33,11 +33,8 @@ module.exports = function Cart(oldCart) {
     this.totalPrice += storeItem.price - storeItem.item.price * oldQty;
   };
 
-  this.clear = () => {
-    this.items = {};
-    this.totalQty = 0;
-    this.totalPrice = 0;
-    this.numItems = 0;
+  this.deleteItem = id => {
+    delete this.items[id];
   };
 
   this.generateArray = () => {
