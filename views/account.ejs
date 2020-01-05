@@ -36,34 +36,19 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <% order.forEach(function(o){ %>
                     <tr>
-                      <td><a href="account_order.html">#001</a></td>
-                      <td>November 20. 2016</td>
+                      <td><a href="javascript:void(0)">#<%= o._id %></a></td>
+                      <td><%= o.date %></td>
                       <td>Processing</td>
-                      <td>Processing</td>
-                      <td>$40 fot 1 item</td>
+                      <td>
+                        Processing
+                      </td>
+                      <td>
+                        $<%= o.cart.totalPrice %> for <%= o.cart.totalQty %>
+                      </td>
                     </tr>
-                    <tr>
-                      <td><a href="account_order.html">#001</a></td>
-                      <td>November 20. 2016</td>
-                      <td>Processing</td>
-                      <td>Processing</td>
-                      <td>$40 fot 1 item</td>
-                    </tr>
-                    <tr>
-                      <td><a href="account_order.html">#001</a></td>
-                      <td>November 20. 2016</td>
-                      <td>Processing</td>
-                      <td>Processing</td>
-                      <td>$40 fot 1 item</td>
-                    </tr>
-                    <tr>
-                      <td><a href="account_order.html">#001</a></td>
-                      <td>November 20. 2016</td>
-                      <td>Processing</td>
-                      <td>Processing</td>
-                      <td>$40 fot 1 item</td>
-                    </tr>
+                    <% }) %>
                   </tbody>
                 </table>
               </div>

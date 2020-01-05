@@ -83,6 +83,11 @@ const productSchema = new Schema({
     content: String,
     star: Number
   },
+  index: {
+    type: Number,
+    required: false,
+    default: 0
+  },
   comment: {
     total: {
       type: Number,

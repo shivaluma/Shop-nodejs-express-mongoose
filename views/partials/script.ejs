@@ -17,7 +17,6 @@
     $.ajax({
       url: "/add-to-cart/" + id,
       method: "GET",
-      data: { id: id },
       success: data => {
         $(".box-cart").load(" .box-cart > *");
       }
