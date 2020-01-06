@@ -165,8 +165,8 @@
 							<div class="tt-aside">
 								<a class="tt-item" href="/products">
 									<div class="tt-img">
-										<span class="tt-img-default"><img src="/images/loader.svg" data-src="/images/product/product-01-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="/images/product/product-01-02.jpg" alt=""></span>
+										<span class="tt-img-default"><img src="/images/loader.svg" data-src="product-01-01.jpg" alt=""></span>
+										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="product-01-02.jpg" alt=""></span>
 									</div>
 									<div class="tt-content">
 										<h6 class="tt-title">Flared Shift Dress</h6>
@@ -178,8 +178,8 @@
 								</a>
 								<a class="tt-item" href="/products">
 									<div class="tt-img">
-										<span class="tt-img-default"><img src="/images/loader.svg" data-src="/images/product/product-02-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="/images/product/product-02-02.jpg" alt=""></span>
+										<span class="tt-img-default"><img src="/images/loader.svg" data-src="product-02-01.jpg" alt=""></span>
+										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="product-02-02.jpg" alt=""></span>
 									</div>
 									<div class="tt-content">
 										<h6 class="tt-title">Flared Shift Dress</h6>
@@ -191,8 +191,8 @@
 								</a>
 								<a class="tt-item" href="/products">
 									<div class="tt-img">
-										<span class="tt-img-default"><img src="/images/loader.svg" data-src="/images/product/product-03-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="/images/product/product-03-02.jpg" alt=""></span>
+										<span class="tt-img-default"><img src="/images/loader.svg" data-src="product-03-01.jpg" alt=""></span>
+										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="product-03-02.jpg" alt=""></span>
 									</div>
 									<div class="tt-content">
 										<h6 class="tt-title">Flared Shift Dress</h6>
@@ -301,8 +301,8 @@
 											<a href="#" class="tt-btn-wishlist" data-tooltip="Thêm vào yêu thích" data-tposition="left"></a>
 											<a href="#" class="tt-btn-compare" data-tooltip="So sánh" data-tposition="left"></a>
 											<a href="product/<%= prod._id %>">
-												<span class="tt-img"><img src="/images/product/<%= prod.images[0] %>" data-src="/images/product/<%= prod.images[0] %>" alt="" class="loaded" data-was-processed="true"></span>
-												<span class="tt-img-roll-over"><img src="/images/product/<%= prod.images[1] %>" data-src="/images/product/<%= prod.images[1] %>" alt="" class="loaded" data-was-processed="true"></span>
+												<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt="" class="loaded" data-was-processed="true"></span>
+												<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" data-src="<%= prod.images[1] %>" alt="" class="loaded" data-was-processed="true"></span>
 											</a>
 										</div>
 										<div class="tt-description">
@@ -384,7 +384,7 @@
 							<div class="tt-img">
 							  <img
 								src="/images/loader.svg"
-								data-src="/images/product/<%= prod.images[0] %>"
+								data-src="<%= prod.images[0] %>"
 								alt=""
 							  />
 							</div>

@@ -32,7 +32,7 @@
 		<!-- mobile product slider  -->
 		<div class="tt-mobile-product-slider visible-xs arrow-location-center slick-animated-show-js">
 				<% prod.images.forEach(function(image) { %>
-					<div><img src="/images/product/<%= image %>" alt=""></div>
+					<div><img src="http://bros-admin.herokuapp.com/assets/images/<%= image %>" alt=""></div>
 					<% }); %>
 			<div>
 				<div class="embed-responsive embed-responsive-16by9">
@@ -53,20 +53,20 @@
 					<div class="tt-product-vertical-layout">
 						<div class="tt-product-single-img">
 							<div>
-								<img class="zoom-product" src='/images/product/<%= prod.images[0] %>' data-zoom-image="/images/product/<%= prod.images[0] %>" alt="">
+								<img class="zoom-product" src='http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>' data-zoom-image="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt="">
 								<button class="tt-btn-zomm tt-top-right"><i class="icon-f-86"></i></button>
 							</div>
 						</div>
 						<div class="tt-product-single-carousel-vertical">
 							<ul id="smallGallery" class="tt-slick-button-vertical slick-animated-show-js">
-								<li><a class="zoomGalleryActive" href="/#" data-image="/images/product/<%= prod.images[0] %>" data-zoom-image="/images/product/<%= prod.images[0] %>"><img src="/images/product/<%= prod.images[0] %>" alt=""></a></li>
+								<li><a class="zoomGalleryActive" href="/#" data-image="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" data-zoom-image="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt=""></a></li>
 								<% prod.images.forEach(function(image) { %>
-									<li><a href="/#" data-image="/images/product/<%= image %>" data-zoom-image="/images/product/<%= image %>"><img src="/images/product/<%= image %>" alt=""></a></li>
+									<li><a href="/#" data-image="http://bros-admin.herokuapp.com/assets/images/<%= image %>" data-zoom-image="http://bros-admin.herokuapp.com/assets/images/<%= image %>"><img src="http://bros-admin.herokuapp.com/assets/images/<%= image %>" alt=""></a></li>
 								
 								<% }); %>
 								<li>
 									<div class="video-link-product" data-toggle="modal" data-type="youtube" data-target="#modalVideoProduct" data-value="http://www.youtube.com/embed/GhyKqj_P2E4">
-										<img src="/images/product/product-small-empty.png" alt="" >
+										<img src="http://bros-admin.herokuapp.com/assets/images/product-small-empty.png" alt="" >
 										<div>
 											<i class="icon-f-32"></i>
 										</div>
@@ -74,7 +74,7 @@
 								</li>
 								<li>
 									<div class="video-link-product" data-toggle="modal" data-type="video" data-target="#modalVideoProduct" data-value="/video/video.mp4" data-poster="/video/video_img.jpg">
-										<img src="/images/product/product-small-empty.png" alt="" >
+										<img src="http://bros-admin.herokuapp.com/assets/images/product-small-empty.png" alt="" >
 										<div>
 											<i class="icon-f-32"></i>
 										</div>
@@ -205,7 +205,7 @@
 											<% comments.forEach(function(cmt){ %>
 											<div class="tt-item">
 												<div class="tt-avatar">
-													<a href="/#"><img src="/images/product/single/userAvt.png" alt=""></a>
+													<a href="/#"><img src="http://bros-admin.herokuapp.com/assets/images/single/userAvt.png" alt=""></a>
 												</div>
 												<div class="tt-content">
 													<div class="tt-rating">
@@ -415,7 +415,7 @@
                 <div class="tt-img">
                   <img
                     src="/images/loader.svg"
-                    data-src="/images/product/<%= prod.images[0] %>"
+                    data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>"
                     alt=""
                   />
                 </div>
@@ -478,8 +478,8 @@
 							<a href="/#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="/#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="/product.html">
-								<span class="tt-img"><img src="/images/product/product-16.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/product/product-16-02.jpg" alt=""></span>
+								<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/product-16.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/product-16-02.jpg" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">
@@ -512,8 +512,8 @@
 							<a href="/#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="/#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="/product.html">
-								<span class="tt-img"><img src="/images/product/product-17.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/product/product-17-01.jpg" alt=""></span>
+								<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/product-17.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/product-17-01.jpg" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">
@@ -553,8 +553,8 @@
 							<a href="/#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="/#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="/product.html">
-								<span class="tt-img"><img src="/images/product/product-18.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/product/product-18-02.jpg" alt=""></span>
+								<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/product-18.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/product-18-02.jpg" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">
@@ -593,8 +593,8 @@
 							<a href="/#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="/#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="/product.html">
-								<span class="tt-img"><img src="/images/product/product-19.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/product/product-19-02.jpg" alt=""></span>
+								<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/product-19.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/product-19-02.jpg" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">
@@ -634,8 +634,8 @@
 							<a href="/#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="/#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="/product.html">
-								<span class="tt-img"><img src="/images/product/product-14.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/product/product-14-02.jpg" alt=""></span>
+								<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/product-14.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/product-14-02.jpg" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">
