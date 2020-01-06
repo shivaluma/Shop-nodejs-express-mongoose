@@ -190,3 +190,40 @@ exports.postForgotPass = (req, res, next) => {
     }
   });
 };
+
+exports.getChangePassword = (req, res, next) => {
+  const message = req.flash("error")[0];
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
+  res.render("change-password", {
+    title: "Đổi mật khẩu",
+    message: `${message}`,
+    user: req.user,
+    cartProduct: cartProduct
+  });
+};
+
+exports.postChangePassword = (req, res, next) => {
+  console.log(req.body.oldpass);
+
+  bcrypt.compare(req.body.oldpass, req.user.password, function(err, result) {
+    console.log("alo?");
+    if (!result) {
+      console.log("alo?");
+      req.flash("error", "Mật khẩu cũ không đúng!");
+      return res.redirect("back");
+    } else {
+      bcrypt.hash(req.body.newpass, 12).then(hashPassword => {
+        user.password = hashPassword;
+        user.save();
+      });
+      req.flash("success", "Đổi mật khẩu thành công!");
+      res.redirect("/account");
+    }
+  });
+};
