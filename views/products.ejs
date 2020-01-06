@@ -300,7 +300,7 @@
 											<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="Quick View" data-tposition="left"></a>
 											<a href="#" class="tt-btn-wishlist" data-tooltip="Thêm vào yêu thích" data-tposition="left"></a>
 											<a href="#" class="tt-btn-compare" data-tooltip="So sánh" data-tposition="left"></a>
-											<a href="product/<%= prod._id %>">
+											<a href="/product/<%= prod._id %>">
 												<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt="" class="loaded" data-was-processed="true"></span>
 												<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" data-src="<%= prod.images[1] %>" alt="" class="loaded" data-was-processed="true"></span>
 											</a>
@@ -318,7 +318,7 @@
 													<i class="icon-star"></i>
 												</div>
 											</div>
-											<h2 class="tt-title"><a href="product/<%= prod._id %>"><%= prod.name %></a></h2>
+											<h2 class="tt-title"><a href="/product/<%= prod._id %>"><%= prod.name %></a></h2>
 											<div class="tt-price">
 												$<%= prod.price %>
 											</div>
