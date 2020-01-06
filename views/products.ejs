@@ -159,52 +159,7 @@
 					</div>
 					<button type="submit" class="btn btn-border mx-auto mb-5">Lọc</button>
 					</form>
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">Sản phẩm giảm giá</h3>
-						<div class="tt-collapse-content">
-							<div class="tt-aside">
-								<a class="tt-item" href="/products">
-									<div class="tt-img">
-										<span class="tt-img-default"><img src="/images/loader.svg" data-src="product-01-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="product-01-02.jpg" alt=""></span>
-									</div>
-									<div class="tt-content">
-										<h6 class="tt-title">Flared Shift Dress</h6>
-										<div class="tt-price">
-											<span class="sale-price">$14</span>
-											<span class="old-price">$24</span>
-										</div>
-									</div>
-								</a>
-								<a class="tt-item" href="/products">
-									<div class="tt-img">
-										<span class="tt-img-default"><img src="/images/loader.svg" data-src="product-02-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="product-02-02.jpg" alt=""></span>
-									</div>
-									<div class="tt-content">
-										<h6 class="tt-title">Flared Shift Dress</h6>
-										<div class="tt-price">
-											<span class="sale-price">$14</span>
-											<span class="old-price">$24</span>
-										</div>
-									</div>
-								</a>
-								<a class="tt-item" href="/products">
-									<div class="tt-img">
-										<span class="tt-img-default"><img src="/images/loader.svg" data-src="product-03-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="product-03-02.jpg" alt=""></span>
-									</div>
-									<div class="tt-content">
-										<h6 class="tt-title">Flared Shift Dress</h6>
-										<div class="tt-price">
-											<span class="sale-price">$14</span>
-											<span class="old-price">$24</span>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
+					
 					<!-- <div class="tt-collapse open">
 						<h3 class="tt-collapse-title">TAGS</h3>
 						<div class="tt-collapse-content">
@@ -297,9 +252,8 @@
 								<div class="col-6 col-md-4 col-lg-3">
 									<div class="tt-product thumbprod-center">
 										<div class="tt-image-box">
-											<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="Quick View" data-tposition="left"></a>
-											<a href="#" class="tt-btn-wishlist" data-tooltip="Thêm vào yêu thích" data-tposition="left"></a>
-											<a href="#" class="tt-btn-compare" data-tooltip="So sánh" data-tposition="left"></a>
+											
+											
 											<a href="/product/<%= prod._id %>">
 												<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt="" class="loaded" data-was-processed="true"></span>
 												<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" data-src="<%= prod.images[1] %>" alt="" class="loaded" data-was-processed="true"></span>
@@ -327,9 +281,7 @@
 													<button class="tt-btn-addtocart thumbprod-button-bg add-cart" data-id="<%= prod._id %>" data-toggle="modal" data-target="#modalAddToCartProduct<%= prod._id %>">THÊM VÀO GIỎ HÀNG</button>
 												</div>
 												<div class="tt-row-btn">
-													<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-													<a href="#" class="tt-btn-wishlist"></a>
-													<a href="#" class="tt-btn-compare"></a>
+													
 												</div>
 											</div>
 										</div>
@@ -389,7 +341,7 @@
 							  />
 							</div>
 							<h2 class="tt-title">
-							  <a href="product.html"><%= prod.name %></a>
+							  <a href="/product/<%= prod.name %>"><%= prod.name %></a>
 							</h2>
 			
 							<div class="tt-qty">QTY: <span>1</span></div>
@@ -443,7 +395,7 @@
 									<li class="page-item"><a class="page-link" href="?page=<%= previousPage %>"><%= previousPage %></a></li>
 								  <% } %>
 
-								  <li class="page-item active"><a class="page-link" href="#" tabindex="-1"><%= currentPage %></a></li>
+								  <li class="page-item active"><a class="page-link" href="javascript:void(0)" tabindex="-1"><%= currentPage %></a></li>
 
 								  <% if(hasNextPage){  %>
 									  <li class="page-item"><a class="page-link" href="?page=<%= nextPage %>"><%= nextPage %></a></li>

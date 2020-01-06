@@ -200,10 +200,8 @@
 					<div class="col-6 col-md-4 col-lg-3">
 						<div class="tt-product thumbprod-center">
 							<div class="tt-image-box">
-								<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="Quick View" data-tposition="left"></a>
-								<a href="#" class="tt-btn-wishlist" data-tooltip="Thêm vào yêu thích" data-tposition="left"></a>
-								<a href="#" class="tt-btn-compare" data-tooltip="So sánh" data-tposition="left"></a>
-								<a href="product/<%= prod._id %>">
+								
+								<a href="/product/<%= prod._id %>">
 									<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt="" class="loaded" data-was-processed="true"></span>
 									<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" alt="" class="loaded" data-was-processed="true"></span>
 								</a>
@@ -229,11 +227,7 @@
 									<div class="tt-row-btn">
 										<button class="tt-btn-addtocart thumbprod-button-bg add-cart" data-id="<%= prod._id %>" data-toggle="modal" data-target="#modalAddToCartProduct<%= prod._id %>">THÊM VÀO GIỎ HÀNG</button>
 									</div>
-									<div class="tt-row-btn">
-										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-										<a href="#" class="tt-btn-wishlist"></a>
-										<a href="#" class="tt-btn-compare"></a>
-									</div>
+			
 								</div>
 							</div>
 						</div>
@@ -292,7 +286,7 @@
                   />
                 </div>
                 <h2 class="tt-title">
-                  <a href="product.html"><%= prod.name %></a>
+                  <a href="/product/<%= prod.name %>"><%= prod.name %></a>
                 </h2>
 
                 <div class="tt-qty">QTY: <span>1</span></div>
@@ -383,9 +377,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-16.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-16-01.jpg" alt=""></span>
@@ -418,11 +410,7 @@
 								<div class="tt-row-btn">
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -430,9 +418,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-46.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-46-01.jpg" alt=""></span>
@@ -482,9 +468,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>
@@ -493,9 +477,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-18.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-18-01.jpg" alt=""></span>
@@ -522,9 +504,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>
@@ -533,9 +513,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-19.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-19-02.jpg" alt=""></span>
@@ -563,9 +541,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>
@@ -574,9 +550,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-41.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-41-01.jpg" alt=""></span>
@@ -604,9 +578,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>
@@ -615,9 +587,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-02.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-02-03.jpg" alt=""></span>
@@ -638,9 +608,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>
@@ -649,9 +617,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-05.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-05-02.jpg" alt=""></span>
@@ -672,9 +638,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>
@@ -683,9 +647,7 @@
 				<div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
 						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							
 							<a href="product.html">
 								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-33.jpg" alt=""></span>
 								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-33-01.jpg" alt=""></span>
@@ -713,9 +675,7 @@
 									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
 								</div>
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
+									
 								</div>
 							</div>
 						</div>

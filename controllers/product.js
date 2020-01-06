@@ -66,15 +66,20 @@ exports.getProduct = (req, res, next) => {
   }
   const prodId = req.params.productId;
   Products.findOne({ _id: `${prodId}` }).then(product => {
-    res.render("product", {
-      title: `${product.name}`,
-      user: req.user,
-      prod: product,
-      comments: product.comment.items,
-      allComment: product.comment.total,
-      cartProduct: cartProduct
-    });
-    product.save();
+    Products.find({ "productType.main": product.productType.main }).then(
+      relatedProducts => {
+        res.render("product", {
+          title: `${product.name}`,
+          user: req.user,
+          prod: product,
+          comments: product.comment.items,
+          allComment: product.comment.total,
+          cartProduct: cartProduct,
+          relatedProducts: relatedProducts
+        });
+        product.save();
+      }
+    );
   });
 };
 
