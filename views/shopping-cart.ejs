@@ -114,17 +114,7 @@
           <div class="tt-shopcart-col">
             <div class="row">
               <div class="col-md-6 col-lg-4"></div>
-              <div class="col-md-6 col-lg-4">
-                <div class="tt-shopcart-box">
-                  <h4 class="tt-title">
-                    Ghi chú
-                  </h4>
-                  <p>Thêm ghi chú vào đơn đặt hàng của bạn...</p>
-                  <form class="form-default">
-                    <textarea class="form-control" rows="7"></textarea>
-                  </form>
-                </div>
-              </div>
+              <div class="col-md-6 col-lg-4"></div>
               <div class="col-md-6 col-lg-4">
                 <div class="tt-shopcart-box tt-boredr-large">
                   <table class="tt-shopcart-table01 box-pricett">
@@ -143,23 +133,23 @@
                   </table>
                   <%if (typeof(user) !== 'undefined' && user.isAuthenticated) {
                   %>
-                  <a href="/check-out" class="btn btn-lg"
+                  <a href="/add-order" class="btn btn-lg"
                     ><span class="icon icon-check_circle"></span>Chấp nhận thanh
                     toán</a
                   >
                   <% }else if(typeof(user) == 'undefined'){ %>
-                  <a href="/check-out" class="btn btn-lg"
-                    ><span class="icon icon-check_circle"></span>Đăng nhập để
-                    thanh toán</a
-                  >
+                  <a href="/login" class="btn btn-lg">
+                    <span class="icon icon-check_circle"></span>Đăng nhập để
+                    thanh toán
+                  </a>
 
                   <% }else if(typeof(user) !== 'undefined' &&
                   !user.isAuthenticated){ %>
-                  <a href="/check-out" class="btn btn-lg"
+                  <a href="/verify-email" class="btn btn-lg"
                     ><span class="icon icon-check_circle"></span>Kích hoạt email
                     để thanh toán</a
                   >
-                  <% } %> >
+                  <% } %>
                 </div>
               </div>
             </div>

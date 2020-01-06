@@ -20,82 +20,33 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container container-fluid-custom-mobile-padding">
-			<h1 class="tt-title-subpages noborder">Tài khoản</h1>
+			<h1 class="tt-title-subpages noborder">Thông tin giao hàng</h1>
 			<div class="tt-shopping-layout">
-				<h2 class="tt-title">Địa chỉ của bạn</h2>
+				<h2 class="tt-title">Địa chỉ giao hàng</h2>
 				<div class="tt-wrapper">
-					<a href="#" class="btn">Thêm địa chỉ mơí</a><br>
-					<a href="account.html" class="tt-link-back">
-						<i class="icon-h-46"></i> Trở về trang thanh toán
-					</a>
-				</div>
-				<div class="tt-wrapper">
-					<h6 class="tt-title">THÊM ĐỊA CHỈ MỚI</h6>
+					
 					<div class="form-default">
-						<form>
-							<div class="form-group">
-								<label for="shopInputFirstName" class="control-label">Họ *</label>
-								<input type="text" class="form-control" id="shopInputFirstName">
-							</div>
-							<div class="form-group">
-								<label for="shopInputLastName" class="control-label">Tên *</label>
-								<input type="text" class="form-control" id="shopInputLastName">
-							</div>
-							<div class="form-group">
-								<label for="shopCompanyName" class="control-label">Công ty</label>
-								<input type="text" class="form-control" id="shopCompanyName">
-							</div>
-							<div class="form-group">
-								<label for="shopCompanyName" class="control-label">Quốc gia *</label>
-								<select class="form-control">
-									<option>Country</option>
-									<option>Country 02</option>
-									<option>Country 03</option>
-									<option>Country 04</option>
-									<option>Country 05</option>
-									<option>Country 06</option>
-									<option>Country 07</option>
-									<option>Country 08</option>
-									<option>Country 09</option>
-									<option>Country 10</option>
-									<option>Country 11</option>
-								</select>
-							</div>
+						<form method="POST" action="/add-order" >
+							
+							
+							
+							
 							<div class="form-group">
 								<label for="shopAddress" class="control-label">Địa chỉ *</label>
-								<input type="text" class="form-control" id="shopAddress">
+								<input type="text" class="form-control" id="shopAddress" name="address">
 							</div>
-							<div class="form-group">
-								<label for="shopTown" class="control-label">Phường *</label>
-								<input type="text" class="form-control" id="shopTown">
-							</div>
-							<div class="form-group">
-								<label for="shopState" class="control-label">Quận *</label>
-								<input type="text" class="form-control" id="shopState">
-							</div>
-							<div class="form-group">
-								<label for="shopPostCode" class="control-label">Thành phố *</label>
-								<input type="text" class="form-control" id="shopPostCode">
-							</div>
+							
+							
+							
 							<div class="form-group">
 								<label for="shopPhone" class="control-label">SĐT</label>
-								<input type="text" class="form-control" id="shopPhone">
+								<input type="tel" class="form-control" id="shopPhone" name="phone">
 							</div>
-							<div class="form-group">
-								<label for="shopEmail" class="control-label">Email *</label>
-								<input type="text" class="form-control" id="shopEmail">
-							</div>
-							<div class="checkbox-group">
-								<input type="checkbox" id="checkBox11" name="checkbox">
-								<label for="checkBox11">
-									<span class="check"></span>
-									<span class="box"></span>
-									Đặt làm địa chỉ mặc định?
-								</label>
-							</div>
+							
+							
 							<div class="row tt-offset-21">
 								<div class="col-auto">
-									<button type="submit" class="btn">Thêm địa chỉ</button>
+									<button type="submit" class="btn">Thanh toán</button>
 								</div>
 								<div class="col-auto align-self-center">
 									or	<a href="#" class="tt-link">Huỷ</a>

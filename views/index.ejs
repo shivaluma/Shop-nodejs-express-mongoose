@@ -176,7 +176,7 @@
 								<div class="tt-description">
 									<div class="tt-description-wrapper">
 										<div class="tt-background"></div>
-										<div class="tt-title-small">GIẦY</div>
+										<div class="tt-title-small">GIÀY</div>
 									</div>
 								</div>
 							</a>
@@ -269,7 +269,7 @@
           <button class="btn-link btn-close-popup" data-dismiss="modal">Tiếp tục mua sắm</button>
           <a href="/shopping_cart" class="btn-link">XEM GIỎ HÀNG</a>
           <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
-			<a href="/check-out" class="btn">Chuyển đến thanh toán</a>
+			<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
 			<% }else if(typeof(user) == 'undefined'){ %>
 				<a href="/login" class="btn">Đăng nhập để thanh toán</a>
 				
@@ -312,7 +312,7 @@
               >
               <a href="/shopping_cart" class="btn btn-border">Xem giỏ hàng</a>
               <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
-				<a href="/check-out" class="btn">Chuyển đến thanh toán</a>
+				<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
 				<% }else if(typeof(user) == 'undefined'){ %>
 					<a href="/login" class="btn">Đăng nhập để thanh toán</a>
 					
