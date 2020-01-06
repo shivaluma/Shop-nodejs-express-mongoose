@@ -63,6 +63,7 @@ exports.getProduct = (req, res, next) => {
   }
   const prodId = req.params.productId;
   Products.findOne({ _id: `${prodId}` }).then(product => {
+<<<<<<< HEAD
     res.render('product', {
       title: `${product.name}`,
       user: req.user,
@@ -72,6 +73,22 @@ exports.getProduct = (req, res, next) => {
       cartProduct: cartProduct
     });
     product.save();
+=======
+    Products.find({ "productType.main": product.productType.main }).then(
+      relatedProducts => {
+        res.render("product", {
+          title: `${product.name}`,
+          user: req.user,
+          prod: product,
+          comments: product.comment.items,
+          allComment: product.comment.total,
+          cartProduct: cartProduct,
+          relatedProducts: relatedProducts
+        });
+        product.save();
+      }
+    );
+>>>>>>> 9a46a2af22d366161a6283179b087b2f46cb2037
   });
 };
 

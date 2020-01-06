@@ -20,7 +20,10 @@
     <div class="container container-fluid-custom-mobile-padding">
       <div class="container-indent">
         <div class="content-indent">
-          <div class="tt-filters-options desctop-no-sidebar" id="js-tt-filters-options">
+          <div
+            class="tt-filters-options desctop-no-sidebar"
+            id="js-tt-filters-options"
+          >
             <h1 class="tt-title"><%= title %></h1>
           </div>
           <div id="tt-pageContent">
@@ -40,17 +43,7 @@
               <div class="col-6 col-md-4 col-lg-3">
                 <div class="tt-product thumbprod-center">
                   <div class="tt-image-box">
-                    <a
-                      href="#"
-                      class="tt-btn-quickview"
-                      data-toggle="modal"
-                      data-target="#ModalquickView"
-                      data-tooltip="Quick View"
-                      data-tposition="left"
-                    ></a>
-                    <a href="#" class="tt-btn-wishlist" data-tooltip="Thêm vào yêu thích" data-tposition="left"></a>
-                    <a href="#" class="tt-btn-compare" data-tooltip="So sánh" data-tposition="left"></a>
-                    <a href="product/<%= prod._id %>">
+                    <a href="/product/<%= prod._id %>">
                       <span class="tt-img"
                         ><img
                           src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>"
@@ -83,7 +76,7 @@
                       </div>
                     </div>
                     <h2 class="tt-title">
-                      <a href="product/<%= prod._id %>"><%= prod.name %></a>
+                      <a href="/product/<%= prod._id %>"><%= prod.name %></a>
                     </h2>
                     <div class="tt-price">
                       $<%= prod.price %>
@@ -99,11 +92,7 @@
                           THÊM VÀO GIỎ HÀNG
                         </button>
                       </div>
-                      <div class="tt-row-btn">
-                        <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-                        <a href="#" class="tt-btn-wishlist"></a>
-                        <a href="#" class="tt-btn-compare"></a>
-                      </div>
+                      <div class="tt-row-btn"></div>
                     </div>
                   </div>
                 </div>
@@ -120,36 +109,64 @@
                 <div class="modal-dialog">
                   <div class="modal-content ">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-hidden="true"
+                      >
                         <span class="icon icon-clear"></span>
                       </button>
                     </div>
                     <div class="modal-body">
                       <div class="tt-modal-addtocart mobile">
-                        <div class="tt-modal-messages"><i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành công!</div>
-                        <button class="btn-link btn-close-popup" data-dismiss="modal">
+                        <div class="tt-modal-messages">
+                          <i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành
+                          công!
+                        </div>
+                        <button
+                          class="btn-link btn-close-popup"
+                          data-dismiss="modal"
+                        >
                           Tiếp tục mua sắm
                         </button>
-                        <a href="/shopping_cart" class="btn-link">XEM GIỎ HÀNG</a>
-                        <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
-                        <a href="/add-order" class="btn">Chuyển đến thanh toán</a>
+                        <a href="/shopping_cart" class="btn-link"
+                          >XEM GIỎ HÀNG</a
+                        >
+                        <%if (typeof(user) !== 'undefined' &&
+                        user.isAuthenticated) { %>
+                        <a href="/add-order" class="btn"
+                          >Chuyển đến thanh toán</a
+                        >
                         <% }else if(typeof(user) == 'undefined'){ %>
                         <a href="/login" class="btn">Đăng nhập để thanh toán</a>
 
-                        <% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
-                        <a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+                        <% }else if(typeof(user) !== 'undefined' &&
+                        !user.isAuthenticated){ %>
+                        <a href="/verify-email" class="btn"
+                          >Kích hoạt email để thanh toán</a
+                        >
                         <% } %>
                       </div>
                       <div class="tt-modal-addtocart desctope">
                         <div class="row">
                           <div class="col-12 col-lg-6">
-                            <div class="tt-modal-messages"><i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành công!</div>
+                            <div class="tt-modal-messages">
+                              <i class="icon-f-68"></i> Đã thêm vào giỏ hàng
+                              thành công!
+                            </div>
                             <div class="tt-modal-product">
                               <div class="tt-img">
-                                <img src="/images/loader.svg" data-src="<%= prod.images[0] %>" alt="" />
+                                <img
+                                  src="/images/loader.svg"
+                                  data-src="<%= prod.images[0] %>"
+                                  alt=""
+                                />
                               </div>
                               <h2 class="tt-title">
-                                <a href="product.html"><%= prod.name %></a>
+                                <a href="/product/<%= prod.name %>"
+                                  ><%= prod.name %></a
+                                >
                               </h2>
 
                               <div class="tt-qty">QTY: <span>1</span></div>
@@ -162,15 +179,30 @@
                             </div>
                           </div>
                           <div class="col-12 col-lg-4">
-                            <a href="#" class="btn btn-border btn-close-popup" data-dismiss="modal">Tiếp tục mua sắm</a>
-                            <a href="/shopping_cart" class="btn btn-border">Xem giỏ hàng</a>
-                            <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
-                            <a href="/add-order" class="btn">Chuyển đến thanh toán</a>
+                            <a
+                              href="#"
+                              class="btn btn-border btn-close-popup"
+                              data-dismiss="modal"
+                              >Tiếp tục mua sắm</a
+                            >
+                            <a href="/shopping_cart" class="btn btn-border"
+                              >Xem giỏ hàng</a
+                            >
+                            <%if (typeof(user) !== 'undefined' &&
+                            user.isAuthenticated) { %>
+                            <a href="/add-order" class="btn"
+                              >Chuyển đến thanh toán</a
+                            >
                             <% }else if(typeof(user) == 'undefined'){ %>
-                            <a href="/login" class="btn">Đăng nhập để thanh toán</a>
+                            <a href="/login" class="btn"
+                              >Đăng nhập để thanh toán</a
+                            >
 
-                            <% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
-                            <a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+                            <% }else if(typeof(user) !== 'undefined' &&
+                            !user.isAuthenticated){ %>
+                            <a href="/verify-email" class="btn"
+                              >Kích hoạt email để thanh toán</a
+                            >
                             <% } %>
                           </div>
                         </div>
@@ -185,28 +217,42 @@
               <ul class="pagination justify-content-center">
                 <% if (currentPage !== 1){ %>
                 <li class="page-item">
-                  <a class="page-link" href="?page=<%= previousPage %>" aria-label="Previous">
+                  <a
+                    class="page-link"
+                    href="?page=<%= previousPage %>"
+                    aria-label="Previous"
+                  >
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                   </a>
                 </li>
                 <% } %> <% if(hasPreviousPage ){ %>
                 <li class="page-item">
-                  <a class="page-link" href="?page=<%= previousPage %>"><%= previousPage %></a>
+                  <a class="page-link" href="?page=<%= previousPage %>"
+                    ><%= previousPage %></a
+                  >
                 </li>
                 <% } %>
 
                 <li class="page-item active">
-                  <a class="page-link" href="#" tabindex="-1"><%= currentPage %></a>
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1"
+                    ><%= currentPage %></a
+                  >
                 </li>
 
                 <% if(hasNextPage){ %>
                 <li class="page-item">
-                  <a class="page-link" href="?page=<%= nextPage %>"><%= nextPage %></a>
+                  <a class="page-link" href="?page=<%= nextPage %>"
+                    ><%= nextPage %></a
+                  >
                 </li>
                 <% } %> <% if(currentPage < lastPage){ %>
                 <li class="page-item">
-                  <a class="page-link" href="?page=<%= nextPage %>" aria-label="Next">
+                  <a
+                    class="page-link"
+                    href="?page=<%= nextPage %>"
+                    aria-label="Next"
+                  >
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
                   </a>
@@ -223,7 +269,9 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include
-    partials/modal-subscribegood %> <% include partials/modal-newsletter %> <% include partials/script %>
+    <% include partials/modal-addtocartproduct %> <% include
+    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
+    <% include partials/modal-subscribegood %> <% include
+    partials/modal-newsletter %> <% include partials/script %>
   </body>
 </html>
