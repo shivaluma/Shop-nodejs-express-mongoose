@@ -23,23 +23,20 @@
           <div class="tt-shopcart-table-02">
             <table>
               <tbody>
-                <% if(cartProduct != null){ cartProduct.forEach(function(item){
-                %>
+                <% if(cartProduct != null){ cartProduct.forEach(function(item){ %>
                 <tr>
                   <td>
                     <div class="tt-product-img">
                       <img
-                        src="/images/<%= item.images %>"
-                        data-src="images/product/<%= item.images %>"
+                        src="http://bros-admin.herokuapp.com/assets/images/<%= item.images %>"
+                        data-src="http://bros-admin.herokuapp.com/assets/images/<%= item.images %>"
                         alt=""
                       />
                     </div>
                   </td>
                   <td>
                     <h2 class="tt-title">
-                      <a href="/product/<%= item.item._id %>"
-                        ><%= item.item.name %></a
-                      >
+                      <a href="/product/<%= item.item._id %>"><%= item.item.name %></a>
                     </h2>
                     <ul class="tt-list-description">
                       <li>Cỡ: 22</li>
@@ -68,10 +65,7 @@
                   </td>
                   <td>
                     <div class="detach-quantity-desctope">
-                      <div
-                        class="tt-input-counter style-01"
-                        data-id="<%= item.item._id %>"
-                      >
+                      <div class="tt-input-counter style-01" data-id="<%= item.item._id %>">
                         <span class="minus-btn"></span>
                         <input type="text" value="<%= item.qty %>" size="20" />
                         <span class="plus-btn"></span>
@@ -86,10 +80,7 @@
                   </td>
 
                   <td>
-                    <a
-                      href="/delete-item/<%= item.item._id %>"
-                      class="tt-btn-close"
-                    ></a>
+                    <a href="/delete-item/<%= item.item._id %>" class="tt-btn-close"></a>
                   </td>
                 </tr>
                 <%})}%>
@@ -97,17 +88,11 @@
             </table>
             <div class="tt-shopcart-btn">
               <div class="col-left">
-                <a class="btn-link" href="#"
-                  ><i class="icon-e-19"></i>Tiếp tục mua sắm</a
-                >
+                <a class="btn-link" href="#"><i class="icon-e-19"></i>Tiếp tục mua sắm</a>
               </div>
               <div class="col-right">
-                <a class="btn-link" href="/delete-cart"
-                  ><i class="icon-h-02"></i>Xoá giỏ hàng</a
-                >
-                <a class="btn-link" href="/shopping_cart"
-                  ><i class="icon-h-48"></i>Cập nhật giỏ hàng</a
-                >
+                <a class="btn-link" href="/delete-cart"><i class="icon-h-02"></i>Xoá giỏ hàng</a>
+                <a class="btn-link" href="/shopping_cart"><i class="icon-h-48"></i>Cập nhật giỏ hàng</a>
               </div>
             </div>
           </div>
@@ -131,24 +116,13 @@
                       </tr>
                     </tfoot>
                   </table>
-                  <%if (typeof(user) !== 'undefined' && user.isAuthenticated) {
-                  %>
-                  <a href="/add-order" class="btn btn-lg"
-                    ><span class="icon icon-check_circle"></span>Chấp nhận thanh
-                    toán</a
-                  >
+                  <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
+                  <a href="/add-order" class="btn btn-lg"><span class="icon icon-check_circle"></span>Chấp nhận thanh toán</a>
                   <% }else if(typeof(user) == 'undefined'){ %>
-                  <a href="/login" class="btn btn-lg">
-                    <span class="icon icon-check_circle"></span>Đăng nhập để
-                    thanh toán
-                  </a>
+                  <a href="/login" class="btn btn-lg"> <span class="icon icon-check_circle"></span>Đăng nhập để thanh toán </a>
 
-                  <% }else if(typeof(user) !== 'undefined' &&
-                  !user.isAuthenticated){ %>
-                  <a href="/verify-email" class="btn btn-lg"
-                    ><span class="icon icon-check_circle"></span>Kích hoạt email
-                    để thanh toán</a
-                  >
+                  <% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
+                  <a href="/verify-email" class="btn btn-lg"><span class="icon icon-check_circle"></span>Kích hoạt email để thanh toán</a>
                   <% } %>
                 </div>
               </div>
@@ -162,8 +136,7 @@
     </footer>
     <a href="#" class="tt-back-to-top">BACK TO TOP</a>
     <!-- Partials -->
-    <% include partials/modal-addtocartproduct %> <% include
-    partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %>
-    <% include partials/modal-subscribegood %> <% include partials/script %>
+    <% include partials/modal-addtocartproduct %> <% include partials/modal-quickviewmodal %> <% include partials/modal-videoproduct %> <% include
+    partials/modal-subscribegood %> <% include partials/script %>
   </body>
 </html>
