@@ -425,7 +425,7 @@
 			</div>
 								<% }); %>
 						</div>
-						<nav aria-label="Page navigation example">
+						<nav aria-label="Page navigation example" style="margin-top: 20px;">
 								
 								<ul class="pagination justify-content-center">
 										<% if (currentPage !== 1){ %>
@@ -443,7 +443,7 @@
 									<li class="page-item"><a class="page-link" href="?page=<%= previousPage %>"><%= previousPage %></a></li>
 								  <% } %>
 
-								  <li class="page-item disabled" ><a class="page-link" href="?page=<%= currentPage %>" tabindex="-1"><%= currentPage %></a></li>
+								  <li class="page-item active"><a class="page-link" href="#" tabindex="-1"><%= currentPage %></a></li>
 
 								  <% if(hasNextPage){  %>
 									  <li class="page-item"><a class="page-link" href="?page=<%= nextPage %>"><%= nextPage %></a></li>

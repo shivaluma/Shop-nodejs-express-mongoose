@@ -1,9 +1,59 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.pagination {
+  margin: 0 0 3.75rem;
+  font-size: 0;
+  text-align: center;
 }
-
-a {
-  color: #00b7ff;
+.page-item {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0 2px;
 }
-
+.page-item.active .page-link {
+  background-color: #3e8af4;
+  border-color: #3e8af4;
+  color: #fff;
+  text-decoration: none;
+}
+.page-item--prev svg,
+.page-item--next svg {
+  width: 8px;
+  height: 12px;
+}
+.page-item--next .page-link svg {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+}
+.page-link {
+  position: relative;
+  border-radius: 4px;
+  display: block;
+  text-align: center;
+  width: 2.625rem;
+  height: 2.625rem;
+  line-height: 2.625rem;
+  margin-left: -1px;
+  color: #2f3640;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.page-link:hover,
+.page-link:focus,
+.page-link:active {
+  background-color: #3e8af4;
+  border-color: #3e8af4;
+  color: #fff;
+  text-decoration: none;
+}
+.page-link:hover svg path,
+.page-link:focus svg path,
+.page-link:active svg path {
+  fill: #fff;
+}
+.pagination .page-item.active + .page-item .page-link,
+.pagination .page-item:hover + .page-item .page-link {
+  border-left-color: #3e8af4;
+}
