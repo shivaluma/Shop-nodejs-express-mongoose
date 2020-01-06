@@ -1,12 +1,12 @@
-const Products = require("../models/product");
-const Categories = require("../models/productCategory");
-const Cart = require("../models/cart");
-var Users = require("../models/user");
-const Order = require("../models/order");
+const Products = require('../models/product');
+const Categories = require('../models/productCategory');
+const Cart = require('../models/cart');
+var Users = require('../models/user');
+const Order = require('../models/order');
 
 var ITEM_PER_PAGE = 12;
 var SORT_ITEM;
-var sort_value = "Giá thấp tới cao";
+var sort_value = 'Giá thấp tới cao';
 var ptype;
 var ptypesub;
 var pprice = 999999;
@@ -22,10 +22,7 @@ exports.getIndexProducts = (req, res, next) => {
   var cart;
   if (req.user) {
     if (req.user.cart) {
-      if (
-        JSON.stringify(req.session.cart.items) !==
-        JSON.stringify(req.user.cart.items)
-      ) {
+      if (JSON.stringify(req.session.cart.items) !== JSON.stringify(req.user.cart.items)) {
         cart = new Cart(req.session.cart ? req.session.cart : {});
         cart = cart.addCart(req.user.cart);
         req.session.cart = cart;
@@ -44,8 +41,8 @@ exports.getIndexProducts = (req, res, next) => {
   Products.find()
     .limit(8)
     .then(products => {
-      res.render("index", {
-        title: "Trang chủ",
+      res.render('index', {
+        title: 'Trang chủ',
         user: req.user,
         trendings: products,
         cartProduct: cartProduct
@@ -66,6 +63,17 @@ exports.getProduct = (req, res, next) => {
   }
   const prodId = req.params.productId;
   Products.findOne({ _id: `${prodId}` }).then(product => {
+<<<<<<< HEAD
+    res.render('product', {
+      title: `${product.name}`,
+      user: req.user,
+      prod: product,
+      comments: product.comment.items,
+      allComment: product.comment.total,
+      cartProduct: cartProduct
+    });
+    product.save();
+=======
     Products.find({ "productType.main": product.productType.main }).then(
       relatedProducts => {
         res.render("product", {
@@ -80,10 +88,12 @@ exports.getProduct = (req, res, next) => {
         product.save();
       }
     );
+>>>>>>> 9a46a2af22d366161a6283179b087b2f46cb2037
   });
 };
 
 exports.getProducts = (req, res, next) => {
+  console.log('chay vao day');
   var cartProduct;
   if (!req.session.cart) {
     cartProduct = null;
@@ -104,19 +114,19 @@ exports.getProducts = (req, res, next) => {
   SORT_ITEM = req.query.orderby;
 
   if (SORT_ITEM == -1) {
-    sort_value = "Giá cao tới thấp";
-    price = "-1";
+    sort_value = 'Giá cao tới thấp';
+    price = '-1';
   }
   if (SORT_ITEM == 1) {
-    sort_value = "Giá thấp tới cao";
-    price = "1";
+    sort_value = 'Giá thấp tới cao';
+    price = '1';
   }
 
   if (Object.entries(req.query).length == 0) {
-    ptype = "";
-    psize = "";
-    plabel = "";
-    ptypesub = "";
+    ptype = '';
+    psize = '';
+    plabel = '';
+    ptypesub = '';
   }
 
   var page = +req.query.page || 1;
@@ -130,33 +140,38 @@ exports.getProducts = (req, res, next) => {
 
   let childType;
   if (productType == undefined) {
-    productType = "";
+    productType = '';
   } else {
-    Categories.find({ name: `${productType}` }, (err, data) => {
-      childType = data[0].childName;
+    Categories.findOne({ name: `${productType}` }, (err, data) => {
+      if (err) console.log(err);
+      if (data) {
+        childType = data.childName || '';
+      } else {
+        childType = '';
+      }
     });
   }
 
   if (productChild == undefined) {
-    productChild = "";
+    productChild = '';
   }
 
   Products.find({
-    "productType.main": new RegExp(productType, "i"),
-    "productType.sub": new RegExp(productChild, "i"),
-    size: new RegExp(psize, "i"),
+    'productType.main': new RegExp(productType, 'i'),
+    'productType.sub': new RegExp(productChild, 'i'),
+    size: new RegExp(psize, 'i'),
     price: { $gt: plowerprice, $lt: pprice },
-    labels: new RegExp(plabel, "i")
+    labels: new RegExp(plabel, 'i')
   })
     .countDocuments()
     .then(numProduct => {
       totalItems = numProduct;
       return Products.find({
-        "productType.main": new RegExp(productType, "i"),
-        "productType.sub": new RegExp(productChild, "i"),
-        size: new RegExp(psize, "i"),
+        'productType.main': new RegExp(productType, 'i'),
+        'productType.sub': new RegExp(productChild, 'i'),
+        size: new RegExp(psize, 'i'),
         price: { $gt: plowerprice, $lt: pprice },
-        labels: new RegExp(plabel, "i")
+        labels: new RegExp(plabel, 'i')
       })
         .skip((page - 1) * ITEM_PER_PAGE)
         .limit(ITEM_PER_PAGE)
@@ -165,8 +180,8 @@ exports.getProducts = (req, res, next) => {
         });
     })
     .then(products => {
-      res.render("products", {
-        title: "Danh sách sản phẩm",
+      res.render('products', {
+        title: 'Danh sách sản phẩm',
         user: req.user,
         allProducts: products,
         currentPage: page,
@@ -191,7 +206,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.postNumItems = (req, res, next) => {
   ITEM_PER_PAGE = parseInt(req.body.numItems);
-  res.redirect("back");
+  res.redirect('back');
 };
 
 exports.getSearch = (req, res, next) => {
@@ -202,8 +217,7 @@ exports.getSearch = (req, res, next) => {
     var cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
-  searchText =
-    req.query.searchText !== undefined ? req.query.searchText : searchText;
+  searchText = req.query.searchText !== undefined ? req.query.searchText : searchText;
   const page = +req.query.page || 1;
 
   Products.createIndexes({}).catch(err => {
@@ -222,8 +236,8 @@ exports.getSearch = (req, res, next) => {
         .limit(12);
     })
     .then(products => {
-      res.render("search-result", {
-        title: "Kết quả tìm kiếm cho " + searchText,
+      res.render('search-result', {
+        title: 'Kết quả tìm kiếm cho ' + searchText,
         user: req.user,
         searchProducts: products,
         searchT: searchText,
@@ -244,7 +258,7 @@ exports.getSearch = (req, res, next) => {
 exports.postComment = (req, res, next) => {
   const prodId = req.params.productId;
   var tname;
-  if (typeof req.user === "undefined") {
+  if (typeof req.user === 'undefined') {
     tname = req.body.inputName;
   } else {
     tname = req.user.username;
@@ -263,7 +277,7 @@ exports.postComment = (req, res, next) => {
     product.comment.total++;
     product.save();
   });
-  res.redirect("back");
+  res.redirect('back');
 };
 
 exports.getCart = (req, res, next) => {
@@ -274,8 +288,8 @@ exports.getCart = (req, res, next) => {
     var cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
-  res.render("shopping-cart", {
-    title: "Giỏ hàng",
+  res.render('shopping-cart', {
+    title: 'Giỏ hàng',
     user: req.user,
     cartProduct: cartProduct
   });
@@ -286,7 +300,7 @@ exports.addToCart = (req, res, next) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   Products.findById(prodId, (err, product) => {
     if (err) {
-      return res.redirect("back");
+      return res.redirect('back');
     }
     cart.add(product, product.index);
     req.session.cart = cart;
@@ -294,7 +308,7 @@ exports.addToCart = (req, res, next) => {
       req.user.cart = cart;
       req.user.save();
     }
-    res.redirect("back");
+    res.redirect('back');
   });
 };
 
@@ -302,12 +316,12 @@ exports.modifyCart = (req, res, next) => {
   var prodId = req.query.id;
   var qty = req.query.qty;
   if (qty == 0) {
-    return res.redirect("back");
+    return res.redirect('back');
   }
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   Products.findById(prodId, (err, product) => {
     if (err) {
-      return res.redirect("back");
+      return res.redirect('back');
     }
     cart.changeQty(product, product.index, qty);
     req.session.cart = cart;
@@ -315,13 +329,13 @@ exports.modifyCart = (req, res, next) => {
       req.user.cart = cart;
       req.user.save();
     }
-    res.redirect("back");
+    res.redirect('back');
   });
 };
 
 exports.getDeleteCart = (req, res, next) => {
   req.session.cart = null;
-  res.redirect("back");
+  res.redirect('back');
 };
 
 exports.getDeleteItem = (req, res, next) => {
@@ -329,12 +343,12 @@ exports.getDeleteItem = (req, res, next) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   Products.findById(prodId, (err, product) => {
     if (err) {
-      return res.redirect("back");
+      return res.redirect('back');
     }
     cart.deleteItem(product.index);
     req.session.cart = cart;
     console.log(req.session.cart);
-    res.redirect("back");
+    res.redirect('back');
   });
 };
 
@@ -346,8 +360,8 @@ exports.addOrder = (req, res, next) => {
     var cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
-  res.render("add-address", {
-    title: "Thông tin giao hàng",
+  res.render('add-address', {
+    title: 'Thông tin giao hàng',
     user: req.user,
     cartProduct: cartProduct
   });
@@ -363,11 +377,11 @@ exports.postAddOrder = (req, res, next) => {
     });
     console.log(order);
     order.save((err, result) => {
-      req.flash("success", "Thanh toán thành công!");
+      req.flash('success', 'Thanh toán thành công!');
       req.session.cart = null;
       req.user.cart = {};
       req.user.save();
-      res.redirect("/account");
+      res.redirect('/account');
     });
   }
 };
@@ -382,9 +396,9 @@ exports.getCheckOut = (req, res, next) => {
     });
 
     order.save((err, result) => {
-      req.flash("success", "Thanh toán thành công!");
+      req.flash('success', 'Thanh toán thành công!');
       req.session.cart = null;
-      res.redirect("/");
+      res.redirect('/');
     });
   }
 };
