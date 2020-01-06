@@ -124,7 +124,7 @@
 						<div class="tt-cart tt-dropdown-obj box-cart" data-tooltip="Cart" data-tposition="bottom" >
 							<button class="tt-dropdown-toggle">
 								<i class="icon-f-39"></i>
-								<span class="tt-badge-cart" ><%= session.cart.numItems %></span>
+								<span class="tt-badge-cart" ><%= session.cart.totalQty %></span>
 							</button>
 							<div class="tt-dropdown-menu">
 								<div class="tt-mobile-add">
@@ -183,7 +183,7 @@
 											<div class="tt-cart-btn">
 												<div class="tt-item">
 													<%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
-													<a href="/check-out" class="btn">Chuyển đến thanh toán</a>
+													<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
 													<% }else if(typeof(user) == 'undefined'){ %>
 														<a href="/login" class="btn">Đăng nhập để thanh toán</a>
 														
@@ -217,7 +217,7 @@
 												<li>Xin chào, <%= user.username %></a></li>
 												<li><a href="/account"><i class="icon-f-94"></i>Tài khoản</a></li>
 												<% if(user.isAuthenticated) {%>
-												<li><a href="/check-out"><i class="icon-f-68"></i>Thanh toán</a></li>
+												<li><a href="/add-order"><i class="icon-f-68"></i>Thanh toán</a></li>
 												<% } %>
 												<% if(!user.isAuthenticated) {%>
 													<li><a href="/verify-email"><i class="icon-f-68"></i>Xác thực email</a></li>

@@ -24,14 +24,22 @@
             <h2 class="tt-title-border">Tài khoản của tôi</h2>
             <div class="tt-wrapper">
               <h3 class="tt-title">Lịch sử đặt hàng</h3>
+              <%if (message != "undefined") { %>
+              <div
+                class="error"
+                style="background-color: #ffffff; font-weight: bold; color :rgb(0,255,127)"
+              >
+                <%= message %>
+              </div>
+              <% } %>
               <div class="tt-table-responsive">
                 <table class="tt-table-shop-01">
                   <thead>
                     <tr>
                       <th>Đơn hàng</th>
                       <th>Ngày</th>
-                      <th>Trạng thái thanh toán</th>
-                      <th>Trạng thái hoàn thành</th>
+                      <th>Địa chỉ</th>
+                      <th>SĐT</th>
                       <th>Tổng</th>
                     </tr>
                   </thead>
@@ -40,12 +48,13 @@
                     <tr>
                       <td><a href="javascript:void(0)">#<%= o._id %></a></td>
                       <td><%= o.date %></td>
-                      <td>Processing</td>
+                      <td><%= o.address %></td>
                       <td>
-                        Processing
+                        <%= o.phoneNumber %>
                       </td>
                       <td>
-                        $<%= o.cart.totalPrice %> for <%= o.cart.totalQty %>
+                        $<%= o.cart.totalPrice %> cho <%= o.cart.totalQty %> sản
+                        phẩm
                       </td>
                     </tr>
                     <% }) %>

@@ -74,6 +74,7 @@ exports.getProduct = (req, res, next) => {
       allComment: product.comment.total,
       cartProduct: cartProduct
     });
+    product.save();
   });
 };
 
@@ -313,21 +314,6 @@ exports.modifyCart = (req, res, next) => {
   });
 };
 
-exports.getCheckOut = (req, res, next) => {
-  if (req.session.cart != null && req.session.cart != {}) {
-    var order = new Order({
-      user: req.user,
-      cart: req.session.cart,
-      address: "fdsfdsafdsfdas"
-    });
-    order.save((err, result) => {
-      req.flash("success", "Thanh toán thành công!");
-      req.session.cart = null;
-      res.redirect("/");
-    });
-  }
-};
-
 exports.getDeleteCart = (req, res, next) => {
   req.session.cart = null;
   res.redirect("back");
@@ -345,4 +331,55 @@ exports.getDeleteItem = (req, res, next) => {
     console.log(req.session.cart);
     res.redirect("back");
   });
+};
+
+exports.addOrder = (req, res, next) => {
+  var cartProduct;
+  if (!req.session.cart) {
+    cartProduct = null;
+  } else {
+    var cart = new Cart(req.session.cart);
+    cartProduct = cart.generateArray();
+  }
+  res.render("add-address", {
+    title: "Thông tin giao hàng",
+    user: req.user,
+    cartProduct: cartProduct
+  });
+};
+
+exports.postAddOrder = (req, res, next) => {
+  if (req.session.cart != null && req.session.cart != {}) {
+    var order = new Order({
+      user: req.user,
+      cart: req.session.cart,
+      address: req.body.address,
+      phoneNumber: req.body.phone
+    });
+    console.log(order);
+    order.save((err, result) => {
+      req.flash("success", "Thanh toán thành công!");
+      req.session.cart = null;
+      req.user.cart = {};
+      req.user.save();
+      res.redirect("/account");
+    });
+  }
+};
+
+exports.getCheckOut = (req, res, next) => {
+  if (req.session.cart != null && req.session.cart != {}) {
+    var order = new Order({
+      user: req.user,
+      cart: req.session.cart,
+      address: req.body.address,
+      phoneNumber: req.body.phone
+    });
+
+    order.save((err, result) => {
+      req.flash("success", "Thanh toán thành công!");
+      req.session.cart = null;
+      res.redirect("/");
+    });
+  }
 };

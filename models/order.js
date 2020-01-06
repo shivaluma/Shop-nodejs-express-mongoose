@@ -15,6 +15,10 @@ const orderSchema = new Schema({
     type: Date,
     required: false,
     default: Date.now
+  },
+  phoneNumber: {
+    type: Number,
+    required: true
   }
 });
 

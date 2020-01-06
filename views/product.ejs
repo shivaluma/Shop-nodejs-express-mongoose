@@ -118,33 +118,10 @@
 						<div class="tt-wrapper"> <%= prod.description %>
 						</div>
 						<div class="tt-wrapper">
-							<div class="tt-countdown_box_02">
-								<div class="tt-countdown_inner">
-									<div class="tt-countdown"
-										data-date="2018-11-01"
-										data-year="Yrs"
-										data-month="Mths"
-										data-week="Wk"
-										data-day="Day"
-										data-hour="Hrs"
-										data-minute="Min"
-										data-second="Sec"></div>
-								</div>
-							</div>
+							
 						</div>
 						<div class="tt-swatches-container">
-							<div class="tt-wrapper">
-								<div class="tt-title-options">Loại:</div>
-								<form class="form-default">
-									<div class="form-group">
-										<select class="form-control">
-											<option>Type 1</option>
-											<option>Type 2</option>
-											<option>Type 3</option>
-										</select>
-									</div>
-								</form>
-							</div>
+							
 							<div class="tt-wrapper">
 								<div class="tt-title-options">Kích cỡ:</div>
 								<ul class="tt-options-swatch options-large">
@@ -154,77 +131,24 @@
 								</ul>
 							</div>
 							
+							
 							<div class="tt-wrapper">
-								<div class="tt-title-options">Màu sắc:</div>
-								<ul class="tt-options-swatch options-large">
-									<li><a class="options-color tt-color-bg-09" href="/#"></a></li>
-									<li class="active"><a class="options-color tt-color-bg-10" href="/#"></a></li>
-									<li><a class="options-color tt-color-bg-11" href="/#"></a></li>
-									<li><a class="options-color tt-color-bg-12" href="/#"></a></li>
-									<li><a class="options-color tt-color-bg-13" href="/#"></a></li>
-								</ul>
-							</div>
-							<div class="tt-wrapper">
-								<div class="tt-title-options">Họa tiết:</div>
-								<ul class="tt-options-swatch options-large">
-									<li><a class="options-color" href="/#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-01.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-									<li class="active"><a class="options-color" href="/#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-02.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-									<li><a class="options-color" href="/#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-03.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-									<li><a class="options-color" href="/#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-04.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-									<li><a class="options-color" href="/#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-05.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-								</ul>
+								
 							</div>
 						</div>
 						<div class="tt-wrapper">
 							<div class="tt-row-custom-01">
 								<div class="col-item">
-									<div class="tt-input-counter style-01">
-										<span class="minus-btn"></span>
-										<input type="text" value="1" size="5">
-										<span class="plus-btn"></span>
-									</div>
-								</div>
-								<div class="col-item">
-									<button class="btn btn-lg tt-btn-addtocart thumbprod-button-bg add-cart" data-toggle="modal" data-target="#modalAddToCartProduct" data-id="<%= prod._id %>"><i class="icon-f-39"></i>Thêm vào giỏ hàng</button>
+									<button class="btn btn-lg tt-btn-addtocart thumbprod-button-bg add-cart" data-toggle="modal" data-target="#modalAddToCartProduct<%= prod._id %>" data-id="<%= prod._id %>"><i class="icon-f-39"></i>Thêm vào giỏ hàng</button>
 								</div>
 							</div>
 						</div>
 						
-						<div class="tt-wrapper">
-							<div class="tt-promo-brand">
-								<img src="/images/custom/tt-promo-brand-desctop.png" class="visible-lg visible-md visible-sm visible-xl" alt="">
-								<img src="/images/custom/tt-promo-brand-mobile.png" class="visible-xs" alt="">
-							</div>
-						</div>
+						
 						<div class="tt-wrapper">
 							<div class="tt-add-info">
 								<ul>
-									<li><span>Kiểu :</span> Polo</li>
+									
 									<li><span>Loại sản phẩm :</span> <%= prod.productType.main %></li>
 									<li><span>Tag:</span>
 										<% prod.tags.forEach(function(tag) { %>
@@ -444,6 +368,92 @@
 			</div>
 		</div>
 	</div>
+	<div
+  						class="modal fade"
+  						id="modalAddToCartProduct<%= prod._id %>"
+  						tabindex="-1"
+  						role="dialog"
+  						aria-label="myModalLabel"
+  						aria-hidden="true"
+					>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+		  aria-hidden="true"
+		  
+        >
+          <span class="icon icon-clear"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tt-modal-addtocart mobile">
+          <div class="tt-modal-messages">
+            <i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành công!
+          </div>
+          <button class="btn-link btn-close-popup" data-dismiss="modal">Tiếp tục mua sắm</button>
+          <a href="/shopping_cart" class="btn-link">XEM GIỎ HÀNG</a>
+          <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
+			<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
+			<% }else if(typeof(user) == 'undefined'){ %>
+				<a href="/login" class="btn">Đăng nhập để thanh toán</a>
+				
+				<% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
+					<a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+					<% } %>
+        </div>
+        <div class="tt-modal-addtocart desctope">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="tt-modal-messages">
+                <i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành công!
+              </div>
+              <div class="tt-modal-product">
+                <div class="tt-img">
+                  <img
+                    src="/images/loader.svg"
+                    data-src="/images/product/<%= prod.images[0] %>"
+                    alt=""
+                  />
+                </div>
+                <h2 class="tt-title">
+                  <a href="product.html"><%= prod.name %></a>
+                </h2>
+
+                <div class="tt-qty">QTY: <span>1</span></div>
+              </div>
+              <div class="tt-product-total">
+                <div class="tt-total">
+                  TOTAL:
+                  <span class="tt-price">$<%= prod.price %></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              
+			  <a href="#" class="btn btn-border btn-close-popup" data-dismiss="modal"
+			  
+                >Tiếp tục mua sắm</a
+              >
+              <a href="/shopping_cart" class="btn btn-border">Xem giỏ hàng</a>
+              <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
+				<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
+				<% }else if(typeof(user) == 'undefined'){ %>
+					<a href="/login" class="btn">Đăng nhập để thanh toán</a>
+					
+					<% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
+						<a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+						<% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 	<div class="container-indent wrapper-social-icon">
 		<div class="container">
 			<ul class="tt-social-icon justify-content-center">
@@ -655,6 +665,7 @@
 		</div>
 	</div>
 </div>
+
 <footer>
 	<% include partials/footer %>
 </footer>

@@ -27,6 +27,10 @@ router.get("/modify-cart", productController.modifyCart);
 
 router.get("/check-out", productController.getCheckOut);
 
+router.get("/add-order", productController.addOrder);
+
+router.post("/add-order", productController.postAddOrder);
+
 router.get("/delete-cart", productController.getDeleteCart);
 
 router.get("/delete-item/:productId", productController.getDeleteItem);
