@@ -32,5 +32,17 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
-  }
+  },
+  "description": "",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivaluma/final-web-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shivaluma/final-web-project/issues"
+  },
+  "homepage": "https://github.com/shivaluma/final-web-project#readme"
 }

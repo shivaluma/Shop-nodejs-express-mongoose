@@ -352,7 +352,7 @@ exports.addOrder = (req, res, next) => {
 
 exports.postAddOrder = async (req, res, next) => {
   console.log(req.session.cart);
-  if (req.session.cart != null && req.session.cart != {}) {
+  if (req.session.cart.totalQty) {
     var order = new Order({
       user: req.user,
       cart: req.session.cart,
@@ -376,6 +376,10 @@ exports.postAddOrder = async (req, res, next) => {
       req.user.save();
       res.redirect("/account");
     });
+  }
+  else{
+    req.flash("error", "Giỏ hàng rỗng!");
+    res.redirect("/account");
   }
 };
 

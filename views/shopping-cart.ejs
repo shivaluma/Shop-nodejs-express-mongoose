@@ -131,6 +131,7 @@
                       </tr>
                     </tfoot>
                   </table>
+                  <% if(session.cart.numItems != 0){ %>
                   <%if (typeof(user) !== 'undefined' && user.isAuthenticated) {
                   %>
                   <a href="/add-order" class="btn btn-lg"
@@ -149,7 +150,11 @@
                     ><span class="icon icon-check_circle"></span>Kích hoạt email
                     để thanh toán</a
                   >
-                  <% } %>
+                  <% }}else  {%>
+                    <a href="javascript:void(0)" class="btn btn-lg"
+                    ><span class="icon icon-check_circle"></span>Giỏ hàng rỗng!!</a
+                  >
+                  <%}%>
                 </div>
               </div>
             </div>
