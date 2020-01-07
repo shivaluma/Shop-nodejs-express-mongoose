@@ -78,6 +78,9 @@ exports.getProduct = (req, res, next) => {
   });
 };
 
+
+
+
 exports.getProducts = (req, res, next) => {
   console.log('chay vao day');
   var cartProduct;
