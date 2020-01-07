@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: {
@@ -39,6 +39,11 @@ const userSchema = new Schema({
     required: false,
     default: false
   },
+  isLock: {
+    type: Boolean,
+    required: false,
+    default: false
+  },
   verify_token: {
     type: String,
     required: false
@@ -49,5 +54,5 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;
