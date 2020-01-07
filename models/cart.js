@@ -55,7 +55,7 @@ module.exports = function Cart(oldCart) {
 
         this.numItems++;
       } else {
-        storeItem.qty += cart.items[id].qty;
+        storeItem.qty += parseInt(cart.items[id].qty);
         storeItem.price += cart.items[id].price;
       }
       this.totalQty += cart.items[id].qty;

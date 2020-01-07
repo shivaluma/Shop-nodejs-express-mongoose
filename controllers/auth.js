@@ -28,7 +28,7 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = (req, res, next) => {
   passport.authenticate("local-signin", {
-    successReturnToOrRedirect: "/",
+    successReturnToOrRedirect: "/merge-cart",
     failureRedirect: "/login",
     failureFlash: true
   })(req, res, next);
@@ -209,18 +209,20 @@ exports.getChangePassword = (req, res, next) => {
 };
 
 exports.postChangePassword = (req, res, next) => {
-  console.log(req.body.oldpass);
-
   bcrypt.compare(req.body.oldpass, req.user.password, function(err, result) {
     console.log("alo?");
     if (!result) {
-      console.log("alo?");
       req.flash("error", "Mật khẩu cũ không đúng!");
+      return res.redirect("back");
+    } else if (req.body.newpass != req.body.newpass2) {
+      console.log(req.body.newpass);
+      console.log(req.body.newpass2);
+      req.flash("error", "Nhập lại mật khẩu không khớp!");
       return res.redirect("back");
     } else {
       bcrypt.hash(req.body.newpass, 12).then(hashPassword => {
-        user.password = hashPassword;
-        user.save();
+        req.user.password = hashPassword;
+        req.user.save();
       });
       req.flash("success", "Đổi mật khẩu thành công!");
       res.redirect("/account");
