@@ -277,7 +277,7 @@ exports.addToCart = (req, res, next) => {
     if (err) {
       return res.redirect("back");
     }
-    cart.add(product, product.index);
+    cart.add(product, prodId);
     req.session.cart = cart;
     if (req.user) {
       req.user.cart = cart;
@@ -298,7 +298,7 @@ exports.modifyCart = (req, res, next) => {
     if (err) {
       return res.redirect("back");
     }
-    cart.changeQty(product, product.index, qty);
+    cart.changeQty(product, prodId, qty);
     req.session.cart = cart;
     if (req.user) {
       req.user.cart = cart;
@@ -324,7 +324,7 @@ exports.getDeleteItem = (req, res, next) => {
     if (err) {
       return res.redirect("back");
     }
-    cart.deleteItem(product.index);
+    cart.deleteItem(prodId);
     req.session.cart = cart;
     if (req.user) {
       req.user.cart = cart;
@@ -350,7 +350,8 @@ exports.addOrder = (req, res, next) => {
   });
 };
 
-exports.postAddOrder = (req, res, next) => {
+exports.postAddOrder = async (req, res, next) => {
+  console.log(req.session.cart);
   if (req.session.cart != null && req.session.cart != {}) {
     var order = new Order({
       user: req.user,
@@ -358,7 +359,16 @@ exports.postAddOrder = (req, res, next) => {
       address: req.body.address,
       phoneNumber: req.body.phone
     });
-    console.log(order);
+
+    for (var id in req.session.cart.items) {
+      await Products.findOne({ _id: id })
+        .then(product => {
+          product.buyCounts += parseInt(req.session.cart.items[id].qty);
+          product.save();
+        })
+        .catch(err => console.log(err));
+    }
+
     order.save((err, result) => {
       req.flash("success", "Thanh toán thành công!");
       req.session.cart = null;

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const removeAccent = require('../util/removeAccent');
+const removeAccent = require("../util/removeAccent");
 
 const productSchema = new Schema({
   name: {
@@ -10,7 +10,7 @@ const productSchema = new Schema({
   description: {
     type: String,
     required: false,
-    default: 'Một sản phẩm từ Bros'
+    default: "Một sản phẩm từ Bros"
   },
   stock: {
     type: Number,
@@ -50,19 +50,30 @@ const productSchema = new Schema({
     default: Date.now
   },
   isSale: {
-    type: Boolean,
-    required: false,
-    default: false
+    status: {
+      type: Boolean,
+      default: false
+    },
+    percent: {
+      type: Number,
+      default: 0
+    },
+    end: {
+      type: Date
+    }
   },
   ofSellers: {
-    type: String,
-    required: false,
-    default: 'Shiro'
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User"
+    },
+    name: String
   },
   labels: {
     type: String,
     required: false,
-    default: 'Shiro'
+    default: "Shiro"
   },
   materials: {
     type: [String],
@@ -118,12 +129,12 @@ const productSchema = new Schema({
 });
 
 const index = {
-  name: 'text',
-  description: 'text',
-  labels: 'text',
-  'productType.main': 'text',
-  tags: 'text',
-  ofSellers: 'text'
+  name: "text",
+  description: "text",
+  labels: "text",
+  "productType.main": "text",
+  tags: "text",
+  ofSellers: "text"
 };
 productSchema.index(index);
 
@@ -131,5 +142,5 @@ productSchema.methods.getNonAccentType = function() {
   return removeAccent(this.productType.main);
 };
 
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model("Product", productSchema);
 module.exports = Product;
