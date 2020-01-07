@@ -374,313 +374,134 @@
 				<div class="tt-description">TOP NHỮNG SẢN PHẨM BÁN CHẠY NHẤT TUẦN QUA</div>
 			</div>
 			<div class="row tt-layout-product-item">
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-16.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-16-01.jpg" alt=""></span>
-							</a>
-							<div class="tt-countdown_box">
-								<div class="tt-countdown_inner">
-									<div class="tt-countdown"
-										data-date="2019-04-14"
-										data-year="Yrs"
-										data-month="Mths"
-										data-week="Wk"
-										data-day="Day"
-										data-hour="Hrs"
-										data-minute="Min"
-										data-second="Sec"></div>
-								</div>
-							</div>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$24
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
+				<% hots.forEach(function(prod) { %>
+
+					
+
+					<div class="col-6 col-md-4 col-lg-3">
+						<div class="tt-product thumbprod-center">
+							<div class="tt-image-box">
 								
+								<a href="/product/<%= prod._id %>">
+									<span class="tt-img"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>" alt="" class="loaded" data-was-processed="true"></span>
+									<span class="tt-img-roll-over"><img src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[1] %>" alt="" class="loaded" data-was-processed="true"></span>
+								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-46.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-46-01.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-								<div class="tt-rating">
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star-half"></i>
-									<i class="icon-star-empty"></i>
+							<div class="tt-description">
+								<div class="tt-row">
+									<ul class="tt-add-info">
+										<li><a href="#"><%= prod.productType.sub %></a></li>
+									</ul>
+									<div class="tt-rating">
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+									</div>
 								</div>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$8
-							</div>
-							<div class="tt-option-block">
-								<ul class="tt-options-swatch">
-									<li class="active"><a class="options-color" href="#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-06.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-									<li><a class="options-color" href="#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-07.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-									<li><a class="options-color" href="#">
-										<span class="swatch-img">
-											<img src="/images/custom/texture-img-08.jpg" alt="">
-										</span>
-										<span class="swatch-label color-black"></span>
-									</a></li>
-								</ul>
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
+								<h2 class="tt-title"><a href="product/<%= prod._id %>"><%= prod.name %></a></h2>
+								<div class="tt-price">
+									$<%= prod.price %>
 								</div>
-								<div class="tt-row-btn">
-									
+								<div class="tt-product-inside-hover" >
+									<div class="tt-row-btn">
+										<button class="tt-btn-addtocart thumbprod-button-bg add-cart" data-id="<%= prod._id %>" data-toggle="modal" data-target="#modalAddToCartProduct<%= prod._id %>">THÊM VÀO GIỎ HÀNG</button>
+									</div>
+			
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-18.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-18-01.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$46
-							</div>
-							<div class="tt-option-block">
-								<ul class="tt-options-swatch">
-									<li><a class="options-color tt-color-bg-01" href="#"></a></li>
-									<li><a class="options-color tt-color-bg-02" href="#"></a></li>
-								</ul>
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
-								<div class="tt-row-btn">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-19.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-19-02.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-								<div class="tt-rating">
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-								</div>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$35
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
-								<div class="tt-row-btn">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-41.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-41-01.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-								<div class="tt-rating">
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-								</div>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$124
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
-								<div class="tt-row-btn">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-02.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-02-03.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$43
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
-								<div class="tt-row-btn">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-05.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-05-02.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$124
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
-								<div class="tt-row-btn">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							
-							<a href="product.html">
-								<span class="tt-img"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-33.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/images/loader.svg" data-src="http://bros-admin.herokuapp.com/assets/images/product-33-01.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-								<div class="tt-rating">
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star-half"></i>
-									<i class="icon-star-empty"></i>
-								</div>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$54
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">THÊM VÀO GIỎ HÀNG</a>
-								</div>
-								<div class="tt-row-btn">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+
+					
+					<div
+  						class="modal fade"
+  						id="modalAddToCartProduct<%= prod._id %>"
+  						tabindex="-1"
+  						role="dialog"
+  						aria-label="myModalLabel"
+  						aria-hidden="true"
+					>
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+		  aria-hidden="true"
+		  
+        >
+          <span class="icon icon-clear"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tt-modal-addtocart mobile">
+          <div class="tt-modal-messages">
+            <i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành công!
+          </div>
+          <button class="btn-link btn-close-popup" data-dismiss="modal">Tiếp tục mua sắm</button>
+          <a href="/shopping_cart" class="btn-link">XEM GIỎ HÀNG</a>
+          <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
+			<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
+			<% }else if(typeof(user) == 'undefined'){ %>
+				<a href="/login" class="btn">Đăng nhập để thanh toán</a>
+				
+				<% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
+					<a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+					<% } %>
+        </div>
+        <div class="tt-modal-addtocart desctope">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="tt-modal-messages">
+                <i class="icon-f-68"></i> Đã thêm vào giỏ hàng thành công!
+              </div>
+              <div class="tt-modal-product">
+                <div class="tt-img">
+                  <img
+                    src="/images/loader.svg"
+                    data-src="http://bros-admin.herokuapp.com/assets/images/<%= prod.images[0] %>"
+                    alt=""
+                  />
+                </div>
+                <h2 class="tt-title">
+                  <a href="/product/<%= prod.name %>"><%= prod.name %></a>
+                </h2>
+
+                <div class="tt-qty">QTY: <span>1</span></div>
+              </div>
+              <div class="tt-product-total">
+                <div class="tt-total">
+                  TOTAL:
+                  <span class="tt-price">$<%= prod.price %></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              
+			  <a href="#" class="btn btn-border btn-close-popup" data-dismiss="modal"
+			  
+                >Tiếp tục mua sắm</a
+              >
+              <a href="/shopping_cart" class="btn btn-border">Xem giỏ hàng</a>
+              <%if (typeof(user) !== 'undefined' && user.isAuthenticated) { %>
+				<a href="/add-order" class="btn">Chuyển đến thanh toán</a>
+				<% }else if(typeof(user) == 'undefined'){ %>
+					<a href="/login" class="btn">Đăng nhập để thanh toán</a>
+					
+					<% }else if(typeof(user) !== 'undefined' && !user.isAuthenticated){ %>
+						<a href="/verify-email" class="btn">Kích hoạt email để thanh toán</a>
+						<% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+					<% }); %>
 			</div>
 		</div>
 	</div>
