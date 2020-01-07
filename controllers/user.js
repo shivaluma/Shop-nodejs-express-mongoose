@@ -10,14 +10,16 @@ exports.getAccount = (req, res, next) => {
     var cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
-  const message = req.flash("success")[0];
+  const messageSucc = req.flash("success")[0];
+  const messageError = req.flash("error")[0];
   Order.find({ user: req.user }).then(order => {
     res.render("account", {
       title: "Thông tin tài khoản",
       user: req.user,
       cartProduct: cartProduct,
       order: order,
-      message: message
+      messageSucc: messageSucc,
+      messageError:messageError
     });
   });
 };

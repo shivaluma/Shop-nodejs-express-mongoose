@@ -24,14 +24,22 @@
             <h2 class="tt-title-border">Tài khoản của tôi</h2>
             <div class="tt-wrapper">
               <h3 class="tt-title">Lịch sử đặt hàng</h3>
-              <%if (message != "undefined") { %>
+              <%if (messageSucc != "undefined") { %>
               <div
                 class="error"
                 style="background-color: #ffffff; font-weight: bold; color :rgb(0,255,127)"
               >
-                <%= message %>
+                <%= messageSucc %>
               </div>
               <% } %>
+              <%if (messageError != "undefined") { %>
+                <div
+                  class="error"
+                  style="background-color: #ffffff; font-weight: bold; color :rgb(255,0,0)"
+                >
+                  <%= messageError %>
+                </div>
+                <% } %>
               <div class="tt-table-responsive">
                 <table class="tt-table-shop-01">
                   <thead>
