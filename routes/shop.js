@@ -33,4 +33,6 @@ router.get("/delete-cart", productController.getDeleteCart);
 
 router.get("/delete-item/:productId", productController.getDeleteItem);
 
+router.get("/merge-cart", productController.mergeCart);
+
 module.exports = router;

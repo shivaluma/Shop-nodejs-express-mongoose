@@ -18,26 +18,10 @@ var searchText;
 
 exports.getIndexProducts = (req, res, next) => {
   var cartProduct;
-
-  var cart;
-  if (req.user) {
-    if (req.user.cart) {
-      if (
-        JSON.stringify(req.session.cart.items) !==
-        JSON.stringify(req.user.cart.items)
-      ) {
-        cart = new Cart(req.session.cart ? req.session.cart : {});
-        cart = cart.addCart(req.user.cart);
-        req.session.cart = cart;
-        req.user.cart = cart;
-        req.user.save();
-      }
-    }
-  }
   if (!req.session.cart) {
     cartProduct = null;
   } else {
-    cart = new Cart(req.session.cart);
+    var cart = new Cart(req.session.cart);
     cartProduct = cart.generateArray();
   }
 
@@ -84,7 +68,6 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  console.log("chay vao day");
   var cartProduct;
   if (!req.session.cart) {
     cartProduct = null;
@@ -327,6 +310,10 @@ exports.modifyCart = (req, res, next) => {
 
 exports.getDeleteCart = (req, res, next) => {
   req.session.cart = null;
+  if (req.user) {
+    req.user.cart = {};
+    req.user.save();
+  }
   res.redirect("back");
 };
 
@@ -380,4 +367,16 @@ exports.postAddOrder = (req, res, next) => {
       res.redirect("/account");
     });
   }
+};
+
+exports.mergeCart = (req, res, next) => {
+  if (req.user.cart != {}) {
+    console.log("alo");
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+    cart = cart.addCart(req.user.cart);
+    req.session.cart = cart;
+    req.user.cart = cart;
+    req.user.save();
+  }
+  res.redirect("/");
 };

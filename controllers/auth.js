@@ -28,7 +28,7 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = (req, res, next) => {
   passport.authenticate("local-signin", {
-    successReturnToOrRedirect: "/",
+    successReturnToOrRedirect: "/merge-cart",
     failureRedirect: "/login",
     failureFlash: true
   })(req, res, next);
