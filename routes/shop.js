@@ -1,35 +1,36 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const userController = require('../controllers/user');
-const productController = require('../controllers/product');
+const userController = require("../controllers/user");
+const productController = require("../controllers/product");
 /* GET home page. */
 
-router.get('/', productController.getIndexProducts);
+router.get("/", productController.getIndexProducts);
 
-router.get('/product/:productId', productController.getProduct);
+router.get("/product/:productId", productController.getProduct);
 
-router.get('/products/:productType?/:productChild?', productController.getProducts);
+router.get(
+  "/products/:productType?/:productChild?",
+  productController.getProducts
+);
 
-router.post('/products/:productType*?', productController.postNumItems);
+router.post("/products/:productType*?", productController.postNumItems);
 
-router.post('/product/:productId', productController.postComment);
+router.post("/product/:productId", productController.postComment);
 
-router.get('/search', productController.getSearch);
+router.get("/search", productController.getSearch);
 
-router.get('/shopping_cart', productController.getCart);
+router.get("/shopping_cart", productController.getCart);
 
-router.get('/add-to-cart/:productId', productController.addToCart);
+router.get("/add-to-cart/:productId", productController.addToCart);
 
-router.get('/modify-cart', productController.modifyCart);
+router.get("/modify-cart", productController.modifyCart);
 
-router.get('/check-out', productController.getCheckOut);
+router.get("/add-order", productController.addOrder);
 
-router.get('/add-order', productController.addOrder);
+router.post("/add-order", productController.postAddOrder);
 
-router.post('/add-order', productController.postAddOrder);
+router.get("/delete-cart", productController.getDeleteCart);
 
-router.get('/delete-cart', productController.getDeleteCart);
-
-router.get('/delete-item/:productId', productController.getDeleteItem);
+router.get("/delete-item/:productId", productController.getDeleteItem);
 
 module.exports = router;
