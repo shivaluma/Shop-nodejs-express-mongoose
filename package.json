@@ -20,7 +20,7 @@
     "express": "~4.16.1",
     "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.10",
     "morgan": "~1.9.1",
